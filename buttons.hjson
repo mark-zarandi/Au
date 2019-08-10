@@ -1,0 +1,38 @@
+
+{
+//Start Pods************************************
+Pods:{
+	Uhh_Yeah_Dude:
+		{
+		  	label: Uhh Yeah Dude
+		  	method: ["get_random", "get_recent"]
+		  	pod_id: 2
+		}
+	Savage_Love:
+		{
+			label: Savage Love
+			method: ["get_random","get_recent"]
+			pod_id:1
+		}
+	Sawbones:
+		{
+			label: Saw bones
+			method: ["get_random","get_recent"]
+			pod_id:4
+		}
+	The_Daily:
+		{
+			label: The Daily
+			method: ["get_recent"]
+			pod_id:3
+		}
+	}
+//Start Rooms*********************************
+Rooms:
+	{
+	Lib:192.168.1.136
+    Kitch:192.168.1.145
+    Master:192.168.1.101
+    Living:192.168.1.116
+	}
+}
