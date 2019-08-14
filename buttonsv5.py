@@ -11,14 +11,15 @@ from ansi_alphabet import the_alphabet
 import requests
 from soco import SoCo
 import threading
-import codecs
-from unidecode import unidecode
+from colored import fg, bg, attr
 
 from soco import groups
 
 blank_column = [[0],[0],[0],[0],[0]]
 pod_dict = open("buttons.hjson","r").read()
 pod_dict = hjson.loads(pod_dict)
+themes_dict = open("themes.hjson","r").read()
+themes_dict = hjson.loads(themes_dict)
 
 def line_split(input_string):
     print(input_string)
@@ -117,7 +118,7 @@ class BoxButton(urwid.WidgetWrap):
             
             return to_fill
 
-        print('word_array')        
+           
         word_array = label_construct(line_split(label))
 
         new_line = ''
@@ -125,7 +126,7 @@ class BoxButton(urwid.WidgetWrap):
 
         for x in word_array:
             new_line = ""
-            new_line = u'\u2588' + u'\u0020' + u'\u0020'
+            new_line = '\u2588' + '\u0020' + '\u0020'
             for y in x:
                 #1 Full Block
                 #2 Half Top Block
@@ -133,9 +134,9 @@ class BoxButton(urwid.WidgetWrap):
                 #3 Half Bottom Block
                 
                 
-                switcher = {1:u"\u2588",0:u"\u0020",2:u"\u2580",3:u"\u2584"}
+                switcher = {1:"\u2588",0:"\u0020",2:"\u2580",3:"\u2584"}
                 new_line = new_line + switcher.get(y)
-            new_line = new_line + u'\u0020' + u'\u2588'# + u"\n"
+            new_line = new_line + '\u0020' + '\u2588'# + u"\n"
             ansi_word.append(urwid.Text(new_line,align="center"))
         ansi_word.append(urwid.Text(bottom_border,align='center'))
         self.widget = urwid.Pile(ansi_word)
