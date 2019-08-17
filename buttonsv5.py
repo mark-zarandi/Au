@@ -12,6 +12,8 @@ import requests
 from soco import SoCo
 import threading
 from colored import fg, bg, attr
+from banner import BannerHandler
+
 
 from soco import groups
 
@@ -22,7 +24,6 @@ themes_dict = open("themes.hjson","r").read()
 themes_dict = hjson.loads(themes_dict)
 
 def line_split(input_string):
-    print(input_string)
     string = (input_string.lower().split())
     if len(string) == 1 and len(string[0]) <= 7:
         return (str(string[0]))
@@ -38,16 +39,17 @@ class BoxButton(urwid.WidgetWrap):
    
     def __init__(self, label, place_int=-1, on_press=None, user_data=None):
         _top_char = u'\u2580'
+        _top_corner = u'\u2584'
         _bottom_char = u'\u2584'
+        _bottom_corner = u'\u2580'
         padding_size = 2
         #move border calcs further down.
-        print('init')
         x = line_split(label).split("_")
         lookie = lambda t: len(t)
         vfunc = numpy.vectorize(lookie)
 
-        top_border = _top_char * (((max(vfunc(x)) * 5) + max(vfunc(x))-1) + padding_size)
-        bottom_border = _bottom_char * (((max(vfunc(x)) * 5) + max(vfunc(x))-1) + padding_size)
+        top_border = _top_corner + (_top_char * (((max(vfunc(x)) * 5) + max(vfunc(x))-1) + padding_size)) + _top_corner
+        bottom_border = _bottom_corner + (_bottom_char * (((max(vfunc(x)) * 5) + max(vfunc(x))-1) + padding_size)) + _bottom_corner
         cursor_position = len(top_border) + padding_size
         self.label = label
       
@@ -126,17 +128,36 @@ class BoxButton(urwid.WidgetWrap):
 
         for x in word_array:
             new_line = ""
-            new_line = '\u2588' + '\u0020' + '\u0020'
+            new_line = u'\u2588' + u'\u0020' + u'\u0020'
             for y in x:
                 #1 Full Block
                 #2 Half Top Block
                 #0 Space
                 #3 Half Bottom Block
-                
-                
-                switcher = {1:"\u2588",0:"\u0020",2:"\u2580",3:"\u2584"}
+                #4 right half block
+                #5 right 1/8th 
+                #6 right 7/8
+                #12 left half block
+                #11 left 7/8 block
+                #10 left 1/8 block
+                #15 lower one quarter
+                #16 Left 
+
+                switcher = {
+                1:u"\u2588",
+                0:u"\u0020",
+                2:u"\u2580",
+                3:u"\u2584",
+                4:u"\u2590",
+                5:u"\u2595",
+                6:u"\u259B",
+                11:u"\u2589",
+                10:u"\u258F",
+                15:u"\u2582",
+                12:u"\u258C"
+                }
                 new_line = new_line + switcher.get(y)
-            new_line = new_line + '\u0020' + '\u2588'# + u"\n"
+            new_line = new_line + u'\u0020' + u'\u2588'# + u"\n"
             ansi_word.append(urwid.Text(new_line,align="center"))
         ansi_word.append(urwid.Text(bottom_border,align='center'))
         self.widget = urwid.Pile(ansi_word)
@@ -163,7 +184,7 @@ class BoxButton(urwid.WidgetWrap):
     def mouse_event(self, *args, **kw):
         return self._hidden_btn.mouse_event(*args, **kw)
 
-class Clock:
+class Au:
     
 
     def keypress(self, key):
@@ -253,9 +274,10 @@ class Clock:
         self.top_button_box = urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),self.button_grid,urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588")
         self.view = urwid.Filler(urwid.AttrMap(urwid.Pile([self.clock_box,self.top_button_box]),'body'),'middle')
         self.loop.widget = self.view
+
         self.loop.set_alarm_in(1, self.refresh)
 
 
 if __name__ == '__main__':
-    clock = Clock()
-    sys.exit(clock.main())
+    au = Au()
+    sys.exit(au.main())

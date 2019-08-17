@@ -1,1 +1,12 @@
-Themes:{}
+{ 
+Themes:
+{
+Base:
+{
+	clock_color__c: '#'
+	outer_box__c: '#'
+	buttons__c: '#'
+	split__c: '#'
+}
+}
+}
