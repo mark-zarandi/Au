@@ -161,13 +161,6 @@ class BoxButton(urwid.WidgetWrap):
             ansi_word.append(urwid.Text(new_line,align="center"))
         ansi_word.append(urwid.Text(bottom_border,align='center'))
         self.widget = urwid.Pile(ansi_word)
-
-        #self.widget = urwid.AttrMap(self.widget, '', 'highlight')
-
-        # self.widget = urwid.Padding(self.widget, 'center')
-        # self.widget = urwid.Filler(self.widget)
-
-        # here is a lil hack: use a hidden button for evt handling
         self._hidden_btn = urwid.Button('hidden %s' % label + str(place_int), on_press, user_data)
 
         super(BoxButton, self).__init__(self.widget)

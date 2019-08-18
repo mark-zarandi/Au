@@ -27,7 +27,7 @@ class BannerHandler:
 
 	def setup_view(self):
 		#the full thing
-		self.size_string = pyfiglet.figlet_format(self.label, font = "isometric1",width=200)
+		self.size_string = pyfiglet.figlet_format(self.label, font = "banner3-D",width=200)
 
 		self.spacer = 0
 		self.write_string = " "
