@@ -9,19 +9,8 @@ import json
 import numpy
 from ansi_alphabet import the_alphabet
 import requests
-from soco import SoCo
-import threading
-from banner import BannerHandler
-from jishiHandler import jishiReader
-
-from soco import groups
 
 blank_column = [[0],[0],[0],[0],[0]]
-pod_dict = open("buttons.hjson","r").read()
-pod_dict = hjson.loads(pod_dict)
-themes_dict = open("themes.hjson","r").read()
-themes_dict = hjson.loads(themes_dict)
-
 def line_split(input_string):
     string = (input_string.lower().split())
     if len(string) == 1 and len(string[0]) <= 7:
@@ -32,7 +21,6 @@ def line_split(input_string):
         return(string[0]+string[1])
     if len(string[0]+string[1]) <= 7 and len(string) >= 3:
         return(string[0]+string[1]+"_"+string[2])
-
 
 class BoxButton(urwid.WidgetWrap):
    
@@ -49,7 +37,7 @@ class BoxButton(urwid.WidgetWrap):
 
         top_border = _top_corner + (_top_char * (((max(vfunc(x)) * 5) + max(vfunc(x))-1) + padding_size)) + _top_corner
         bottom_border = _bottom_corner + (_bottom_char * (((max(vfunc(x)) * 5) + max(vfunc(x))-1) + padding_size)) + _bottom_corner
-        cursor_position = len(top_border) + padding_size
+        cursor_position = len(top_border)
         self.label = label
       
         ansi_word = []
@@ -176,100 +164,9 @@ class BoxButton(urwid.WidgetWrap):
     def mouse_event(self, *args, **kw):
         return self._hidden_btn.mouse_event(*args, **kw)
 
-class Au:
-    
-
-    def keypress(self, key):
-        if key in ('q', 'Q'):
-            raise urwid.ExitMainLoop()
-
-    def setup_view(self):
-        self.clock_txt = urwid.BigText(time.strftime('%H:%M:%S'), urwid.font.HalfBlock5x4Font())
-        self.clock_box = urwid.Padding(self.clock_txt, 'left', width='clip')
-        
-        def split(link,user_data_x):
-            
-            def right(s, amount):
-                return s[-amount:]
-            
-            def get_random(link, user_data=None):
-                
-                #JISHI NODE SONOS NOT SETUP
-                #url = 'http://localhost:5005/preset/all_rooms'
-                #r = requests.get(url)
-    
-                
-                def play_it():
-                    play_room = (str(pod_dict['Rooms']['Master']))
-                
-                    r = requests.get('http://localhost:5000/random/' + str(user_data))
-                    data = r.json()
-                    sonos = SoCo(play_room)
-                
-                    sonos.play_uri(data['location'])
-                #parallel threading
-                t = threading.Thread(name="sonos_play_thread",target=play_it)
-                t.start()
-
-                set_buttons()
-
-            def get_recent(link, user_data):
-                print(user_data)
-
-            set_buttons()
-            split_array = []
-            #add eval to compute strings.
-            split_array.append(BoxButton('a',on_press=eval(user_data_x['method'][0]),user_data=user_data_x['pod_id']))
-            split_array.append(BoxButton('b',on_press=get_recent,user_data=user_data_x))
-            self.clock_txt = urwid.BigText(time.strftime('%H:%M:%S'), urwid.font.HalfBlock5x4Font())
-            self.clock_box = urwid.Padding(self.clock_txt, 'left', width='clip')
-            self.buttons_list[int(right(link.label,1))] = urwid.Columns(split_array)
-            self.button_grid = urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=0,align='center')
-            self.top_button_box = urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),self.button_grid,urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588")
-            self.view = urwid.Filler(urwid.AttrMap(urwid.Pile([self.clock_box,self.top_button_box]),'body'),'middle')
-            self.loop.set_alarm_in(.01,self.refresh)
-
-        def set_buttons():
-
-            self.buttons_list = []
-            index_dict = 0 
-            for key,value in pod_dict['Pods'].items():
-                #remember, arguments can't be passed to callback through ON_PRESS, must use USER_DATE
-                new_button = BoxButton(value['label'], index_dict, on_press=split,user_data=value)
-                self.buttons_list.append(new_button)
-                index_dict = index_dict + 1
-                #print('writing buttons')    
-        set_buttons()
-        self.button_grid = urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=0,align='center')
-        self.top_button_box = urwid.LineBox(self.button_grid,trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588")
-        self.view = urwid.Filler(urwid.AttrMap(urwid.Pile([self.clock_box,self.top_button_box]),'body'),'middle')
-
-    
-
-
-    def main(self):
-        jish_run = jishiReader('./node-sonos/package.json')
-        self.setup_view()
-        
-        self.loop = urwid.MainLoop(
-            self.view, palette=[('body', 'dark cyan', '')],
-            unhandled_input=self.keypress)
-        
-        
-        self.loop.set_alarm_in(.2, self.refresh)
-        self.loop.run()
-
-    def refresh(self, loop=None, data=None):
-        self.button_grid = urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=0,align='center')
-        self.clock_txt = urwid.BigText(time.strftime('%H:%M:%S'), urwid.font.HalfBlock5x4Font())
-        self.clock_box = urwid.Padding(self.clock_txt, 'left', width='clip')
-        self.top_button_box = urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),self.button_grid,urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588")
-        self.view = urwid.Filler(urwid.AttrMap(urwid.Pile([self.clock_box,self.top_button_box]),'body'),'middle')
-        self.loop.widget = self.view
-
-        self.loop.set_alarm_in(1, self.refresh)
-
-
-if __name__ == '__main__':
-    au = Au()
-    sys.exit(au.main())
+if __name__ == "__main__":
+    left_dash = urwid.Text(u"\u2588\u2588\u2580\u2588\u2588\u2588\u2588\u2588\u2580\u2588\u2588\u2588",'right')
+    nav = BoxButton("a")
+    right_dash = urwid.Text(u"\u2588\u2588\u2580\u2588\u2588\u2588\u2588\u2588\u2580\u2588\u2588\u2588\u2588\u2588\u2580\u2588\u2588\u2588",'left')
+    finish_o = urwid.Filler(urwid.Padding(urwid.Columns([(urwid.BoxAdapter(urwid.Filler(left_dash,'middle'),7)),(11,nav),(right_dash)]),'center'))
+    urwid.MainLoop(finish_o, palette=[('reversed', 'standout', '')]).run()
