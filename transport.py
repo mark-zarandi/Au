@@ -9,6 +9,7 @@ import json
 import numpy
 from ansi_alphabet import the_alphabet
 import requests
+import math
 
 blank_column = [[0],[0],[0],[0],[0]]
 def line_split(input_string):
@@ -21,6 +22,29 @@ def line_split(input_string):
         return(string[0]+string[1])
     if len(string[0]+string[1]) <= 7 and len(string) >= 3:
         return(string[0]+string[1]+"_"+string[2])
+
+class AudioTransport:
+
+    def __init__(self,dur):
+        self.dur = dur
+        self.left_dur = 0
+        self.right_dur = dur
+
+
+    def setup_view(self, screen_size):
+        self.left_space = 0
+        self.right_space = screen_size - 11
+        self.screen_size = screen_size
+        rate_div = float(self.screen_size)/float(self.dur)
+        print(rate_div)
+        self.run_rate = math.ceil(5/rate_div)
+        print(self.run_rate)
+        time.sleep(5)
+        left_dash = urwid.Text(u"\u2588" * self.left_space,'right')
+        nav = BoxButton("a")
+        right_dash = urwid.Text(u"\u2588" * self.right_space,'left')
+        self.view = urwid.Filler(urwid.Padding(urwid.Columns([(self.left_space,urwid.BoxAdapter(urwid.Filler(left_dash,'middle'),7)),(11,nav),urwid.BoxAdapter(urwid.Filler(right_dash,'middle'),7)]),'left'))
+        return self.view
 
 class BoxButton(urwid.WidgetWrap):
    
@@ -163,10 +187,28 @@ class BoxButton(urwid.WidgetWrap):
 
     def mouse_event(self, *args, **kw):
         return self._hidden_btn.mouse_event(*args, **kw)
+class App:
+
+    def setup_view(self,screen_s):
+        self.lookie = AudioTransport(300)
+        self.the_w = self.lookie.setup_view(screen_s)
+        self.loop.widget = self.the_w
+
+
+    def main(self):
+        self.the_w = urwid.Padding(urwid.Filler(urwid.Text("a")))
+        self.loop = urwid.MainLoop(self.the_w, palette=[('body', 'dark cyan', '')])
+        self.screen_size = self.loop.screen.get_cols_rows()[0]
+        self.setup_view(self.screen_size)
+
+        #self.loop.set_alarm_in(.2, self.refresh)
+        self.loop.run()
+
+    def refresh(self, loop=None, data=None):
+        self.the_w = urwid.LineBox(self.lookie.refresh(self.screen_size),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588")
+        self.loop.widget = self.the_w
+        loop.set_alarm_in(.1, self.refresh)
 
 if __name__ == "__main__":
-    left_dash = urwid.Text(u"\u2588\u2588\u2580\u2588\u2588\u2588\u2588\u2588\u2580\u2588\u2588\u2588",'right')
-    nav = BoxButton("a")
-    right_dash = urwid.Text(u"\u2588\u2588\u2580\u2588\u2588\u2588\u2588\u2588\u2580\u2588\u2588\u2588\u2588\u2588\u2580\u2588\u2588\u2588",'left')
-    finish_o = urwid.Filler(urwid.Padding(urwid.Columns([(urwid.BoxAdapter(urwid.Filler(left_dash,'middle'),7)),(11,nav),(right_dash)]),'center'))
-    urwid.MainLoop(finish_o, palette=[('reversed', 'standout', '')]).run()
+    Please_work = App()
+    sys.exit(Please_work.main())

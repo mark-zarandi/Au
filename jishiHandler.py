@@ -41,7 +41,7 @@ class jishiReader:
             self.pkg = NPMPackage(json_loc)
             self.pkg.install('--production',wait=False)
             time.sleep(15)
-            print('installed')
+
             self.pkg = NPMPackage(json_loc) 
         else:
             self.pkg = NPMPackage(json_loc)   
