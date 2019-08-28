@@ -4,12 +4,12 @@
 import urwid
 import time
 import sys
-import hjson
-import json
+
 import numpy
 from ansi_alphabet import the_alphabet
-import requests
+
 import math
+import vlc
 
 blank_column = [[0],[0],[0],[0],[0]]
 def line_split(input_string):
@@ -29,22 +29,38 @@ class AudioTransport:
         self.dur = dur
         self.left_dur = 0
         self.right_dur = dur
+        
+        self.mediap = vlc.MediaPlayer("Zarandi-EmoryPolice.mp3")
 
 
     def setup_view(self, screen_size):
+        self.mediap.play()
         self.left_space = 0
         self.right_space = screen_size - 11
         self.screen_size = screen_size
         rate_div = float(self.screen_size)/float(self.dur)
-        print(rate_div)
+
         self.run_rate = math.ceil(5/rate_div)
-        print(self.run_rate)
-        time.sleep(5)
+
         left_dash = urwid.Text(u"\u2588" * self.left_space,'right')
         nav = BoxButton("a")
         right_dash = urwid.Text(u"\u2588" * self.right_space,'left')
         self.view = urwid.Filler(urwid.Padding(urwid.Columns([(self.left_space,urwid.BoxAdapter(urwid.Filler(left_dash,'middle'),7)),(11,nav),urwid.BoxAdapter(urwid.Filler(right_dash,'middle'),7)]),'left'))
         return self.view
+
+    def refresh(self):
+        where_go = int(self.mediap.get_position() * 100)
+        if where_go > self.left_space:
+            self.left_space = where_go
+            self.right_space = self.right_space - (where_go - self.left_space) - 1
+        
+        left_dash = urwid.Text(u"\u2588" * self.left_space,'right')
+        nav = BoxButton("a")
+        right_dash = urwid.Text(u"\u2588" * self.right_space,'left')
+        self.view = urwid.Filler(urwid.Padding(urwid.Columns([(self.left_space,urwid.BoxAdapter(urwid.Filler(left_dash,'middle'),7)),(11,nav),urwid.BoxAdapter(urwid.Filler(right_dash,'middle'),7)]),'left'))
+        return self.view
+        
+
 
 class BoxButton(urwid.WidgetWrap):
    
@@ -201,11 +217,11 @@ class App:
         self.screen_size = self.loop.screen.get_cols_rows()[0]
         self.setup_view(self.screen_size)
 
-        #self.loop.set_alarm_in(.2, self.refresh)
+        self.loop.set_alarm_in(.2, self.refresh)
         self.loop.run()
 
     def refresh(self, loop=None, data=None):
-        self.the_w = urwid.LineBox(self.lookie.refresh(self.screen_size),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588")
+        self.the_w = self.lookie.refresh()
         self.loop.widget = self.the_w
         loop.set_alarm_in(.1, self.refresh)
 
