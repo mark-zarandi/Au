@@ -22,25 +22,38 @@ def line_split(input_string):
         return(string[0]+string[1])
     if len(string[0]+string[1]) <= 7 and len(string) >= 3:
         return(string[0]+string[1]+"_"+string[2])
+def trans_velocity(a,s):
+    if a>s:
+        x = 1 / (float(s) / float(a))
+    if a<s:
+        x = (float(s) / float(a))
+    return round(x)
+
+
 
 class AudioTransport:
 
-    def __init__(self,dur):
-        self.dur = dur
-        self.left_dur = 0
-        self.right_dur = dur
+    def __init__(self):
+        
         
         self.mediap = vlc.MediaPlayer("Zarandi-EmoryPolice.mp3")
+        
+        self.left_dur = 0
+        
+
+
 
 
     def setup_view(self, screen_size):
         self.mediap.play()
+        time.sleep(1.5)
+        self.dur = self.mediap.get_length() / 1000
+        self.right_dur = self.dur
+
         self.left_space = 0
         self.right_space = screen_size - 11
         self.screen_size = screen_size
-        rate_div = float(self.screen_size)/float(self.dur)
-
-        self.run_rate = math.ceil(5/rate_div)
+        self.speed = trans_velocity(self.dur,self.screen_size)
 
         left_dash = urwid.Text(u"\u2588" * self.left_space,'right')
         nav = BoxButton("a")
@@ -50,9 +63,12 @@ class AudioTransport:
 
     def refresh(self):
         where_go = int(self.mediap.get_position() * 100)
-        if where_go > self.left_space:
-            self.left_space = where_go
-            self.right_space = self.right_space - (where_go - self.left_space) - 1
+        if where_go > self.left_dur:
+            self.left_dur = where_go
+            self.left_space = int(where_go * self.speed)
+            self.right_space = int(self.right_space - (self.speed))
+            #fe6uch7gud
+            print(str(self.left_space) + " " + str(self.right_space) + " " + str(where_go) + " " + str(self.speed))
         
         left_dash = urwid.Text(u"\u2588" * self.left_space,'right')
         nav = BoxButton("a")
@@ -206,7 +222,7 @@ class BoxButton(urwid.WidgetWrap):
 class App:
 
     def setup_view(self,screen_s):
-        self.lookie = AudioTransport(300)
+        self.lookie = AudioTransport()
         self.the_w = self.lookie.setup_view(screen_s)
         self.loop.widget = self.the_w
 
@@ -228,3 +244,5 @@ class App:
 if __name__ == "__main__":
     Please_work = App()
     sys.exit(Please_work.main())
+    #y = trans_velocity(104,200)
+    #print(str(y))
