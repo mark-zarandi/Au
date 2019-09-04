@@ -45,28 +45,32 @@ class jishiReader:
             self.pkg = NPMPackage(json_loc) 
         else:
             self.pkg = NPMPackage(json_loc)   
+        self.spin_success = True
         self.log_npm = []
         self.start_thread()
         #returns Popen MZ: RUN THIS IN A THREAD
     def spin_npm(self):
-        self.proc = self.pkg.run_script('start',wait=False)
-        while True:
-            line = self.proc.stdout.readline()
-            if not line:
-                break
-            self.log_npm.append(line)
+        try:
+            self.proc = self.pkg.run_script('start',wait=False)
+            while True:
+                line = self.proc.stdout.readline()
+                if not line:
+                    break
+                self.log_npm.append(line) 
+        except:
+            self.spin_success = False
 
     def start_thread(self):
         t = threading.Thread(name="jishi_thread",target=self.spin_npm)
+        print("made it")
         t.start()
-
     def get_log(self):
-        return self.log_npm
+        return self.spin_success
 
 
 if __name__ == "__main__":	
     #location of node sonos package.
 
-    load_npm = jishiReader(path + '/node-sonos/package.json')
+    load_npm = jishiReader('./node-sonos/package.json')
     time.sleep(5)
     print(load_npm.get_log())

@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from colored import fg, bg, attr
 import pyfiglet
 import urwid
 import time
