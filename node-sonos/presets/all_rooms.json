@@ -1,0 +1,30 @@
+{
+  "players": [
+    {
+      "roomName": "Master",
+      "volume": 40,
+      "mute":false
+    },
+    {
+      "roomName": "Kitch",
+      "volume": 20,
+      "mute":false
+    },
+    {
+      "roomName": "Lib",
+      "volume": 30,
+      "mute":false
+    },
+    {
+      "roomName": "Living",
+      "volume": 30,
+      "mute": false
+    }    ],
+  "playMode": {
+    "shuffle": true,
+    "repeat": false,
+    "crossfade": false
+  },
+  "pauseOthers": false,
+
+}

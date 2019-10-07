@@ -5,26 +5,38 @@ Pods:{
 	Uhh_Yeah_Dude:
 		{
 		  	label: Uhh Yeah Dude
-		  	method: ["get_random", "get_recent"]
-		  	pod_id: 2
+		  	method: ["get_recent","get_random"]
+		  	pod_id:3
+		}
+        	My_Brother:
+		{
+		  	label: My Brother
+		  	method: ["get_recent","get_random"]
+		  	pod_id:5
 		}
 	Savage_Love:
 		{
 			label: Savage Love
-			method: ["get_random","get_recent"]
-			pod_id:1
+			method: ["get_recent","get_random"]
+			pod_id:2
 		}
 	Sawbones:
 		{
 			label: Saw bones
-			method: ["get_random","get_recent"]
-			pod_id:4
+			method: ["get_recent","get_random"]
+			pod_id:1
 		}
 	The_Daily:
 		{
 			label: The Daily
-			method: ["get_recent"]
-			pod_id:3
+			method: ["get_recent","get_random"]
+			pod_id:4
+		}
+			NPR_NEWS:
+		{
+			label: NPR News
+			method: ["get_recent","get_random"]
+			pod_id:6
 		}
 	}
 //Start Rooms*********************************
@@ -35,4 +47,4 @@ Rooms:
     Master:192.168.1.101
     Living:192.168.1.116
 	}
-}
+} 

@@ -201,9 +201,13 @@ class Au:
                 
                 def play_it():
                     play_room = (str(pod_dict['Rooms']['Master']))
-                
-                    r = requests.get('http://localhost:5000/random/' + str(user_data))
-                    data = r.json()
+                    url = 'http://localhost:5005/preset/all_rooms'
+                    r = requests.get(url)
+                    data = requests.get('http://0.0.0.0:5000/random/' + str(user_data) +"/").json()
+                    
+                    time.sleep(1)
+
+
                     sonos = SoCo(play_room)
                 
                     sonos.play_uri(data['location'])
@@ -214,17 +218,30 @@ class Au:
                 set_buttons()
 
             def get_recent(link, user_data):
-                print(user_data)
+                
+                def play_it():
+                    url = 'http://localhost:5005/preset/all_rooms'
+                    r = requests.get(url)
+                    play_room = (str(pod_dict['Rooms']['Master']))
+                
+                    data = requests.get('http://0.0.0.0:5000/recent/' + str(user_data)).json()
+                    
+                    sonos = SoCo(play_room)
+                
+                    sonos.play_uri(data['location'])
+                #parallel threading
+                t = threading.Thread(name="sonos_play_thread",target=play_it)
+                t.start()
+                set_buttons()
 
-            set_buttons()
             split_array = []
             #add eval to compute strings.
             split_array.append(BoxButton('a',on_press=eval(user_data_x['method'][0]),user_data=user_data_x['pod_id']))
-            split_array.append(BoxButton('b',on_press=get_recent,user_data=user_data_x))
+            split_array.append(BoxButton('b',on_press=eval(user_data_x['method'][1]),user_data=user_data_x['pod_id']))
             self.clock_txt = urwid.BigText(time.strftime('%H:%M:%S'), urwid.font.HalfBlock5x4Font())
             self.clock_box = urwid.Padding(self.clock_txt, 'left', width='clip')
             self.buttons_list[int(right(link.label,1))] = urwid.Columns(split_array)
-            self.button_grid = urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=0,align='center')
+            self.button_grid = urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=2,align='center')
             self.top_button_box = urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),self.button_grid,urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588")
             self.view = urwid.Filler(urwid.AttrMap(urwid.Pile([self.clock_box,self.top_button_box]),'body'),'middle')
             self.loop.set_alarm_in(.01,self.refresh)
@@ -235,6 +252,7 @@ class Au:
             index_dict = 0 
             for key,value in pod_dict['Pods'].items():
                 #remember, arguments can't be passed to callback through ON_PRESS, must use USER_DATE
+                #print(len(value['method']))
                 new_button = BoxButton(value['label'], index_dict, on_press=split,user_data=value)
                 self.buttons_list.append(new_button)
                 index_dict = index_dict + 1
