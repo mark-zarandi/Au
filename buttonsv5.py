@@ -245,6 +245,14 @@ class Au:
             self.top_button_box = urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),self.button_grid,urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588")
             self.view = urwid.Filler(urwid.AttrMap(urwid.Pile([self.clock_box,self.top_button_box]),'body'),'middle')
             self.loop.set_alarm_in(.01,self.refresh)
+        def play_sonos(junk):
+            play_room = (str(pod_dict['Rooms']['Master']))
+            sonos = SoCo(play_room)
+            sonos.group.coordinator.play()
+        def pause_sonos(junk):
+            play_room = (str(pod_dict['Rooms']['Master']))
+            sonos = SoCo(play_room)
+            sonos.group.coordinator.pause()
 
         def set_buttons():
 
@@ -259,8 +267,11 @@ class Au:
                 #print('writing buttons')    
         set_buttons()
         self.button_grid = urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=0,align='center')
+        self.play_butt = BoxButton('p', 50, on_press=play_sonos,user_data=None)
+        self.pause_butt = BoxButton('p', 50, on_press=pause_sonos,user_data=None)
+        self.nav_grid = urwid.GridFlow((self.play_butt,self.pause_butt),cell_width=50,h_sep=0,v_sep=0,align='center')
         self.top_button_box = urwid.LineBox(self.button_grid,trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588")
-        self.view = urwid.Filler(urwid.AttrMap(urwid.Pile([self.clock_box,self.top_button_box]),'body'),'middle')
+        self.view = urwid.Filler(urwid.AttrMap(urwid.Pile([self.clock_box,self.top_button_box,self.nav_grid]),'body'),'middle')
 
     
 
@@ -282,7 +293,7 @@ class Au:
         self.clock_txt = urwid.BigText(time.strftime('%H:%M:%S'), urwid.font.HalfBlock5x4Font())
         self.clock_box = urwid.Padding(self.clock_txt, 'left', width='clip')
         self.top_button_box = urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),self.button_grid,urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588")
-        self.view = urwid.Filler(urwid.AttrMap(urwid.Pile([self.clock_box,self.top_button_box]),'body'),'middle')
+        self.view = urwid.Filler(urwid.AttrMap(urwid.Pile([self.clock_box,self.top_button_box,self.nav_grid]),'body'),'middle')
         self.loop.widget = self.view
 
         self.loop.set_alarm_in(1, self.refresh)
