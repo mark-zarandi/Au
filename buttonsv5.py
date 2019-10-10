@@ -229,11 +229,13 @@ class Au:
                     sonos = SoCo(play_room)
                 
                     sonos.play_uri(data['location'])
+                    sonos.play()
                 #parallel threading
                 t = threading.Thread(name="sonos_play_thread",target=play_it)
                 t.start()
                 set_buttons()
-
+                
+            set_buttons()
             split_array = []
             #add eval to compute strings.
             split_array.append(BoxButton('a',on_press=eval(user_data_x['method'][0]),user_data=user_data_x['pod_id']))
@@ -245,6 +247,7 @@ class Au:
             self.top_button_box = urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),self.button_grid,urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588")
             self.view = urwid.Filler(urwid.AttrMap(urwid.Pile([self.clock_box,self.top_button_box]),'body'),'middle')
             self.loop.set_alarm_in(.01,self.refresh)
+            
         def play_sonos(junk):
             play_room = (str(pod_dict['Rooms']['Master']))
             sonos = SoCo(play_room)
@@ -277,7 +280,7 @@ class Au:
 
 
     def main(self):
-        jish_run = jishiReader('./node-sonos/package.json')
+        #jish_run = jishiReader('./node-sonos/package.json')
         self.setup_view()
         
         self.loop = urwid.MainLoop(
