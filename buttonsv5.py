@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import logging
+from logging import handlers
 import urwid
 import time
 import sys
@@ -13,8 +15,11 @@ from soco import SoCo
 import threading
 from banner import BannerHandler
 from jishiHandler import jishiReader
-
 from soco import groups
+#level = logging.CRITICAL
+#format   = '%(asctime)-8s %(levelname)-8s %(message)s'
+#handlers = [logging.handlers.TimedRotatingFileHandler('/usr/local/bin/logs/screen_log',when="D",interval=1,backupCount=5,encoding=None,delay=False,utc=False,atTime=None), logging.StreamHandler()]
+
 
 blank_column = [[0],[0],[0],[0],[0]]
 pod_dict = open("buttons.hjson","r").read()
@@ -184,22 +189,21 @@ class Au:
             raise urwid.ExitMainLoop()
 
     def setup_view(self):
+        logging.info('making buttons.')
         self.clock_txt = urwid.BigText(time.strftime('%H:%M:%S'), urwid.font.HalfBlock5x4Font())
         self.clock_box = urwid.Padding(self.clock_txt, 'left', width='clip')
         
         def split(link,user_data_x):
-            
+            logging.info('splitting')
             def right(s, amount):
                 return s[-amount:]
             
             def get_random(link, user_data=None):
                 
-                #JISHI NODE SONOS NOT SETUP
-                #url = 'http://localhost:5005/preset/all_rooms'
-                #r = requests.get(url)
-    
+                logging.info('getting random.')
                 
-                def play_it():
+                def play_it_ran():
+                    logging.info('random threading')
                     play_room = (str(pod_dict['Rooms']['Master']))
                     url = 'http://localhost:5005/preset/all_rooms'
                     r = requests.get(url)
@@ -212,14 +216,15 @@ class Au:
                 
                     sonos.play_uri(data['location'])
                 #parallel threading
-                t = threading.Thread(name="sonos_play_thread",target=play_it)
+                t = threading.Thread(name="sonos_play_thread",target=play_it_ran)
                 t.start()
 
                 set_buttons()
 
             def get_recent(link, user_data):
-                
-                def play_it():
+                logging.info('getting recent')
+                def play_it_rec():
+                    logging.info('recent thread')
                     url = 'http://localhost:5005/preset/all_rooms'
                     r = requests.get(url)
                     play_room = (str(pod_dict['Rooms']['Master']))
@@ -231,7 +236,7 @@ class Au:
                     sonos.play_uri(data['location'])
                     sonos.play()
                 #parallel threading
-                t = threading.Thread(name="sonos_play_thread",target=play_it)
+                t = threading.Thread(name="sonos_play_thread",target=play_it_rec)
                 t.start()
                 set_buttons()
                 
@@ -249,16 +254,19 @@ class Au:
             self.loop.set_alarm_in(.01,self.refresh)
             
         def play_sonos(junk):
+            logging.info('play button pressed')
             play_room = (str(pod_dict['Rooms']['Master']))
             sonos = SoCo(play_room)
             sonos.group.coordinator.play()
+
         def pause_sonos(junk):
+            logging.info('pause pressed')
             play_room = (str(pod_dict['Rooms']['Master']))
             sonos = SoCo(play_room)
             sonos.group.coordinator.pause()
 
         def set_buttons():
-
+            logging.info('setting buttons')
             self.buttons_list = []
             index_dict = 0 
             for key,value in pod_dict['Pods'].items():
@@ -269,7 +277,7 @@ class Au:
                 index_dict = index_dict + 1
                 #print('writing buttons')    
         set_buttons()
-        self.button_grid = urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=0,align='center')
+        self.button_grid = urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=2,v_sep=0,align='center')
         self.play_butt = BoxButton('p', 50, on_press=play_sonos,user_data=None)
         self.pause_butt = BoxButton('p', 50, on_press=pause_sonos,user_data=None)
         self.nav_grid = urwid.GridFlow((self.play_butt,self.pause_butt),cell_width=50,h_sep=0,v_sep=0,align='center')
@@ -281,27 +289,34 @@ class Au:
 
     def main(self):
         #jish_run = jishiReader('./node-sonos/package.json')
+        logging.basicConfig(filename='app.log', level=logging.NOTSET, filemode='w', format='%(asctime)-8s %(name)s - %(levelname)s - %(message)s')
         self.setup_view()
-        
+        logging.warning("starting up.")
         self.loop = urwid.MainLoop(
             self.view, palette=[('body', 'dark cyan', '')],
             unhandled_input=self.keypress)
         
-        
-        self.loop.set_alarm_in(.2, self.refresh)
+        self.loop_count = 0
+        self.dead_alarm = self.loop.set_alarm_in(.2, self.refresh)
         self.loop.run()
 
     def refresh(self, loop=None, data=None):
+        self.loop_count = 1
+        self.loop.remove_alarm(self.dead_alarm)
         self.button_grid = urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=0,align='center')
         self.clock_txt = urwid.BigText(time.strftime('%H:%M:%S'), urwid.font.HalfBlock5x4Font())
         self.clock_box = urwid.Padding(self.clock_txt, 'left', width='clip')
         self.top_button_box = urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),self.button_grid,urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588")
-        self.view = urwid.Filler(urwid.AttrMap(urwid.Pile([self.clock_box,self.top_button_box,self.nav_grid]),'body'),'middle')
+        self.view = urwid.Filler(urwid.AttrMap(urwid.Pile([self.clock_box,self.top_button_box,urwid.Divider(" ",top=0,bottom=1),self.nav_grid]),'body'),'middle')
         self.loop.widget = self.view
-
-        self.loop.set_alarm_in(1, self.refresh)
+        if self.loop_count == 300:
+            self.loop_count = 0
+            logging.info('still refreshing')
+            
+        self.dead_alarm = self.loop.set_alarm_in(1, self.refresh)
 
 
 if __name__ == '__main__':
     au = Au()
+    
     sys.exit(au.main())
