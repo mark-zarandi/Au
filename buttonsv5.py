@@ -289,7 +289,12 @@ class Au:
 
     def main(self):
         #jish_run = jishiReader('./node-sonos/package.json')
-        logging.basicConfig(filename='app.log', level=logging.NOTSET, filemode='w', format='%(asctime)-8s %(name)s - %(levelname)s - %(message)s')
+        level    = logging.NOTSET
+        format   = '%(asctime)-8s %(levelname)-8s %(message)s'
+        handlers = [logging.handlers.TimedRotatingFileHandler('button_log',when="D",interval=1,backupCount=5,encoding=None,delay=False,utc=False,atTime=None), logging.StreamHandler()]
+
+        logging.basicConfig(level = level, format = format, handlers = handlers)
+
         self.setup_view()
         logging.warning("starting up.")
         self.loop = urwid.MainLoop(
@@ -301,7 +306,7 @@ class Au:
         self.loop.run()
 
     def refresh(self, loop=None, data=None):
-        self.loop_count = 1
+        self.loop_count = self.loop_count + 1
         self.loop.remove_alarm(self.dead_alarm)
         self.button_grid = urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=0,align='center')
         self.clock_txt = urwid.BigText(time.strftime('%H:%M:%S'), urwid.font.HalfBlock5x4Font())
@@ -309,10 +314,10 @@ class Au:
         self.top_button_box = urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),self.button_grid,urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588")
         self.view = urwid.Filler(urwid.AttrMap(urwid.Pile([self.clock_box,self.top_button_box,urwid.Divider(" ",top=0,bottom=1),self.nav_grid]),'body'),'middle')
         self.loop.widget = self.view
-        if self.loop_count == 300:
-            self.loop_count = 0
+        if (self.loop_count % 300) == 0:
             logging.info('still refreshing')
-            
+        if self.loop_count == 600:
+            os.execl('reboot_button.sh', '')
         self.dead_alarm = self.loop.set_alarm_in(1, self.refresh)
 
 

@@ -1,9 +1,0 @@
-2019-10-10 21:35:24,220 root - INFO - making buttons.
-2019-10-10 21:35:24,222 root - INFO - setting buttons
-2019-10-10 21:35:24,230 root - WARNING - starting up.
-2019-10-10 21:35:43,059 root - INFO - splitting
-2019-10-10 21:35:43,059 root - INFO - setting buttons
-2019-10-10 21:35:44,383 root - INFO - getting random.
-2019-10-10 21:35:44,384 root - INFO - random threading
-2019-10-10 21:35:44,384 root - INFO - setting buttons
-2019-10-10 21:35:44,405 urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:5005
