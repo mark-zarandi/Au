@@ -3,6 +3,7 @@
 
 import logging
 from logging import handlers
+import os
 import urwid
 import time
 import sys
@@ -316,8 +317,9 @@ class Au:
         self.loop.widget = self.view
         if (self.loop_count % 300) == 0:
             logging.info('still refreshing')
-        if self.loop_count == 600:
-            os.execl('reboot_button.sh', '')
+       #seems to work run as normal and check logging
+       # if self.loop_count == 3600:
+       #     os.execl('/usr/local/bin/reboot_button.sh','arg1')
         self.dead_alarm = self.loop.set_alarm_in(1, self.refresh)
 
 
