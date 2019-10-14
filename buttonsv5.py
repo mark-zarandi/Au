@@ -129,7 +129,7 @@ class BoxButton(urwid.WidgetWrap):
         word_array = label_construct(line_split(label))
 
         new_line = ''
-        ansi_word.append(urwid.Text(top_border,align='center'))
+        ansi_word.append(urwid.AttrMap(urwid.Text(top_border,align='center'),'bg'))
 
         for x in word_array:
             new_line = ""
@@ -293,13 +293,19 @@ class Au:
         level    = logging.NOTSET
         format   = '%(asctime)-8s %(levelname)-8s %(message)s'
         handlers = [logging.handlers.TimedRotatingFileHandler('button_log',when="D",interval=1,backupCount=5,encoding=None,delay=False,utc=False,atTime=None), logging.StreamHandler()]
-
+        ansi_palette = [('banner', '', '', '', '#ffa', '#60d'),
+    ('streak', '', '', '', 'g50', '#60a'),
+    ('inside', '', '', '', 'g38', '#808'),
+    ('outside', '', '', '', 'g27', '#a06'),
+    ('bg', '', '', '', '#d06', 'g7')]
         logging.basicConfig(level = level, format = format, handlers = handlers)
-
+        screen = urwid.raw_display.Screen()
+        screen.register_palette(ansi_palette)
+        screen.set_terminal_properties(256)
         self.setup_view()
         logging.warning("starting up.")
         self.loop = urwid.MainLoop(
-            self.view, palette=[('body', 'dark cyan', '')],
+            self.view,screen=screen,
             unhandled_input=self.keypress)
         
         self.loop_count = 0
@@ -313,7 +319,7 @@ class Au:
         self.clock_txt = urwid.BigText(time.strftime('%H:%M:%S'), urwid.font.HalfBlock5x4Font())
         self.clock_box = urwid.Padding(self.clock_txt, 'left', width='clip')
         self.top_button_box = urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),self.button_grid,urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588")
-        self.view = urwid.Filler(urwid.AttrMap(urwid.Pile([self.clock_box,self.top_button_box,urwid.Divider(" ",top=0,bottom=1),self.nav_grid]),'body'),'middle')
+        self.view = urwid.Filler(urwid.Pile([self.clock_box,self.top_button_box,urwid.Divider(" ",top=0,bottom=1),self.nav_grid]),'middle')
         self.loop.widget = self.view
         if (self.loop_count % 300) == 0:
             logging.info('still refreshing')
