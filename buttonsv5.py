@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+import psutil
 import logging
 from logging import handlers
 import os
@@ -10,13 +10,14 @@ import sys
 import hjson
 import json
 import numpy
-from ansi_alphabet import the_alphabet
+from ansi_alphabet import the_alphabet, ansi_sprites
 import requests
 from soco import SoCo
 import threading
-from banner import BannerHandler
+#from banner import BannerHandler
 from jishiHandler import jishiReader
 from soco import groups
+import gc
 #level = logging.CRITICAL
 #format   = '%(asctime)-8s %(levelname)-8s %(message)s'
 #handlers = [logging.handlers.TimedRotatingFileHandler('/usr/local/bin/logs/screen_log',when="D",interval=1,backupCount=5,encoding=None,delay=False,utc=False,atTime=None), logging.StreamHandler()]
@@ -38,24 +39,32 @@ def line_split(input_string):
         return(string[0]+string[1])
     if len(string[0]+string[1]) <= 7 and len(string) >= 3:
         return(string[0]+string[1]+"_"+string[2])
-
+def right(s, amount):
+    return s[-amount:]
 
 class BoxButton(urwid.WidgetWrap):
    
-    def __init__(self, label, place_int=-1, on_press=None, user_data=None):
+    def __init__(self, label, place_int=-1, is_sprite=False, on_press=None, user_data=None):
         _top_char = u'\u2580'
         _top_corner = u'\u2584'
         _bottom_char = u'\u2584'
         _bottom_corner = u'\u2580'
         padding_size = 2
         #move border calcs further down.
-        x = line_split(label).split("_")
-        lookie = lambda t: len(t)
-        vfunc = numpy.vectorize(lookie)
+        if is_sprite == False:
+            x = line_split(label).split("_")
+            lookie = lambda t: len(t)
+            vfunc = numpy.vectorize(lookie)
 
-        top_border = _top_corner + (_top_char * (((max(vfunc(x)) * 5) + max(vfunc(x))-1) + padding_size)) + _top_corner
-        bottom_border = _bottom_corner + (_bottom_char * (((max(vfunc(x)) * 5) + max(vfunc(x))-1) + padding_size)) + _bottom_corner
-        cursor_position = len(top_border) + padding_size
+            top_border = _top_corner + (_top_char * (((max(vfunc(x)) * 5) + max(vfunc(x))-1) + padding_size)) + _top_corner
+            pad_space = len(top_border)
+            bottom_border = _bottom_corner + (_bottom_char * (((max(vfunc(x)) * 5) + max(vfunc(x))-1) + padding_size)) + _bottom_corner
+            cursor_position = len(top_border) + padding_size
+        else: 
+            top_border = _top_corner + (_top_char * (15)) + _top_corner
+            bottom_border = _bottom_corner + (_bottom_char * 15) + _bottom_corner
+            pad_space = 19
+        
         self.label = label
       
         ansi_word = []
@@ -125,15 +134,17 @@ class BoxButton(urwid.WidgetWrap):
             
             return to_fill
 
-           
-        word_array = label_construct(line_split(label))
+        if is_sprite == False:
+            word_array = label_construct(line_split(label))
+        else:
+            word_array = ansi_sprites[label]
 
         new_line = ''
-        ansi_word.append(urwid.AttrMap(urwid.Text(top_border,align='center'),'bg'))
+        top_border = urwid.AttrMap(urwid.Text(top_border,align='center'),'bg')
 
         for x in word_array:
             new_line = ""
-            new_line = u'\u2588' + u'\u0020' + u'\u0020'
+
             for y in x:
                 #1 Full Block
                 #2 Half Top Block
@@ -162,10 +173,13 @@ class BoxButton(urwid.WidgetWrap):
                 12:u"\u258C"
                 }
                 new_line = new_line + switcher.get(y)
-            new_line = new_line + u'\u0020' + u'\u2588'# + u"\n"
+            
             ansi_word.append(urwid.Text(new_line,align="center"))
-        ansi_word.append(urwid.Text(bottom_border,align='center'))
-        self.widget = urwid.Pile(ansi_word)
+        bottom_border = urwid.Text(bottom_border,align='center')
+        left_border = urwid.AttrMap(urwid.Text(u'\u2588'+u'\n'+u'\u2588'+u'\n'+u'\u2588'+u'\n'+u'\u2588'+u'\n'+u'\u2588'),'outside')
+        middle_part = urwid.Padding(urwid.Pile((top_border,urwid.Columns(((1,left_border),urwid.AttrMap(urwid.Pile(ansi_word),'bg'),(1,left_border))),bottom_border)),align='center',width=pad_space)
+
+        self.widget = middle_part
         self._hidden_btn = urwid.Button('hidden %s' % label + str(place_int), on_press, user_data)
 
         super(BoxButton, self).__init__(self.widget)
@@ -194,10 +208,11 @@ class Au:
         self.clock_txt = urwid.BigText(time.strftime('%H:%M:%S'), urwid.font.HalfBlock5x4Font())
         self.clock_box = urwid.Padding(self.clock_txt, 'left', width='clip')
         
+    
+
         def split(link,user_data_x):
             logging.info('splitting')
-            def right(s, amount):
-                return s[-amount:]
+
             
             def get_random(link, user_data=None):
                 
@@ -206,7 +221,7 @@ class Au:
                 def play_it_ran():
                     logging.info('random threading')
                     play_room = (str(pod_dict['Rooms']['Master']))
-                    url = 'http://localhost:5005/preset/all_rooms'
+                    url = 'http://0.0.0.0:5005/preset/all_rooms/'
                     r = requests.get(url)
                     data = requests.get('http://0.0.0.0:5000/random/' + str(user_data) +"/").json()
                     
@@ -226,7 +241,7 @@ class Au:
                 logging.info('getting recent')
                 def play_it_rec():
                     logging.info('recent thread')
-                    url = 'http://localhost:5005/preset/all_rooms'
+                    url = 'http://0.0.0.0:5005/preset/all_rooms/'
                     r = requests.get(url)
                     play_room = (str(pod_dict['Rooms']['Master']))
                 
@@ -249,22 +264,30 @@ class Au:
             self.clock_txt = urwid.BigText(time.strftime('%H:%M:%S'), urwid.font.HalfBlock5x4Font())
             self.clock_box = urwid.Padding(self.clock_txt, 'left', width='clip')
             self.buttons_list[int(right(link.label,1))] = urwid.Columns(split_array)
-            self.button_grid = urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=2,align='center')
+            self.button_grid = urwid.GridFlow(self.buttons_list,50,0,2,'center')
             self.top_button_box = urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),self.button_grid,urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588")
             self.view = urwid.Filler(urwid.AttrMap(urwid.Pile([self.clock_box,self.top_button_box]),'body'),'middle')
-            self.loop.set_alarm_in(.01,self.refresh)
+            self.dead_alarm = self.loop.set_alarm_in(.01,self.refresh)
             
         def play_sonos(junk):
             logging.info('play button pressed')
-            play_room = (str(pod_dict['Rooms']['Master']))
-            sonos = SoCo(play_room)
-            sonos.group.coordinator.play()
+            self.nav_array[int(right(junk.label,1))-1] = BoxButton('pause', 2, is_sprite=True,on_press=pause_sonos,user_data=None)
+            self.nav_grid = urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')
+            self.dead_alarm = self.loop.set_alarm_in(.01,self.refresh)
+            #commented out for testing at hotel
+            #play_room = (str(pod_dict['Rooms']['Master']))
+            #sonos = SoCo(play_room)
+            #sonos.group.coordinator.play()
 
         def pause_sonos(junk):
             logging.info('pause pressed')
-            play_room = (str(pod_dict['Rooms']['Master']))
-            sonos = SoCo(play_room)
-            sonos.group.coordinator.pause()
+            self.nav_array[int(right(junk.label,1))-1] = BoxButton('play', 2, is_sprite=True,on_press=play_sonos,user_data=None)
+            self.nav_grid = urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')
+            self.dead_alarm = self.loop.set_alarm_in(.01,self.refresh)
+            #commented out for hotel testing
+            #play_room = (str(pod_dict['Rooms']['Master']))
+            #sonos = SoCo(play_room)
+            #sonos.group.coordinator.pause()
 
         def set_buttons():
             logging.info('setting buttons')
@@ -279,9 +302,11 @@ class Au:
                 #print('writing buttons')    
         set_buttons()
         self.button_grid = urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=2,v_sep=0,align='center')
-        self.play_butt = BoxButton('p', 50, on_press=play_sonos,user_data=None)
-        self.pause_butt = BoxButton('p', 50, on_press=pause_sonos,user_data=None)
-        self.nav_grid = urwid.GridFlow((self.play_butt,self.pause_butt),cell_width=50,h_sep=0,v_sep=0,align='center')
+        self.nav_array = []
+        self.nav_array.append(BoxButton('rr-30', 1, is_sprite=True,on_press=pause_sonos,user_data=None))
+        self.nav_array.append(BoxButton('play', 2, is_sprite=True,on_press=play_sonos,user_data=None))
+        self.nav_array.append(BoxButton('ff-30', 3, is_sprite=True,on_press=pause_sonos,user_data=None))
+        self.nav_grid = urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')
         self.top_button_box = urwid.LineBox(self.button_grid,trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588")
         self.view = urwid.Filler(urwid.AttrMap(urwid.Pile([self.clock_box,self.top_button_box,self.nav_grid]),'body'),'middle')
 
@@ -292,7 +317,7 @@ class Au:
         #jish_run = jishiReader('./node-sonos/package.json')
         level    = logging.NOTSET
         format   = '%(asctime)-8s %(levelname)-8s %(message)s'
-        handlers = [logging.handlers.TimedRotatingFileHandler('button_log',when="D",interval=1,backupCount=5,encoding=None,delay=False,utc=False,atTime=None), logging.StreamHandler()]
+        handlers = [logging.handlers.TimedRotatingFileHandler('button_log',when="D",interval=1,backupCount=5,encoding=None,delay=False,utc=False,atTime=None)]
         ansi_palette = [('banner', '', '', '', '#ffa', '#60d'),
     ('streak', '', '', '', 'g50', '#60a'),
     ('inside', '', '', '', 'g38', '#808'),
@@ -307,7 +332,7 @@ class Au:
         self.loop = urwid.MainLoop(
             self.view,screen=screen,
             unhandled_input=self.keypress)
-        
+        self.process = psutil.Process(os.getpid())
         self.loop_count = 0
         self.dead_alarm = self.loop.set_alarm_in(.2, self.refresh)
         self.loop.run()
@@ -315,14 +340,15 @@ class Au:
     def refresh(self, loop=None, data=None):
         self.loop_count = self.loop_count + 1
         self.loop.remove_alarm(self.dead_alarm)
-        self.button_grid = urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=0,align='center')
+        self.button_grid = urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=2,align='center')
         self.clock_txt = urwid.BigText(time.strftime('%H:%M:%S'), urwid.font.HalfBlock5x4Font())
         self.clock_box = urwid.Padding(self.clock_txt, 'left', width='clip')
         self.top_button_box = urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),self.button_grid,urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588")
         self.view = urwid.Filler(urwid.Pile([self.clock_box,self.top_button_box,urwid.Divider(" ",top=0,bottom=1),self.nav_grid]),'middle')
         self.loop.widget = self.view
         if (self.loop_count % 300) == 0:
-            logging.info('still refreshing')
+            logging.info('still refreshing: ' + str(process.memory_info().rss))
+            gc.collect()
        #seems to work run as normal and check logging
        # if self.loop_count == 3600:
        #     os.execl('/usr/local/bin/reboot_button.sh','arg1')

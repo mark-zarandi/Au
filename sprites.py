@@ -24,9 +24,9 @@ themes_dict = hjson.loads(themes_dict)
 ansi_palette = [
     ('banner', '', '', '', '#ffa', '#60d'),
     ('streak', '', '', '', 'g50', '#60a'),
-    ('inside', '', '', '', 'g38', '#808'),
-    ('outside', '', '', '', 'g27', '#a06'),
-    ('bg', '', '', '', 'g7', '#d06')]
+    ('inside', '', '', '', '#808', ''),
+    ('outside', '', '', '', '#a06', ''),
+    ('bg', '', '', '', '#d06', '')]
 
 class SpriteButton(urwid.WidgetWrap):
    
@@ -51,11 +51,11 @@ class SpriteButton(urwid.WidgetWrap):
         word_array = ansi_sprites[label]
 
         new_line = ''
-        ansi_word.append(urwid.AttrMap(urwid.Text(top_border,align='center'),'#06a','bg'))
+        top_border = (urwid.AttrMap(urwid.Text(top_border,align='center'),'outside'))
 
         for x in word_array:
             new_line = ""
-            new_line = u'\u2588' + u'\u0020' + u'\u0020'
+            #new_line = u'\u2588' + u'\u0020' + u'\u0020'
             for y in x:
                 #1 Full Block
                 #2 Half Top Block
@@ -84,10 +84,14 @@ class SpriteButton(urwid.WidgetWrap):
                 12:u"\u258C"
                 }
                 new_line = new_line + switcher.get(y)
-            new_line = new_line + u'\u0020' + u'\u2588'# + u"\n"
+            #new_line = new_line + u'\u0020' + u'\u2588'# + u"\n"
             ansi_word.append(urwid.Text(new_line,align="center"))
-        ansi_word.append(urwid.Text(bottom_border,align='center'))
-        self.widget = urwid.Pile(ansi_word)
+        bottom_border = (urwid.Text(bottom_border,align='center'))
+        left_border = urwid.AttrMap(urwid.Text(u'\u2588'+u'\n'+u'\u2588'+u'\n'+u'\u2588'+u'\n'+u'\u2588'+u'\n'+u'\u2588'),'outside')
+
+        middle_part = urwid.Padding(urwid.Pile((top_border,urwid.Columns(((1,left_border),urwid.AttrMap(urwid.Pile(ansi_word),'bg'),(1,left_border))),bottom_border)),align='center',width=19)
+
+        self.widget = middle_part
         self._hidden_btn = urwid.Button('hidden %s' % label + str(place_int), on_press, user_data)
 
         super(SpriteButton, self).__init__(self.widget)
@@ -105,14 +109,16 @@ class SpriteButton(urwid.WidgetWrap):
         return self._hidden_btn.mouse_event(*args, **kw)
 
 if __name__ =="__main__":
-    ansi_palette = [
-    ('banner', '', '', '', '#ffa', '#60d'),
-    ('streak', '', '', '', 'g50', '#60a'),
-    ('inside', '', '', '', 'g38', '#808'),
-    ('outside', '', '', '', 'g27', '#a06'),
-    ('bg', '', '', '', 'g7', '#d06')]
 
-    left_button = SpriteButton('left',60)
+    def print_test(link):
+        print("got it")
+
+    screen = urwid.raw_display.Screen()
+    screen.register_palette(ansi_palette)
+    screen.set_terminal_properties(256)
+    left_button = SpriteButton('left',60,on_press=print_test)
+    right_button = SpriteButton('left',60,on_press=print_test)
+    test_try = urwid.Columns((left_button,right_button))
     loop = urwid.MainLoop(
-            urwid.Filler(urwid.Padding(left_button)), palette=ansi_palette)
+            urwid.Filler(urwid.Padding(test_try,width=50)), screen=screen, palette=ansi_palette)
     loop.run()
