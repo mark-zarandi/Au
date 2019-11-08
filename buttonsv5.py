@@ -317,7 +317,7 @@ class Au:
         #jish_run = jishiReader('./node-sonos/package.json')
         level    = logging.NOTSET
         format   = '%(asctime)-8s %(levelname)-8s %(message)s'
-        handlers = [logging.handlers.TimedRotatingFileHandler('button_log',when="D",interval=1,backupCount=5,encoding=None,delay=False,utc=False,atTime=None)]
+        handlers = [logging.handlers.TimedRotatingFileHandler('button_log',when="D",interval=1,backupCount=5,encoding=None,delay=False,utc=False,atTime=None),logging.StreamHandler()]
         ansi_palette = [('banner', '', '', '', '#ffa', '#60d'),
     ('streak', '', '', '', 'g50', '#60a'),
     ('inside', '', '', '', 'g38', '#808'),
@@ -347,7 +347,7 @@ class Au:
         self.view = urwid.Filler(urwid.Pile([self.clock_box,self.top_button_box,urwid.Divider(" ",top=0,bottom=1),self.nav_grid]),'middle')
         self.loop.widget = self.view
         if (self.loop_count % 300) == 0:
-            logging.info('still refreshing: ' + str(process.memory_info().rss))
+            logging.info('still refreshing: ' + str(self.process.memory_info().rss))
             gc.collect()
        #seems to work run as normal and check logging
        # if self.loop_count == 3600:

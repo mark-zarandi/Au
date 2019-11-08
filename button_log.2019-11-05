@@ -1,0 +1,362 @@
+2019-11-05 22:11:48,375 INFO     making buttons.
+2019-11-05 22:11:48,381 INFO     setting buttons
+2019-11-05 22:11:48,392 WARNING  starting up.
+2019-11-05 22:11:53,470 INFO     splitting
+2019-11-05 22:11:53,470 INFO     setting buttons
+2019-11-05 22:11:56,440 INFO     splitting
+2019-11-05 22:11:56,440 INFO     setting buttons
+2019-11-05 22:11:57,621 INFO     splitting
+2019-11-05 22:11:57,621 INFO     setting buttons
+2019-11-05 22:11:58,545 INFO     splitting
+2019-11-05 22:11:58,545 INFO     setting buttons
+2019-11-05 22:12:00,209 INFO     splitting
+2019-11-05 22:12:00,210 INFO     setting buttons
+2019-11-05 22:19:09,477 INFO     making buttons.
+2019-11-05 22:19:09,490 INFO     setting buttons
+2019-11-05 22:19:09,578 WARNING  starting up.
+2019-11-05 22:34:10,111 INFO     making buttons.
+2019-11-05 22:34:10,121 INFO     setting buttons
+2019-11-05 22:34:10,176 WARNING  starting up.
+2019-11-05 22:34:19,286 INFO     splitting
+2019-11-05 22:34:19,286 INFO     setting buttons
+2019-11-05 22:35:45,034 INFO     making buttons.
+2019-11-05 22:35:45,046 INFO     setting buttons
+2019-11-05 22:35:45,184 WARNING  starting up.
+2019-11-05 22:35:58,066 INFO     splitting
+2019-11-05 22:35:58,067 INFO     setting buttons
+2019-11-05 22:35:59,451 INFO     getting recent
+2019-11-05 22:35:59,453 INFO     recent thread
+2019-11-05 22:35:59,454 INFO     setting buttons
+2019-11-05 22:35:59,523 DEBUG    Starting new HTTP connection (1): 0.0.0.0:5005
+2019-11-05 22:36:00,789 DEBUG    http://0.0.0.0:5005 "GET /preset/all_rooms/ HTTP/1.1" 200 20
+2019-11-05 22:36:00,803 DEBUG    Starting new HTTP connection (1): 0.0.0.0:5000
+2019-11-05 22:36:01,217 DEBUG    http://0.0.0.0:5000 "GET /recent/6 HTTP/1.1" 200 281
+2019-11-05 22:36:01,220 DEBUG    Created SoCo instance for ip: 192.168.1.101
+2019-11-05 22:36:01,225 DEBUG    Starting new HTTP connection (1): 192.168.1.101:1400
+2019-11-05 22:36:01,255 DEBUG    http://192.168.1.101:1400 "GET /xml/ZoneGroupTopology1.xml HTTP/1.1" 200 8663
+2019-11-05 22:36:01,274 INFO     Sending GetZoneGroupState [] to 192.168.1.101
+2019-11-05 22:36:01,336 DEBUG    Sending {'Content-Type': 'text/xml; charset="utf-8"', 'SOAPACTION': 'urn:schemas-upnp-org:service:ZoneGroupTopology:1#GetZoneGroupState'}, <?xml version="1.0" ?>
+<s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <u:GetZoneGroupState xmlns:u="urn:schemas-upnp-org:service:ZoneGroupTopology:1"/>
+  </s:Body>
+</s:Envelope>
+
+2019-11-05 22:36:01,344 DEBUG    Starting new HTTP connection (1): 192.168.1.101:1400
+2019-11-05 22:36:01,360 DEBUG    http://192.168.1.101:1400 "POST /ZoneGroupTopology/Control HTTP/1.1" 200 5092
+2019-11-05 22:36:01,368 DEBUG    Received {'CONTENT-LENGTH': '5092', 'CONTENT-TYPE': 'text/xml; charset="utf-8"', 'EXT': '', 'Server': 'Linux UPnP/1.0 Sonos/53.2-70210 (ZP120)', 'Connection': 'close'}, <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><s:Body><u:GetZoneGroupStateResponse xmlns:u="urn:schemas-upnp-org:service:ZoneGroupTopology:1"><ZoneGroupState>&lt;ZoneGroupState&gt;&lt;ZoneGroups&gt;&lt;ZoneGroup Coordinator=&quot;RINCON_000E58D897B801400&quot; ID=&quot;RINCON_000E58D897B801400:4141410712&quot;&gt;&lt;ZoneGroupMember UUID=&quot;RINCON_000E58D897B801400&quot; Location=&quot;http://192.168.1.101:1400/xml/device_description.xml&quot; ZoneName=&quot;Master&quot; Icon=&quot;x-rincon-roomicon:masterbedroom&quot; Configuration=&quot;1&quot; SoftwareVersion=&quot;53.2-70210&quot; SWGen=&quot;1&quot; MinCompatibleVersion=&quot;52.0-00000&quot; LegacyCompatibleVersion=&quot;36.0-00000&quot; BootSeq=&quot;50&quot; TVConfigurationError=&quot;0&quot; HdmiCecAvailable=&quot;0&quot; WirelessMode=&quot;0&quot; WirelessLeafOnly=&quot;0&quot; HasConfiguredSSID=&quot;0&quot; ChannelFreq=&quot;2437&quot; BehindWifiExtender=&quot;0&quot; WifiEnabled=&quot;1&quot; Orientation=&quot;0&quot; RoomCalibrationState=&quot;4&quot; SecureRegState=&quot;3&quot; VoiceConfigState=&quot;0&quot; MicEnabled=&quot;0&quot; AirPlayEnabled=&quot;0&quot; IdleState=&quot;1&quot; MoreInfo=&quot;&quot;/&gt;&lt;ZoneGroupMember UUID=&quot;RINCON_B8E9378FC78401400&quot; Location=&quot;http://192.168.1.136:1400/xml/device_description.xml&quot; ZoneName=&quot;Lib&quot; Icon=&quot;x-rincon-roomicon:kitchen&quot; Configuration=&quot;1&quot; SoftwareVersion=&quot;53.2-70100&quot; SWGen=&quot;1&quot; MinCompatibleVersion=&quot;52.0-00000&quot; LegacyCompatibleVersion=&quot;36.0-00000&quot; BootSeq=&quot;68&quot; TVConfigurationError=&quot;0&quot; HdmiCecAvailable=&quot;0&quot; WirelessMode=&quot;0&quot; WirelessLeafOnly=&quot;0&quot; HasConfiguredSSID=&quot;0&quot; ChannelFreq=&quot;2437&quot; BehindWifiExtender=&quot;0&quot; WifiEnabled=&quot;1&quot; Orientation=&quot;0&quot; RoomCalibrationState=&quot;4&quot; SecureRegState=&quot;3&quot; VoiceConfigState=&quot;0&quot; MicEnabled=&quot;0&quot; AirPlayEnabled=&quot;0&quot; IdleState=&quot;1&quot; MoreInfo=&quot;&quot;/&gt;&lt;ZoneGroupMember UUID=&quot;RINCON_000E58B9F99701400&quot; Location=&quot;http://192.168.1.116:1400/xml/device_description.xml&quot; ZoneName=&quot;Living&quot; Icon=&quot;x-rincon-roomicon:living&quot; Configuration=&quot;1&quot; SoftwareVersion=&quot;53.2-70100&quot; SWGen=&quot;1&quot; MinCompatibleVersion=&quot;52.0-00000&quot; LegacyCompatibleVersion=&quot;36.0-00000&quot; BootSeq=&quot;48&quot; TVConfigurationError=&quot;0&quot; HdmiCecAvailable=&quot;0&quot; WirelessMode=&quot;0&quot; WirelessLeafOnly=&quot;0&quot; HasConfiguredSSID=&quot;0&quot; ChannelFreq=&quot;2437&quot; BehindWifiExtender=&quot;0&quot; WifiEnabled=&quot;1&quot; Orientation=&quot;0&quot; RoomCalibrationState=&quot;4&quot; SecureRegState=&quot;3&quot; VoiceConfigState=&quot;0&quot; MicEnabled=&quot;0&quot; AirPlayEnabled=&quot;0&quot; IdleState=&quot;0&quot; MoreInfo=&quot;&quot;/&gt;&lt;ZoneGroupMember UUID=&quot;RINCON_5CAAFD5C8CC801400&quot; Location=&quot;http://192.168.1.145:1400/xml/device_description.xml&quot; ZoneName=&quot;Kitch&quot; Icon=&quot;x-rincon-roomicon:kitchen&quot; Configuration=&quot;1&quot; SoftwareVersion=&quot;53.2-70100&quot; SWGen=&quot;1&quot; MinCompatibleVersion=&quot;52.0-00000&quot; LegacyCompatibleVersion=&quot;36.0-00000&quot; BootSeq=&quot;63&quot; TVConfigurationError=&quot;0&quot; HdmiCecAvailable=&quot;0&quot; WirelessMode=&quot;0&quot; WirelessLeafOnly=&quot;0&quot; HasConfiguredSSID=&quot;0&quot; ChannelFreq=&quot;2437&quot; BehindWifiExtender=&quot;0&quot; WifiEnabled=&quot;1&quot; Orientation=&quot;0&quot; RoomCalibrationState=&quot;4&quot; SecureRegState=&quot;3&quot; VoiceConfigState=&quot;0&quot; MicEnabled=&quot;0&quot; AirPlayEnabled=&quot;0&quot; IdleState=&quot;1&quot; MoreInfo=&quot;&quot;/&gt;&lt;/ZoneGroup&gt;&lt;ZoneGroup Coordinator=&quot;RINCON_000E581D06A001400&quot; ID=&quot;RINCON_000E581D06A001400:162185724&quot;&gt;&lt;ZoneGroupMember UUID=&quot;RINCON_000E581D06A001400&quot; Location=&quot;http://192.168.1.133:1400/xml/device_description.xml&quot; ZoneName=&quot;BRIDGE&quot; Icon=&quot;x-rincon-roomicon:viper&quot; Configuration=&quot;1&quot; Invisible=&quot;1&quot; IsZoneBridge=&quot;1&quot; SoftwareVersion=&quot;53.2-70100&quot; SWGen=&quot;1&quot; MinCompatibleVersion=&quot;52.0-00000&quot; LegacyCompatibleVersion=&quot;36.0-00000&quot; BootSeq=&quot;61&quot; TVConfigurationError=&quot;0&quot; HdmiCecAvailable=&quot;0&quot; WirelessMode=&quot;0&quot; WirelessLeafOnly=&quot;0&quot; HasConfiguredSSID=&quot;0&quot; ChannelFreq=&quot;2437&quot; BehindWifiExtender=&quot;0&quot; WifiEnabled=&quot;1&quot; Orientation=&quot;-1&quot; RoomCalibrationState=&quot;0&quot; SecureRegState=&quot;3&quot; VoiceConfigState=&quot;0&quot; MicEnabled=&quot;0&quot; AirPlayEnabled=&quot;0&quot; IdleState=&quot;1&quot; MoreInfo=&quot;&quot;/&gt;&lt;/ZoneGroup&gt;&lt;/ZoneGroups&gt;&lt;/ZoneGroupState&gt;</ZoneGroupState></u:GetZoneGroupStateResponse></s:Body></s:Envelope>
+2019-11-05 22:36:01,370 INFO     Received status 200 from 192.168.1.101
+2019-11-05 22:36:01,374 DEBUG    Created SoCo instance for ip: 192.168.1.136
+2019-11-05 22:36:01,376 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2019-11-05 22:36:01,378 DEBUG    Created SoCo instance for ip: 192.168.1.145
+2019-11-05 22:36:01,379 DEBUG    Created SoCo instance for ip: 192.168.1.133
+2019-11-05 22:36:01,380 DEBUG    Dispatching method SetAVTransportURI
+2019-11-05 22:36:01,381 INFO     Sending SetAVTransportURI [('InstanceID', 0), ('CurrentURI', 'https://play.podtrac.com/npr-500005/edge1.pod.npr.org/anon.npr-mp3/npr/newscasts/2019/11/05/newscast220814.mp3?awCollectionId=500005&awEpisodeId=776612480&orgId=1&d=300&p=500005&story=776612480&t=podcast&e=776612480&size=4500000&ft=pod&f=500005'), ('CurrentURIMetaData', '')] to 192.168.1.101
+2019-11-05 22:36:01,384 DEBUG    Sending {'Content-Type': 'text/xml; charset="utf-8"', 'SOAPACTION': 'urn:schemas-upnp-org:service:AVTransport:1#SetAVTransportURI'}, <?xml version="1.0" ?>
+<s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <u:SetAVTransportURI xmlns:u="urn:schemas-upnp-org:service:AVTransport:1">
+      <InstanceID>0</InstanceID>
+      <CurrentURI>https://play.podtrac.com/npr-500005/edge1.pod.npr.org/anon.npr-mp3/npr/newscasts/2019/11/05/newscast220814.mp3?awCollectionId=500005&amp;awEpisodeId=776612480&amp;orgId=1&amp;d=300&amp;p=500005&amp;story=776612480&amp;t=podcast&amp;e=776612480&amp;size=4500000&amp;ft=pod&amp;f=500005</CurrentURI>
+      <CurrentURIMetaData/>
+    </u:SetAVTransportURI>
+  </s:Body>
+</s:Envelope>
+
+2019-11-05 22:36:01,393 DEBUG    Starting new HTTP connection (1): 192.168.1.101:1400
+2019-11-05 22:36:02,755 DEBUG    http://192.168.1.101:1400 "POST /MediaRenderer/AVTransport/Control HTTP/1.1" 200 266
+2019-11-05 22:36:02,760 DEBUG    Received {'CONTENT-LENGTH': '266', 'CONTENT-TYPE': 'text/xml; charset="utf-8"', 'EXT': '', 'Server': 'Linux UPnP/1.0 Sonos/53.2-70210 (ZP120)', 'Connection': 'close'}, <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><s:Body><u:SetAVTransportURIResponse xmlns:u="urn:schemas-upnp-org:service:AVTransport:1"></u:SetAVTransportURIResponse></s:Body></s:Envelope>
+2019-11-05 22:36:02,762 INFO     Received status 200 from 192.168.1.101
+2019-11-05 22:36:02,770 DEBUG    Cache hit
+2019-11-05 22:36:02,770 DEBUG    Dispatching method Play
+2019-11-05 22:36:02,771 INFO     Sending Play [('InstanceID', 0), ('Speed', 1)] to 192.168.1.101
+2019-11-05 22:36:02,774 DEBUG    Sending {'Content-Type': 'text/xml; charset="utf-8"', 'SOAPACTION': 'urn:schemas-upnp-org:service:AVTransport:1#Play'}, <?xml version="1.0" ?>
+<s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <u:Play xmlns:u="urn:schemas-upnp-org:service:AVTransport:1">
+      <InstanceID>0</InstanceID>
+      <Speed>1</Speed>
+    </u:Play>
+  </s:Body>
+</s:Envelope>
+
+2019-11-05 22:36:02,783 DEBUG    Starting new HTTP connection (1): 192.168.1.101:1400
+2019-11-05 22:36:05,122 DEBUG    http://192.168.1.101:1400 "POST /MediaRenderer/AVTransport/Control HTTP/1.1" 200 240
+2019-11-05 22:36:05,137 DEBUG    Received {'CONTENT-LENGTH': '240', 'CONTENT-TYPE': 'text/xml; charset="utf-8"', 'EXT': '', 'Server': 'Linux UPnP/1.0 Sonos/53.2-70210 (ZP120)', 'Connection': 'close'}, <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><s:Body><u:PlayResponse xmlns:u="urn:schemas-upnp-org:service:AVTransport:1"></u:PlayResponse></s:Body></s:Envelope>
+2019-11-05 22:36:05,139 INFO     Received status 200 from 192.168.1.101
+2019-11-05 22:36:05,141 DEBUG    Cache hit
+2019-11-05 22:36:05,142 INFO     Sending Play [('InstanceID', 0), ('Speed', 1)] to 192.168.1.101
+2019-11-05 22:36:05,144 DEBUG    Sending {'Content-Type': 'text/xml; charset="utf-8"', 'SOAPACTION': 'urn:schemas-upnp-org:service:AVTransport:1#Play'}, <?xml version="1.0" ?>
+<s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <u:Play xmlns:u="urn:schemas-upnp-org:service:AVTransport:1">
+      <InstanceID>0</InstanceID>
+      <Speed>1</Speed>
+    </u:Play>
+  </s:Body>
+</s:Envelope>
+
+2019-11-05 22:36:05,155 DEBUG    Starting new HTTP connection (1): 192.168.1.101:1400
+2019-11-05 22:36:05,206 DEBUG    http://192.168.1.101:1400 "POST /MediaRenderer/AVTransport/Control HTTP/1.1" 200 240
+2019-11-05 22:36:05,210 DEBUG    Received {'CONTENT-LENGTH': '240', 'CONTENT-TYPE': 'text/xml; charset="utf-8"', 'EXT': '', 'Server': 'Linux UPnP/1.0 Sonos/53.2-70210 (ZP120)', 'Connection': 'close'}, <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><s:Body><u:PlayResponse xmlns:u="urn:schemas-upnp-org:service:AVTransport:1"></u:PlayResponse></s:Body></s:Envelope>
+2019-11-05 22:36:05,211 INFO     Received status 200 from 192.168.1.101
+2019-11-05 22:37:25,575 INFO     play button pressed
+2019-11-05 22:37:26,461 INFO     pause pressed
+2019-11-05 22:37:40,181 INFO     splitting
+2019-11-05 22:37:40,182 INFO     setting buttons
+2019-11-05 22:43:56,932 INFO     making buttons.
+2019-11-05 22:43:56,961 INFO     setting buttons
+2019-11-05 22:43:57,108 WARNING  starting up.
+2019-11-05 22:45:10,457 INFO     splitting
+2019-11-05 22:45:10,458 INFO     setting buttons
+2019-11-05 22:49:41,872 INFO     making buttons.
+2019-11-05 22:49:41,899 INFO     setting buttons
+2019-11-05 22:49:42,029 WARNING  starting up.
+2019-11-05 22:52:38,317 INFO     splitting
+2019-11-05 22:52:38,319 INFO     setting buttons
+2019-11-05 22:52:41,746 INFO     getting recent
+2019-11-05 22:52:41,748 INFO     recent thread
+2019-11-05 22:52:41,748 INFO     setting buttons
+2019-11-05 22:52:41,808 DEBUG    Starting new HTTP connection (1): 0.0.0.0:5005
+2019-11-05 22:52:42,067 DEBUG    http://0.0.0.0:5005 "GET /preset/all_rooms/ HTTP/1.1" 200 20
+2019-11-05 22:52:42,090 DEBUG    Starting new HTTP connection (1): 0.0.0.0:5000
+2019-11-05 22:52:42,552 DEBUG    http://0.0.0.0:5000 "GET /recent/6 HTTP/1.1" 200 281
+2019-11-05 22:52:42,558 DEBUG    Created SoCo instance for ip: 192.168.1.101
+2019-11-05 22:52:42,568 DEBUG    Starting new HTTP connection (1): 192.168.1.101:1400
+2019-11-05 22:52:42,587 DEBUG    http://192.168.1.101:1400 "GET /xml/ZoneGroupTopology1.xml HTTP/1.1" 200 8663
+2019-11-05 22:52:42,605 INFO     Sending GetZoneGroupState [] to 192.168.1.101
+2019-11-05 22:52:42,676 DEBUG    Sending {'Content-Type': 'text/xml; charset="utf-8"', 'SOAPACTION': 'urn:schemas-upnp-org:service:ZoneGroupTopology:1#GetZoneGroupState'}, <?xml version="1.0" ?>
+<s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <u:GetZoneGroupState xmlns:u="urn:schemas-upnp-org:service:ZoneGroupTopology:1"/>
+  </s:Body>
+</s:Envelope>
+
+2019-11-05 22:52:42,686 DEBUG    Starting new HTTP connection (1): 192.168.1.101:1400
+2019-11-05 22:52:42,702 DEBUG    http://192.168.1.101:1400 "POST /ZoneGroupTopology/Control HTTP/1.1" 200 5092
+2019-11-05 22:52:42,708 DEBUG    Received {'CONTENT-LENGTH': '5092', 'CONTENT-TYPE': 'text/xml; charset="utf-8"', 'EXT': '', 'Server': 'Linux UPnP/1.0 Sonos/53.2-70210 (ZP120)', 'Connection': 'close'}, <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><s:Body><u:GetZoneGroupStateResponse xmlns:u="urn:schemas-upnp-org:service:ZoneGroupTopology:1"><ZoneGroupState>&lt;ZoneGroupState&gt;&lt;ZoneGroups&gt;&lt;ZoneGroup Coordinator=&quot;RINCON_000E58D897B801400&quot; ID=&quot;RINCON_000E58D897B801400:4141410712&quot;&gt;&lt;ZoneGroupMember UUID=&quot;RINCON_000E58D897B801400&quot; Location=&quot;http://192.168.1.101:1400/xml/device_description.xml&quot; ZoneName=&quot;Master&quot; Icon=&quot;x-rincon-roomicon:masterbedroom&quot; Configuration=&quot;1&quot; SoftwareVersion=&quot;53.2-70210&quot; SWGen=&quot;1&quot; MinCompatibleVersion=&quot;52.0-00000&quot; LegacyCompatibleVersion=&quot;36.0-00000&quot; BootSeq=&quot;50&quot; TVConfigurationError=&quot;0&quot; HdmiCecAvailable=&quot;0&quot; WirelessMode=&quot;0&quot; WirelessLeafOnly=&quot;0&quot; HasConfiguredSSID=&quot;0&quot; ChannelFreq=&quot;2437&quot; BehindWifiExtender=&quot;0&quot; WifiEnabled=&quot;1&quot; Orientation=&quot;0&quot; RoomCalibrationState=&quot;4&quot; SecureRegState=&quot;3&quot; VoiceConfigState=&quot;0&quot; MicEnabled=&quot;0&quot; AirPlayEnabled=&quot;0&quot; IdleState=&quot;1&quot; MoreInfo=&quot;&quot;/&gt;&lt;ZoneGroupMember UUID=&quot;RINCON_B8E9378FC78401400&quot; Location=&quot;http://192.168.1.136:1400/xml/device_description.xml&quot; ZoneName=&quot;Lib&quot; Icon=&quot;x-rincon-roomicon:kitchen&quot; Configuration=&quot;1&quot; SoftwareVersion=&quot;53.2-70100&quot; SWGen=&quot;1&quot; MinCompatibleVersion=&quot;52.0-00000&quot; LegacyCompatibleVersion=&quot;36.0-00000&quot; BootSeq=&quot;68&quot; TVConfigurationError=&quot;0&quot; HdmiCecAvailable=&quot;0&quot; WirelessMode=&quot;0&quot; WirelessLeafOnly=&quot;0&quot; HasConfiguredSSID=&quot;0&quot; ChannelFreq=&quot;2437&quot; BehindWifiExtender=&quot;0&quot; WifiEnabled=&quot;1&quot; Orientation=&quot;0&quot; RoomCalibrationState=&quot;4&quot; SecureRegState=&quot;3&quot; VoiceConfigState=&quot;0&quot; MicEnabled=&quot;0&quot; AirPlayEnabled=&quot;0&quot; IdleState=&quot;1&quot; MoreInfo=&quot;&quot;/&gt;&lt;ZoneGroupMember UUID=&quot;RINCON_000E58B9F99701400&quot; Location=&quot;http://192.168.1.116:1400/xml/device_description.xml&quot; ZoneName=&quot;Living&quot; Icon=&quot;x-rincon-roomicon:living&quot; Configuration=&quot;1&quot; SoftwareVersion=&quot;53.2-70100&quot; SWGen=&quot;1&quot; MinCompatibleVersion=&quot;52.0-00000&quot; LegacyCompatibleVersion=&quot;36.0-00000&quot; BootSeq=&quot;48&quot; TVConfigurationError=&quot;0&quot; HdmiCecAvailable=&quot;0&quot; WirelessMode=&quot;0&quot; WirelessLeafOnly=&quot;0&quot; HasConfiguredSSID=&quot;0&quot; ChannelFreq=&quot;2437&quot; BehindWifiExtender=&quot;0&quot; WifiEnabled=&quot;1&quot; Orientation=&quot;0&quot; RoomCalibrationState=&quot;4&quot; SecureRegState=&quot;3&quot; VoiceConfigState=&quot;0&quot; MicEnabled=&quot;0&quot; AirPlayEnabled=&quot;0&quot; IdleState=&quot;1&quot; MoreInfo=&quot;&quot;/&gt;&lt;ZoneGroupMember UUID=&quot;RINCON_5CAAFD5C8CC801400&quot; Location=&quot;http://192.168.1.145:1400/xml/device_description.xml&quot; ZoneName=&quot;Kitch&quot; Icon=&quot;x-rincon-roomicon:kitchen&quot; Configuration=&quot;1&quot; SoftwareVersion=&quot;53.2-70100&quot; SWGen=&quot;1&quot; MinCompatibleVersion=&quot;52.0-00000&quot; LegacyCompatibleVersion=&quot;36.0-00000&quot; BootSeq=&quot;63&quot; TVConfigurationError=&quot;0&quot; HdmiCecAvailable=&quot;0&quot; WirelessMode=&quot;0&quot; WirelessLeafOnly=&quot;0&quot; HasConfiguredSSID=&quot;0&quot; ChannelFreq=&quot;2437&quot; BehindWifiExtender=&quot;0&quot; WifiEnabled=&quot;1&quot; Orientation=&quot;0&quot; RoomCalibrationState=&quot;4&quot; SecureRegState=&quot;3&quot; VoiceConfigState=&quot;0&quot; MicEnabled=&quot;0&quot; AirPlayEnabled=&quot;0&quot; IdleState=&quot;1&quot; MoreInfo=&quot;&quot;/&gt;&lt;/ZoneGroup&gt;&lt;ZoneGroup Coordinator=&quot;RINCON_000E581D06A001400&quot; ID=&quot;RINCON_000E581D06A001400:162185724&quot;&gt;&lt;ZoneGroupMember UUID=&quot;RINCON_000E581D06A001400&quot; Location=&quot;http://192.168.1.133:1400/xml/device_description.xml&quot; ZoneName=&quot;BRIDGE&quot; Icon=&quot;x-rincon-roomicon:viper&quot; Configuration=&quot;1&quot; Invisible=&quot;1&quot; IsZoneBridge=&quot;1&quot; SoftwareVersion=&quot;53.2-70100&quot; SWGen=&quot;1&quot; MinCompatibleVersion=&quot;52.0-00000&quot; LegacyCompatibleVersion=&quot;36.0-00000&quot; BootSeq=&quot;61&quot; TVConfigurationError=&quot;0&quot; HdmiCecAvailable=&quot;0&quot; WirelessMode=&quot;0&quot; WirelessLeafOnly=&quot;0&quot; HasConfiguredSSID=&quot;0&quot; ChannelFreq=&quot;2437&quot; BehindWifiExtender=&quot;0&quot; WifiEnabled=&quot;1&quot; Orientation=&quot;-1&quot; RoomCalibrationState=&quot;0&quot; SecureRegState=&quot;3&quot; VoiceConfigState=&quot;0&quot; MicEnabled=&quot;0&quot; AirPlayEnabled=&quot;0&quot; IdleState=&quot;1&quot; MoreInfo=&quot;&quot;/&gt;&lt;/ZoneGroup&gt;&lt;/ZoneGroups&gt;&lt;/ZoneGroupState&gt;</ZoneGroupState></u:GetZoneGroupStateResponse></s:Body></s:Envelope>
+2019-11-05 22:52:42,709 INFO     Received status 200 from 192.168.1.101
+2019-11-05 22:52:42,715 DEBUG    Created SoCo instance for ip: 192.168.1.136
+2019-11-05 22:52:42,718 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2019-11-05 22:52:42,720 DEBUG    Created SoCo instance for ip: 192.168.1.145
+2019-11-05 22:52:42,722 DEBUG    Created SoCo instance for ip: 192.168.1.133
+2019-11-05 22:52:42,723 DEBUG    Dispatching method SetAVTransportURI
+2019-11-05 22:52:42,725 INFO     Sending SetAVTransportURI [('InstanceID', 0), ('CurrentURI', 'https://play.podtrac.com/npr-500005/edge1.pod.npr.org/anon.npr-mp3/npr/newscasts/2019/11/05/newscast220814.mp3?awCollectionId=500005&awEpisodeId=776612480&orgId=1&d=300&p=500005&story=776612480&t=podcast&e=776612480&size=4500000&ft=pod&f=500005'), ('CurrentURIMetaData', '')] to 192.168.1.101
+2019-11-05 22:52:42,728 DEBUG    Sending {'Content-Type': 'text/xml; charset="utf-8"', 'SOAPACTION': 'urn:schemas-upnp-org:service:AVTransport:1#SetAVTransportURI'}, <?xml version="1.0" ?>
+<s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <u:SetAVTransportURI xmlns:u="urn:schemas-upnp-org:service:AVTransport:1">
+      <InstanceID>0</InstanceID>
+      <CurrentURI>https://play.podtrac.com/npr-500005/edge1.pod.npr.org/anon.npr-mp3/npr/newscasts/2019/11/05/newscast220814.mp3?awCollectionId=500005&amp;awEpisodeId=776612480&amp;orgId=1&amp;d=300&amp;p=500005&amp;story=776612480&amp;t=podcast&amp;e=776612480&amp;size=4500000&amp;ft=pod&amp;f=500005</CurrentURI>
+      <CurrentURIMetaData/>
+    </u:SetAVTransportURI>
+  </s:Body>
+</s:Envelope>
+
+2019-11-05 22:52:42,744 DEBUG    Starting new HTTP connection (1): 192.168.1.101:1400
+2019-11-05 22:52:43,963 DEBUG    http://192.168.1.101:1400 "POST /MediaRenderer/AVTransport/Control HTTP/1.1" 200 266
+2019-11-05 22:52:43,968 DEBUG    Received {'CONTENT-LENGTH': '266', 'CONTENT-TYPE': 'text/xml; charset="utf-8"', 'EXT': '', 'Server': 'Linux UPnP/1.0 Sonos/53.2-70210 (ZP120)', 'Connection': 'close'}, <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><s:Body><u:SetAVTransportURIResponse xmlns:u="urn:schemas-upnp-org:service:AVTransport:1"></u:SetAVTransportURIResponse></s:Body></s:Envelope>
+2019-11-05 22:52:43,969 INFO     Received status 200 from 192.168.1.101
+2019-11-05 22:52:43,971 DEBUG    Cache hit
+2019-11-05 22:52:43,972 DEBUG    Dispatching method Play
+2019-11-05 22:52:43,973 INFO     Sending Play [('InstanceID', 0), ('Speed', 1)] to 192.168.1.101
+2019-11-05 22:52:43,976 DEBUG    Sending {'Content-Type': 'text/xml; charset="utf-8"', 'SOAPACTION': 'urn:schemas-upnp-org:service:AVTransport:1#Play'}, <?xml version="1.0" ?>
+<s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <u:Play xmlns:u="urn:schemas-upnp-org:service:AVTransport:1">
+      <InstanceID>0</InstanceID>
+      <Speed>1</Speed>
+    </u:Play>
+  </s:Body>
+</s:Envelope>
+
+2019-11-05 22:52:43,986 DEBUG    Starting new HTTP connection (1): 192.168.1.101:1400
+2019-11-05 22:52:44,041 DEBUG    http://192.168.1.101:1400 "POST /MediaRenderer/AVTransport/Control HTTP/1.1" 200 240
+2019-11-05 22:52:44,059 DEBUG    Received {'CONTENT-LENGTH': '240', 'CONTENT-TYPE': 'text/xml; charset="utf-8"', 'EXT': '', 'Server': 'Linux UPnP/1.0 Sonos/53.2-70210 (ZP120)', 'Connection': 'close'}, <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><s:Body><u:PlayResponse xmlns:u="urn:schemas-upnp-org:service:AVTransport:1"></u:PlayResponse></s:Body></s:Envelope>
+2019-11-05 22:52:44,061 INFO     Received status 200 from 192.168.1.101
+2019-11-05 22:52:44,078 DEBUG    Cache hit
+2019-11-05 22:52:44,081 INFO     Sending Play [('InstanceID', 0), ('Speed', 1)] to 192.168.1.101
+2019-11-05 22:52:44,100 DEBUG    Sending {'Content-Type': 'text/xml; charset="utf-8"', 'SOAPACTION': 'urn:schemas-upnp-org:service:AVTransport:1#Play'}, <?xml version="1.0" ?>
+<s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <u:Play xmlns:u="urn:schemas-upnp-org:service:AVTransport:1">
+      <InstanceID>0</InstanceID>
+      <Speed>1</Speed>
+    </u:Play>
+  </s:Body>
+</s:Envelope>
+
+2019-11-05 22:52:44,132 DEBUG    Starting new HTTP connection (1): 192.168.1.101:1400
+2019-11-05 22:52:44,164 DEBUG    http://192.168.1.101:1400 "POST /MediaRenderer/AVTransport/Control HTTP/1.1" 200 240
+2019-11-05 22:52:44,177 DEBUG    Received {'CONTENT-LENGTH': '240', 'CONTENT-TYPE': 'text/xml; charset="utf-8"', 'EXT': '', 'Server': 'Linux UPnP/1.0 Sonos/53.2-70210 (ZP120)', 'Connection': 'close'}, <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><s:Body><u:PlayResponse xmlns:u="urn:schemas-upnp-org:service:AVTransport:1"></u:PlayResponse></s:Body></s:Envelope>
+2019-11-05 22:52:44,179 INFO     Received status 200 from 192.168.1.101
+2019-11-05 22:59:52,370 INFO     making buttons.
+2019-11-05 22:59:52,396 INFO     setting buttons
+2019-11-05 22:59:52,526 WARNING  starting up.
+2019-11-05 22:59:57,099 INFO     splitting
+2019-11-05 22:59:57,099 INFO     setting buttons
+2019-11-05 22:59:58,112 INFO     getting recent
+2019-11-05 22:59:58,114 INFO     recent thread
+2019-11-05 22:59:58,114 INFO     setting buttons
+2019-11-05 22:59:58,138 DEBUG    Starting new HTTP connection (1): 0.0.0.0:5005
+2019-11-05 22:59:58,495 DEBUG    http://0.0.0.0:5005 "GET /preset/all_rooms/ HTTP/1.1" 200 20
+2019-11-05 22:59:58,511 DEBUG    Starting new HTTP connection (1): 0.0.0.0:5000
+2019-11-05 22:59:58,920 DEBUG    http://0.0.0.0:5000 "GET /recent/6 HTTP/1.1" 200 281
+2019-11-05 22:59:58,926 DEBUG    Created SoCo instance for ip: 192.168.1.101
+2019-11-05 22:59:58,936 DEBUG    Starting new HTTP connection (1): 192.168.1.101:1400
+2019-11-05 22:59:58,991 DEBUG    http://192.168.1.101:1400 "GET /xml/ZoneGroupTopology1.xml HTTP/1.1" 200 8663
+2019-11-05 22:59:59,014 INFO     Sending GetZoneGroupState [] to 192.168.1.101
+2019-11-05 22:59:59,275 DEBUG    Sending {'Content-Type': 'text/xml; charset="utf-8"', 'SOAPACTION': 'urn:schemas-upnp-org:service:ZoneGroupTopology:1#GetZoneGroupState'}, <?xml version="1.0" ?>
+<s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <u:GetZoneGroupState xmlns:u="urn:schemas-upnp-org:service:ZoneGroupTopology:1"/>
+  </s:Body>
+</s:Envelope>
+
+2019-11-05 22:59:59,288 DEBUG    Starting new HTTP connection (1): 192.168.1.101:1400
+2019-11-05 22:59:59,314 DEBUG    http://192.168.1.101:1400 "POST /ZoneGroupTopology/Control HTTP/1.1" 200 5092
+2019-11-05 22:59:59,329 DEBUG    Received {'CONTENT-LENGTH': '5092', 'CONTENT-TYPE': 'text/xml; charset="utf-8"', 'EXT': '', 'Server': 'Linux UPnP/1.0 Sonos/53.2-70210 (ZP120)', 'Connection': 'close'}, <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><s:Body><u:GetZoneGroupStateResponse xmlns:u="urn:schemas-upnp-org:service:ZoneGroupTopology:1"><ZoneGroupState>&lt;ZoneGroupState&gt;&lt;ZoneGroups&gt;&lt;ZoneGroup Coordinator=&quot;RINCON_000E58D897B801400&quot; ID=&quot;RINCON_000E58D897B801400:4141410712&quot;&gt;&lt;ZoneGroupMember UUID=&quot;RINCON_000E58D897B801400&quot; Location=&quot;http://192.168.1.101:1400/xml/device_description.xml&quot; ZoneName=&quot;Master&quot; Icon=&quot;x-rincon-roomicon:masterbedroom&quot; Configuration=&quot;1&quot; SoftwareVersion=&quot;53.2-70210&quot; SWGen=&quot;1&quot; MinCompatibleVersion=&quot;52.0-00000&quot; LegacyCompatibleVersion=&quot;36.0-00000&quot; BootSeq=&quot;50&quot; TVConfigurationError=&quot;0&quot; HdmiCecAvailable=&quot;0&quot; WirelessMode=&quot;0&quot; WirelessLeafOnly=&quot;0&quot; HasConfiguredSSID=&quot;0&quot; ChannelFreq=&quot;2437&quot; BehindWifiExtender=&quot;0&quot; WifiEnabled=&quot;1&quot; Orientation=&quot;0&quot; RoomCalibrationState=&quot;4&quot; SecureRegState=&quot;3&quot; VoiceConfigState=&quot;0&quot; MicEnabled=&quot;0&quot; AirPlayEnabled=&quot;0&quot; IdleState=&quot;1&quot; MoreInfo=&quot;&quot;/&gt;&lt;ZoneGroupMember UUID=&quot;RINCON_B8E9378FC78401400&quot; Location=&quot;http://192.168.1.136:1400/xml/device_description.xml&quot; ZoneName=&quot;Lib&quot; Icon=&quot;x-rincon-roomicon:kitchen&quot; Configuration=&quot;1&quot; SoftwareVersion=&quot;53.2-70100&quot; SWGen=&quot;1&quot; MinCompatibleVersion=&quot;52.0-00000&quot; LegacyCompatibleVersion=&quot;36.0-00000&quot; BootSeq=&quot;68&quot; TVConfigurationError=&quot;0&quot; HdmiCecAvailable=&quot;0&quot; WirelessMode=&quot;0&quot; WirelessLeafOnly=&quot;0&quot; HasConfiguredSSID=&quot;0&quot; ChannelFreq=&quot;2437&quot; BehindWifiExtender=&quot;0&quot; WifiEnabled=&quot;1&quot; Orientation=&quot;0&quot; RoomCalibrationState=&quot;4&quot; SecureRegState=&quot;3&quot; VoiceConfigState=&quot;0&quot; MicEnabled=&quot;0&quot; AirPlayEnabled=&quot;0&quot; IdleState=&quot;1&quot; MoreInfo=&quot;&quot;/&gt;&lt;ZoneGroupMember UUID=&quot;RINCON_000E58B9F99701400&quot; Location=&quot;http://192.168.1.116:1400/xml/device_description.xml&quot; ZoneName=&quot;Living&quot; Icon=&quot;x-rincon-roomicon:living&quot; Configuration=&quot;1&quot; SoftwareVersion=&quot;53.2-70100&quot; SWGen=&quot;1&quot; MinCompatibleVersion=&quot;52.0-00000&quot; LegacyCompatibleVersion=&quot;36.0-00000&quot; BootSeq=&quot;48&quot; TVConfigurationError=&quot;0&quot; HdmiCecAvailable=&quot;0&quot; WirelessMode=&quot;0&quot; WirelessLeafOnly=&quot;0&quot; HasConfiguredSSID=&quot;0&quot; ChannelFreq=&quot;2437&quot; BehindWifiExtender=&quot;0&quot; WifiEnabled=&quot;1&quot; Orientation=&quot;0&quot; RoomCalibrationState=&quot;4&quot; SecureRegState=&quot;3&quot; VoiceConfigState=&quot;0&quot; MicEnabled=&quot;0&quot; AirPlayEnabled=&quot;0&quot; IdleState=&quot;1&quot; MoreInfo=&quot;&quot;/&gt;&lt;ZoneGroupMember UUID=&quot;RINCON_5CAAFD5C8CC801400&quot; Location=&quot;http://192.168.1.145:1400/xml/device_description.xml&quot; ZoneName=&quot;Kitch&quot; Icon=&quot;x-rincon-roomicon:kitchen&quot; Configuration=&quot;1&quot; SoftwareVersion=&quot;53.2-70100&quot; SWGen=&quot;1&quot; MinCompatibleVersion=&quot;52.0-00000&quot; LegacyCompatibleVersion=&quot;36.0-00000&quot; BootSeq=&quot;63&quot; TVConfigurationError=&quot;0&quot; HdmiCecAvailable=&quot;0&quot; WirelessMode=&quot;0&quot; WirelessLeafOnly=&quot;0&quot; HasConfiguredSSID=&quot;0&quot; ChannelFreq=&quot;2437&quot; BehindWifiExtender=&quot;0&quot; WifiEnabled=&quot;1&quot; Orientation=&quot;0&quot; RoomCalibrationState=&quot;4&quot; SecureRegState=&quot;3&quot; VoiceConfigState=&quot;0&quot; MicEnabled=&quot;0&quot; AirPlayEnabled=&quot;0&quot; IdleState=&quot;1&quot; MoreInfo=&quot;&quot;/&gt;&lt;/ZoneGroup&gt;&lt;ZoneGroup Coordinator=&quot;RINCON_000E581D06A001400&quot; ID=&quot;RINCON_000E581D06A001400:162185724&quot;&gt;&lt;ZoneGroupMember UUID=&quot;RINCON_000E581D06A001400&quot; Location=&quot;http://192.168.1.133:1400/xml/device_description.xml&quot; ZoneName=&quot;BRIDGE&quot; Icon=&quot;x-rincon-roomicon:viper&quot; Configuration=&quot;1&quot; Invisible=&quot;1&quot; IsZoneBridge=&quot;1&quot; SoftwareVersion=&quot;53.2-70100&quot; SWGen=&quot;1&quot; MinCompatibleVersion=&quot;52.0-00000&quot; LegacyCompatibleVersion=&quot;36.0-00000&quot; BootSeq=&quot;61&quot; TVConfigurationError=&quot;0&quot; HdmiCecAvailable=&quot;0&quot; WirelessMode=&quot;0&quot; WirelessLeafOnly=&quot;0&quot; HasConfiguredSSID=&quot;0&quot; ChannelFreq=&quot;2437&quot; BehindWifiExtender=&quot;0&quot; WifiEnabled=&quot;1&quot; Orientation=&quot;-1&quot; RoomCalibrationState=&quot;0&quot; SecureRegState=&quot;3&quot; VoiceConfigState=&quot;0&quot; MicEnabled=&quot;0&quot; AirPlayEnabled=&quot;0&quot; IdleState=&quot;1&quot; MoreInfo=&quot;&quot;/&gt;&lt;/ZoneGroup&gt;&lt;/ZoneGroups&gt;&lt;/ZoneGroupState&gt;</ZoneGroupState></u:GetZoneGroupStateResponse></s:Body></s:Envelope>
+2019-11-05 22:59:59,332 INFO     Received status 200 from 192.168.1.101
+2019-11-05 22:59:59,339 DEBUG    Created SoCo instance for ip: 192.168.1.136
+2019-11-05 22:59:59,342 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2019-11-05 22:59:59,344 DEBUG    Created SoCo instance for ip: 192.168.1.145
+2019-11-05 22:59:59,347 DEBUG    Created SoCo instance for ip: 192.168.1.133
+2019-11-05 22:59:59,348 DEBUG    Dispatching method SetAVTransportURI
+2019-11-05 22:59:59,351 INFO     Sending SetAVTransportURI [('InstanceID', 0), ('CurrentURI', 'https://play.podtrac.com/npr-500005/edge1.pod.npr.org/anon.npr-mp3/npr/newscasts/2019/11/05/newscast220814.mp3?awCollectionId=500005&awEpisodeId=776612480&orgId=1&d=300&p=500005&story=776612480&t=podcast&e=776612480&size=4500000&ft=pod&f=500005'), ('CurrentURIMetaData', '')] to 192.168.1.101
+2019-11-05 22:59:59,356 DEBUG    Sending {'Content-Type': 'text/xml; charset="utf-8"', 'SOAPACTION': 'urn:schemas-upnp-org:service:AVTransport:1#SetAVTransportURI'}, <?xml version="1.0" ?>
+<s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <u:SetAVTransportURI xmlns:u="urn:schemas-upnp-org:service:AVTransport:1">
+      <InstanceID>0</InstanceID>
+      <CurrentURI>https://play.podtrac.com/npr-500005/edge1.pod.npr.org/anon.npr-mp3/npr/newscasts/2019/11/05/newscast220814.mp3?awCollectionId=500005&amp;awEpisodeId=776612480&amp;orgId=1&amp;d=300&amp;p=500005&amp;story=776612480&amp;t=podcast&amp;e=776612480&amp;size=4500000&amp;ft=pod&amp;f=500005</CurrentURI>
+      <CurrentURIMetaData/>
+    </u:SetAVTransportURI>
+  </s:Body>
+</s:Envelope>
+
+2019-11-05 22:59:59,367 DEBUG    Starting new HTTP connection (1): 192.168.1.101:1400
+2019-11-05 23:00:00,105 DEBUG    http://192.168.1.101:1400 "POST /MediaRenderer/AVTransport/Control HTTP/1.1" 200 266
+2019-11-05 23:00:00,107 DEBUG    Received {'CONTENT-LENGTH': '266', 'CONTENT-TYPE': 'text/xml; charset="utf-8"', 'EXT': '', 'Server': 'Linux UPnP/1.0 Sonos/53.2-70210 (ZP120)', 'Connection': 'close'}, <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><s:Body><u:SetAVTransportURIResponse xmlns:u="urn:schemas-upnp-org:service:AVTransport:1"></u:SetAVTransportURIResponse></s:Body></s:Envelope>
+2019-11-05 23:00:00,108 INFO     Received status 200 from 192.168.1.101
+2019-11-05 23:00:00,109 DEBUG    Cache hit
+2019-11-05 23:00:00,110 DEBUG    Dispatching method Play
+2019-11-05 23:00:00,110 INFO     Sending Play [('InstanceID', 0), ('Speed', 1)] to 192.168.1.101
+2019-11-05 23:00:00,112 DEBUG    Sending {'Content-Type': 'text/xml; charset="utf-8"', 'SOAPACTION': 'urn:schemas-upnp-org:service:AVTransport:1#Play'}, <?xml version="1.0" ?>
+<s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <u:Play xmlns:u="urn:schemas-upnp-org:service:AVTransport:1">
+      <InstanceID>0</InstanceID>
+      <Speed>1</Speed>
+    </u:Play>
+  </s:Body>
+</s:Envelope>
+
+2019-11-05 23:00:00,116 DEBUG    Starting new HTTP connection (1): 192.168.1.101:1400
+2019-11-05 23:00:00,147 DEBUG    http://192.168.1.101:1400 "POST /MediaRenderer/AVTransport/Control HTTP/1.1" 200 240
+2019-11-05 23:00:00,150 DEBUG    Received {'CONTENT-LENGTH': '240', 'CONTENT-TYPE': 'text/xml; charset="utf-8"', 'EXT': '', 'Server': 'Linux UPnP/1.0 Sonos/53.2-70210 (ZP120)', 'Connection': 'close'}, <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><s:Body><u:PlayResponse xmlns:u="urn:schemas-upnp-org:service:AVTransport:1"></u:PlayResponse></s:Body></s:Envelope>
+2019-11-05 23:00:00,151 INFO     Received status 200 from 192.168.1.101
+2019-11-05 23:00:00,153 DEBUG    Cache hit
+2019-11-05 23:00:00,154 INFO     Sending Play [('InstanceID', 0), ('Speed', 1)] to 192.168.1.101
+2019-11-05 23:00:00,156 DEBUG    Sending {'Content-Type': 'text/xml; charset="utf-8"', 'SOAPACTION': 'urn:schemas-upnp-org:service:AVTransport:1#Play'}, <?xml version="1.0" ?>
+<s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <u:Play xmlns:u="urn:schemas-upnp-org:service:AVTransport:1">
+      <InstanceID>0</InstanceID>
+      <Speed>1</Speed>
+    </u:Play>
+  </s:Body>
+</s:Envelope>
+
+2019-11-05 23:00:00,161 DEBUG    Starting new HTTP connection (1): 192.168.1.101:1400
+2019-11-05 23:00:00,178 DEBUG    http://192.168.1.101:1400 "POST /MediaRenderer/AVTransport/Control HTTP/1.1" 200 240
+2019-11-05 23:00:00,182 DEBUG    Received {'CONTENT-LENGTH': '240', 'CONTENT-TYPE': 'text/xml; charset="utf-8"', 'EXT': '', 'Server': 'Linux UPnP/1.0 Sonos/53.2-70210 (ZP120)', 'Connection': 'close'}, <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><s:Body><u:PlayResponse xmlns:u="urn:schemas-upnp-org:service:AVTransport:1"></u:PlayResponse></s:Body></s:Envelope>
+2019-11-05 23:00:00,183 INFO     Received status 200 from 192.168.1.101
+2019-11-05 23:17:33,379 INFO     making buttons.
+2019-11-05 23:17:33,406 INFO     setting buttons
+2019-11-05 23:17:33,557 WARNING  starting up.
+2019-11-05 23:22:41,050 INFO     still refreshing: 48390144
+2019-11-05 23:23:46,676 INFO     splitting
+2019-11-05 23:23:46,677 INFO     setting buttons
+2019-11-05 23:27:48,038 INFO     still refreshing: 63954944
+2019-11-05 23:29:07,965 INFO     splitting
+2019-11-05 23:29:07,966 INFO     setting buttons
+2019-11-05 23:29:09,639 INFO     getting recent
+2019-11-05 23:29:09,640 INFO     recent thread
+2019-11-05 23:29:09,640 INFO     setting buttons
+2019-11-05 23:29:09,675 DEBUG    Starting new HTTP connection (1): 0.0.0.0:5005
+2019-11-05 23:29:09,996 DEBUG    http://0.0.0.0:5005 "GET /preset/all_rooms/ HTTP/1.1" 200 20
+2019-11-05 23:29:10,011 DEBUG    Starting new HTTP connection (1): 0.0.0.0:5000
+2019-11-05 23:29:16,122 DEBUG    http://0.0.0.0:5000 "GET /recent/3 HTTP/1.1" 200 101
+2019-11-05 23:29:16,126 DEBUG    Created SoCo instance for ip: 192.168.1.101
+2019-11-05 23:29:16,130 DEBUG    Starting new HTTP connection (1): 192.168.1.101:1400
+2019-11-05 23:29:16,139 DEBUG    http://192.168.1.101:1400 "GET /xml/ZoneGroupTopology1.xml HTTP/1.1" 200 8663
+2019-11-05 23:29:16,155 INFO     Sending GetZoneGroupState [] to 192.168.1.101
+2019-11-05 23:29:16,206 DEBUG    Sending {'Content-Type': 'text/xml; charset="utf-8"', 'SOAPACTION': 'urn:schemas-upnp-org:service:ZoneGroupTopology:1#GetZoneGroupState'}, <?xml version="1.0" ?>
+<s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <u:GetZoneGroupState xmlns:u="urn:schemas-upnp-org:service:ZoneGroupTopology:1"/>
+  </s:Body>
+</s:Envelope>
+
+2019-11-05 23:29:16,217 DEBUG    Starting new HTTP connection (1): 192.168.1.101:1400
+2019-11-05 23:29:16,239 DEBUG    http://192.168.1.101:1400 "POST /ZoneGroupTopology/Control HTTP/1.1" 200 5092
+2019-11-05 23:29:16,245 DEBUG    Received {'CONTENT-LENGTH': '5092', 'CONTENT-TYPE': 'text/xml; charset="utf-8"', 'EXT': '', 'Server': 'Linux UPnP/1.0 Sonos/53.2-70210 (ZP120)', 'Connection': 'close'}, <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><s:Body><u:GetZoneGroupStateResponse xmlns:u="urn:schemas-upnp-org:service:ZoneGroupTopology:1"><ZoneGroupState>&lt;ZoneGroupState&gt;&lt;ZoneGroups&gt;&lt;ZoneGroup Coordinator=&quot;RINCON_000E58D897B801400&quot; ID=&quot;RINCON_000E58D897B801400:4141410712&quot;&gt;&lt;ZoneGroupMember UUID=&quot;RINCON_000E58D897B801400&quot; Location=&quot;http://192.168.1.101:1400/xml/device_description.xml&quot; ZoneName=&quot;Master&quot; Icon=&quot;x-rincon-roomicon:masterbedroom&quot; Configuration=&quot;1&quot; SoftwareVersion=&quot;53.2-70210&quot; SWGen=&quot;1&quot; MinCompatibleVersion=&quot;52.0-00000&quot; LegacyCompatibleVersion=&quot;36.0-00000&quot; BootSeq=&quot;50&quot; TVConfigurationError=&quot;0&quot; HdmiCecAvailable=&quot;0&quot; WirelessMode=&quot;0&quot; WirelessLeafOnly=&quot;0&quot; HasConfiguredSSID=&quot;0&quot; ChannelFreq=&quot;2437&quot; BehindWifiExtender=&quot;0&quot; WifiEnabled=&quot;1&quot; Orientation=&quot;0&quot; RoomCalibrationState=&quot;4&quot; SecureRegState=&quot;3&quot; VoiceConfigState=&quot;0&quot; MicEnabled=&quot;0&quot; AirPlayEnabled=&quot;0&quot; IdleState=&quot;0&quot; MoreInfo=&quot;&quot;/&gt;&lt;ZoneGroupMember UUID=&quot;RINCON_B8E9378FC78401400&quot; Location=&quot;http://192.168.1.136:1400/xml/device_description.xml&quot; ZoneName=&quot;Lib&quot; Icon=&quot;x-rincon-roomicon:kitchen&quot; Configuration=&quot;1&quot; SoftwareVersion=&quot;53.2-70100&quot; SWGen=&quot;1&quot; MinCompatibleVersion=&quot;52.0-00000&quot; LegacyCompatibleVersion=&quot;36.0-00000&quot; BootSeq=&quot;68&quot; TVConfigurationError=&quot;0&quot; HdmiCecAvailable=&quot;0&quot; WirelessMode=&quot;0&quot; WirelessLeafOnly=&quot;0&quot; HasConfiguredSSID=&quot;0&quot; ChannelFreq=&quot;2437&quot; BehindWifiExtender=&quot;0&quot; WifiEnabled=&quot;1&quot; Orientation=&quot;0&quot; RoomCalibrationState=&quot;4&quot; SecureRegState=&quot;3&quot; VoiceConfigState=&quot;0&quot; MicEnabled=&quot;0&quot; AirPlayEnabled=&quot;0&quot; IdleState=&quot;0&quot; MoreInfo=&quot;&quot;/&gt;&lt;ZoneGroupMember UUID=&quot;RINCON_000E58B9F99701400&quot; Location=&quot;http://192.168.1.116:1400/xml/device_description.xml&quot; ZoneName=&quot;Living&quot; Icon=&quot;x-rincon-roomicon:living&quot; Configuration=&quot;1&quot; SoftwareVersion=&quot;53.2-70100&quot; SWGen=&quot;1&quot; MinCompatibleVersion=&quot;52.0-00000&quot; LegacyCompatibleVersion=&quot;36.0-00000&quot; BootSeq=&quot;48&quot; TVConfigurationError=&quot;0&quot; HdmiCecAvailable=&quot;0&quot; WirelessMode=&quot;0&quot; WirelessLeafOnly=&quot;0&quot; HasConfiguredSSID=&quot;0&quot; ChannelFreq=&quot;2437&quot; BehindWifiExtender=&quot;0&quot; WifiEnabled=&quot;1&quot; Orientation=&quot;0&quot; RoomCalibrationState=&quot;4&quot; SecureRegState=&quot;3&quot; VoiceConfigState=&quot;0&quot; MicEnabled=&quot;0&quot; AirPlayEnabled=&quot;0&quot; IdleState=&quot;0&quot; MoreInfo=&quot;&quot;/&gt;&lt;ZoneGroupMember UUID=&quot;RINCON_5CAAFD5C8CC801400&quot; Location=&quot;http://192.168.1.145:1400/xml/device_description.xml&quot; ZoneName=&quot;Kitch&quot; Icon=&quot;x-rincon-roomicon:kitchen&quot; Configuration=&quot;1&quot; SoftwareVersion=&quot;53.2-70100&quot; SWGen=&quot;1&quot; MinCompatibleVersion=&quot;52.0-00000&quot; LegacyCompatibleVersion=&quot;36.0-00000&quot; BootSeq=&quot;63&quot; TVConfigurationError=&quot;0&quot; HdmiCecAvailable=&quot;0&quot; WirelessMode=&quot;0&quot; WirelessLeafOnly=&quot;0&quot; HasConfiguredSSID=&quot;0&quot; ChannelFreq=&quot;2437&quot; BehindWifiExtender=&quot;0&quot; WifiEnabled=&quot;1&quot; Orientation=&quot;0&quot; RoomCalibrationState=&quot;4&quot; SecureRegState=&quot;3&quot; VoiceConfigState=&quot;0&quot; MicEnabled=&quot;0&quot; AirPlayEnabled=&quot;0&quot; IdleState=&quot;0&quot; MoreInfo=&quot;&quot;/&gt;&lt;/ZoneGroup&gt;&lt;ZoneGroup Coordinator=&quot;RINCON_000E581D06A001400&quot; ID=&quot;RINCON_000E581D06A001400:162185724&quot;&gt;&lt;ZoneGroupMember UUID=&quot;RINCON_000E581D06A001400&quot; Location=&quot;http://192.168.1.133:1400/xml/device_description.xml&quot; ZoneName=&quot;BRIDGE&quot; Icon=&quot;x-rincon-roomicon:viper&quot; Configuration=&quot;1&quot; Invisible=&quot;1&quot; IsZoneBridge=&quot;1&quot; SoftwareVersion=&quot;53.2-70100&quot; SWGen=&quot;1&quot; MinCompatibleVersion=&quot;52.0-00000&quot; LegacyCompatibleVersion=&quot;36.0-00000&quot; BootSeq=&quot;61&quot; TVConfigurationError=&quot;0&quot; HdmiCecAvailable=&quot;0&quot; WirelessMode=&quot;0&quot; WirelessLeafOnly=&quot;0&quot; HasConfiguredSSID=&quot;0&quot; ChannelFreq=&quot;2437&quot; BehindWifiExtender=&quot;0&quot; WifiEnabled=&quot;1&quot; Orientation=&quot;-1&quot; RoomCalibrationState=&quot;0&quot; SecureRegState=&quot;3&quot; VoiceConfigState=&quot;0&quot; MicEnabled=&quot;0&quot; AirPlayEnabled=&quot;0&quot; IdleState=&quot;1&quot; MoreInfo=&quot;&quot;/&gt;&lt;/ZoneGroup&gt;&lt;/ZoneGroups&gt;&lt;/ZoneGroupState&gt;</ZoneGroupState></u:GetZoneGroupStateResponse></s:Body></s:Envelope>
+2019-11-05 23:29:16,248 INFO     Received status 200 from 192.168.1.101
+2019-11-05 23:29:16,254 DEBUG    Created SoCo instance for ip: 192.168.1.136
+2019-11-05 23:29:16,257 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2019-11-05 23:29:16,259 DEBUG    Created SoCo instance for ip: 192.168.1.145
+2019-11-05 23:29:16,262 DEBUG    Created SoCo instance for ip: 192.168.1.133
+2019-11-05 23:29:16,263 DEBUG    Dispatching method SetAVTransportURI
+2019-11-05 23:29:16,264 INFO     Sending SetAVTransportURI [('InstanceID', 0), ('CurrentURI', 'http://traffic.libsyn.com/uhhyeahdude/ep753onespecialvictory.m4a'), ('CurrentURIMetaData', '')] to 192.168.1.101
+2019-11-05 23:29:16,267 DEBUG    Sending {'Content-Type': 'text/xml; charset="utf-8"', 'SOAPACTION': 'urn:schemas-upnp-org:service:AVTransport:1#SetAVTransportURI'}, <?xml version="1.0" ?>
+<s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <u:SetAVTransportURI xmlns:u="urn:schemas-upnp-org:service:AVTransport:1">
+      <InstanceID>0</InstanceID>
+      <CurrentURI>http://traffic.libsyn.com/uhhyeahdude/ep753onespecialvictory.m4a</CurrentURI>
+      <CurrentURIMetaData/>
+    </u:SetAVTransportURI>
+  </s:Body>
+</s:Envelope>
+
+2019-11-05 23:29:16,281 DEBUG    Starting new HTTP connection (1): 192.168.1.101:1400
+2019-11-05 23:29:16,389 DEBUG    http://192.168.1.101:1400 "POST /MediaRenderer/AVTransport/Control HTTP/1.1" 200 266
+2019-11-05 23:29:16,395 DEBUG    Received {'CONTENT-LENGTH': '266', 'CONTENT-TYPE': 'text/xml; charset="utf-8"', 'EXT': '', 'Server': 'Linux UPnP/1.0 Sonos/53.2-70210 (ZP120)', 'Connection': 'close'}, <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><s:Body><u:SetAVTransportURIResponse xmlns:u="urn:schemas-upnp-org:service:AVTransport:1"></u:SetAVTransportURIResponse></s:Body></s:Envelope>
+2019-11-05 23:29:16,396 INFO     Received status 200 from 192.168.1.101
+2019-11-05 23:29:16,399 DEBUG    Cache hit
+2019-11-05 23:29:16,400 DEBUG    Dispatching method Play
+2019-11-05 23:29:16,402 INFO     Sending Play [('InstanceID', 0), ('Speed', 1)] to 192.168.1.101
+2019-11-05 23:29:16,407 DEBUG    Sending {'Content-Type': 'text/xml; charset="utf-8"', 'SOAPACTION': 'urn:schemas-upnp-org:service:AVTransport:1#Play'}, <?xml version="1.0" ?>
+<s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <u:Play xmlns:u="urn:schemas-upnp-org:service:AVTransport:1">
+      <InstanceID>0</InstanceID>
+      <Speed>1</Speed>
+    </u:Play>
+  </s:Body>
+</s:Envelope>
+
+2019-11-05 23:29:16,421 DEBUG    Starting new HTTP connection (1): 192.168.1.101:1400
+2019-11-05 23:29:17,048 DEBUG    http://192.168.1.101:1400 "POST /MediaRenderer/AVTransport/Control HTTP/1.1" 200 240
+2019-11-05 23:29:17,054 DEBUG    Received {'CONTENT-LENGTH': '240', 'CONTENT-TYPE': 'text/xml; charset="utf-8"', 'EXT': '', 'Server': 'Linux UPnP/1.0 Sonos/53.2-70210 (ZP120)', 'Connection': 'close'}, <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><s:Body><u:PlayResponse xmlns:u="urn:schemas-upnp-org:service:AVTransport:1"></u:PlayResponse></s:Body></s:Envelope>
+2019-11-05 23:29:17,056 INFO     Received status 200 from 192.168.1.101
+2019-11-05 23:29:17,058 DEBUG    Cache hit
+2019-11-05 23:29:17,059 INFO     Sending Play [('InstanceID', 0), ('Speed', 1)] to 192.168.1.101
+2019-11-05 23:29:17,062 DEBUG    Sending {'Content-Type': 'text/xml; charset="utf-8"', 'SOAPACTION': 'urn:schemas-upnp-org:service:AVTransport:1#Play'}, <?xml version="1.0" ?>
+<s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <u:Play xmlns:u="urn:schemas-upnp-org:service:AVTransport:1">
+      <InstanceID>0</InstanceID>
+      <Speed>1</Speed>
+    </u:Play>
+  </s:Body>
+</s:Envelope>
+
+2019-11-05 23:29:17,073 DEBUG    Starting new HTTP connection (1): 192.168.1.101:1400
+2019-11-05 23:29:17,109 DEBUG    http://192.168.1.101:1400 "POST /MediaRenderer/AVTransport/Control HTTP/1.1" 200 240
+2019-11-05 23:29:17,115 DEBUG    Received {'CONTENT-LENGTH': '240', 'CONTENT-TYPE': 'text/xml; charset="utf-8"', 'EXT': '', 'Server': 'Linux UPnP/1.0 Sonos/53.2-70210 (ZP120)', 'Connection': 'close'}, <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><s:Body><u:PlayResponse xmlns:u="urn:schemas-upnp-org:service:AVTransport:1"></u:PlayResponse></s:Body></s:Envelope>
+2019-11-05 23:29:17,119 INFO     Received status 200 from 192.168.1.101
+2019-11-05 23:32:55,381 INFO     still refreshing: 80306176
+2019-11-05 23:38:03,789 INFO     still refreshing: 95870976
+2019-11-05 23:41:38,048 INFO     splitting
+2019-11-05 23:41:38,049 INFO     setting buttons
