@@ -317,7 +317,7 @@ class Au:
         #jish_run = jishiReader('./node-sonos/package.json')
         level    = logging.NOTSET
         format   = '%(asctime)-8s %(levelname)-8s %(message)s'
-        handlers = [logging.handlers.TimedRotatingFileHandler('button_log',when="D",interval=1,backupCount=5,encoding=None,delay=False,utc=False,atTime=None),logging.StreamHandler()]
+        handlers = [logging.handlers.TimedRotatingFileHandler('button_log',when="D",interval=1,backupCount=5,encoding=None,delay=False,utc=False,atTime=None)]
         ansi_palette = [('banner', '', '', '', '#ffa', '#60d'),
     ('streak', '', '', '', 'g50', '#60a'),
     ('inside', '', '', '', 'g38', '#808'),
@@ -335,6 +335,7 @@ class Au:
         self.process = psutil.Process(os.getpid())
         self.loop_count = 0
         self.dead_alarm = self.loop.set_alarm_in(.2, self.refresh)
+        self.loop.start()
         self.loop.run()
 
     def refresh(self, loop=None, data=None):
@@ -346,12 +347,10 @@ class Au:
         self.top_button_box = urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),self.button_grid,urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588")
         self.view = urwid.Filler(urwid.Pile([self.clock_box,self.top_button_box,urwid.Divider(" ",top=0,bottom=1),self.nav_grid]),'middle')
         self.loop.widget = self.view
-        if (self.loop_count % 300) == 0:
+        if (self.loop_count % 10) == 0:
             logging.info('still refreshing: ' + str(self.process.memory_info().rss))
             gc.collect()
-       #seems to work run as normal and check logging
-       # if self.loop_count == 3600:
-       #     os.execl('/usr/local/bin/reboot_button.sh','arg1')
+            #MAYBE use with resurrect: raise urwid.ExitMainLoop()
         self.dead_alarm = self.loop.set_alarm_in(1, self.refresh)
 
 
