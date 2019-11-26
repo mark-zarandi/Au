@@ -1,0 +1,27 @@
+2019-11-14 20:49:25,406 INFO     making buttons.
+2019-11-14 20:49:25,409 INFO     setting buttons
+2019-11-14 20:49:25,419 WARNING  starting up.
+2019-11-14 20:49:44,975 INFO     making buttons.
+2019-11-14 20:49:44,977 INFO     setting buttons
+2019-11-14 20:49:44,986 WARNING  starting up.
+2019-11-14 20:49:54,216 INFO     still refreshing: 39014400
+2019-11-14 20:50:04,280 INFO     still refreshing: 39546880
+2019-11-14 20:50:10,210 INFO     splitting
+2019-11-14 20:50:10,210 INFO     setting buttons
+2019-11-14 20:50:12,336 INFO     splitting
+2019-11-14 20:50:12,336 INFO     setting buttons
+2019-11-14 20:50:13,358 INFO     still refreshing: 41308160
+2019-11-14 20:50:16,744 INFO     getting recent
+2019-11-14 20:50:16,745 INFO     recent thread
+2019-11-14 20:50:16,745 INFO     setting buttons
+2019-11-14 20:50:16,767 DEBUG    Starting new HTTP connection (1): 0.0.0.0:5005
+2019-11-14 20:50:19,924 INFO     splitting
+2019-11-14 20:50:19,924 INFO     setting buttons
+2019-11-14 20:50:22,437 INFO     still refreshing: 43466752
+2019-11-14 20:50:32,516 INFO     still refreshing: 44097536
+2019-11-14 20:50:42,597 INFO     still refreshing: 44916736
+2019-11-14 20:50:52,679 INFO     still refreshing: 45821952
+2019-11-14 20:51:02,763 INFO     still refreshing: 46649344
+2019-11-14 20:51:12,859 INFO     still refreshing: 47484928
+2019-11-14 20:51:22,948 INFO     still refreshing: 48394240
+2019-11-14 20:51:33,025 INFO     still refreshing: 49287168

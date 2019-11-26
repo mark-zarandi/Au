@@ -6,6 +6,7 @@ from logging import handlers
 import os
 import urwid
 import time
+import datetime
 import sys
 import hjson
 import json
@@ -15,7 +16,7 @@ import requests
 from soco import SoCo
 import threading
 #from banner import BannerHandler
-from jishiHandler import jishiReader
+
 from soco import groups
 import gc
 #level = logging.CRITICAL
@@ -56,13 +57,13 @@ class BoxButton(urwid.WidgetWrap):
             lookie = lambda t: len(t)
             vfunc = numpy.vectorize(lookie)
 
-            top_border = _top_corner + (_top_char * (((max(vfunc(x)) * 5) + max(vfunc(x))-1) + padding_size)) + _top_corner
+            top_border = ("{0}{1}{2}").format(_top_corner,(_top_char * (((max(vfunc(x)) * 5) + max(vfunc(x))-1) + padding_size)),_top_corner)
             pad_space = len(top_border)
-            bottom_border = _bottom_corner + (_bottom_char * (((max(vfunc(x)) * 5) + max(vfunc(x))-1) + padding_size)) + _bottom_corner
+            bottom_border = ("{0}{1}{2}").format(_bottom_corner,(_bottom_char * (((max(vfunc(x)) * 5) + max(vfunc(x))-1) + padding_size)),_bottom_corner)
             cursor_position = len(top_border) + padding_size
         else: 
-            top_border = _top_corner + (_top_char * (15)) + _top_corner
-            bottom_border = _bottom_corner + (_bottom_char * 15) + _bottom_corner
+            top_border = ("{0}{1}{2}").format(_top_corner,(_top_char * (15)),_top_corner)
+            bottom_border = ("{0}{1}{2}").format(_bottom_corner,(_bottom_char * 15),_bottom_corner)
             pad_space = 19
         
         self.label = label
@@ -172,7 +173,7 @@ class BoxButton(urwid.WidgetWrap):
                 15:u"\u2582",
                 12:u"\u258C"
                 }
-                new_line = new_line + switcher.get(y)
+                new_line = ("{0}{1}").format(new_line,switcher.get(y))
             
             ansi_word.append(urwid.Text(new_line,align="center"))
         bottom_border = urwid.Text(bottom_border,align='center')
@@ -205,8 +206,7 @@ class Au:
 
     def setup_view(self):
         logging.info('making buttons.')
-        self.clock_txt = urwid.BigText(time.strftime('%H:%M:%S'), urwid.font.HalfBlock5x4Font())
-        self.clock_box = urwid.Padding(self.clock_txt, 'left', width='clip')
+
         
     
 
@@ -261,18 +261,22 @@ class Au:
             #add eval to compute strings.
             split_array.append(BoxButton('a',on_press=eval(user_data_x['method'][0]),user_data=user_data_x['pod_id']))
             split_array.append(BoxButton('b',on_press=eval(user_data_x['method'][1]),user_data=user_data_x['pod_id']))
-            self.clock_txt = urwid.BigText(time.strftime('%H:%M:%S'), urwid.font.HalfBlock5x4Font())
-            self.clock_box = urwid.Padding(self.clock_txt, 'left', width='clip')
+            
             self.buttons_list[int(right(link.label,1))] = urwid.Columns(split_array)
-            self.button_grid = urwid.GridFlow(self.buttons_list,50,0,2,'center')
-            self.top_button_box = urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),self.button_grid,urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588")
-            self.view = urwid.Filler(urwid.AttrMap(urwid.Pile([self.clock_box,self.top_button_box]),'body'),'middle')
-            self.dead_alarm = self.loop.set_alarm_in(.01,self.refresh)
+            
+            self.loop.widget = urwid.Filler(
+                urwid.Pile([
+                    urwid.Padding(urwid.BigText(time.strftime('%H:%M'), urwid.font.HalfBlock5x4Font()), 'left', width='clip'),
+                    urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=2,align='center'),urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588"),
+                    urwid.Divider(" ",top=0,bottom=1),
+                    urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')]),'middle')
+            self.dead_alarm = self.loop.set_alarm_in(.2, self.refresh)
+            #self.dead_alarm = self.loop.set_alarm_in(.01,self.refresh)
             
         def play_sonos(junk):
             logging.info('play button pressed')
             self.nav_array[int(right(junk.label,1))-1] = BoxButton('pause', 2, is_sprite=True,on_press=pause_sonos,user_data=None)
-            self.nav_grid = urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')
+            #self.nav_grid = urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')
             self.dead_alarm = self.loop.set_alarm_in(.01,self.refresh)
             #commented out for testing at hotel
             #play_room = (str(pod_dict['Rooms']['Master']))
@@ -282,7 +286,7 @@ class Au:
         def pause_sonos(junk):
             logging.info('pause pressed')
             self.nav_array[int(right(junk.label,1))-1] = BoxButton('play', 2, is_sprite=True,on_press=play_sonos,user_data=None)
-            self.nav_grid = urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')
+            #self.nav_grid = urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')
             self.dead_alarm = self.loop.set_alarm_in(.01,self.refresh)
             #commented out for hotel testing
             #play_room = (str(pod_dict['Rooms']['Master']))
@@ -301,14 +305,18 @@ class Au:
                 index_dict = index_dict + 1
                 #print('writing buttons')    
         set_buttons()
-        self.button_grid = urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=2,v_sep=0,align='center')
         self.nav_array = []
         self.nav_array.append(BoxButton('rr-30', 1, is_sprite=True,on_press=pause_sonos,user_data=None))
         self.nav_array.append(BoxButton('play', 2, is_sprite=True,on_press=play_sonos,user_data=None))
         self.nav_array.append(BoxButton('ff-30', 3, is_sprite=True,on_press=pause_sonos,user_data=None))
-        self.nav_grid = urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')
-        self.top_button_box = urwid.LineBox(self.button_grid,trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588")
-        self.view = urwid.Filler(urwid.AttrMap(urwid.Pile([self.clock_box,self.top_button_box,self.nav_grid]),'body'),'middle')
+
+        return urwid.Filler(
+                urwid.Pile([
+                    urwid.Padding(urwid.BigText(time.strftime('%H:%M'), urwid.font.HalfBlock5x4Font()), 'left', width='clip'),
+                    urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=2,align='center'),urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588"),
+                    urwid.Divider(" ",top=0,bottom=1),
+                    urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')]),'middle')
+
 
     
 
@@ -327,28 +335,34 @@ class Au:
         screen = urwid.raw_display.Screen()
         screen.register_palette(ansi_palette)
         screen.set_terminal_properties(256)
-        self.setup_view()
+        x_test = self.setup_view()
         logging.warning("starting up.")
         self.loop = urwid.MainLoop(
-            self.view,screen=screen,
+            x_test,screen=screen,
             unhandled_input=self.keypress)
         self.process = psutil.Process(os.getpid())
         self.loop_count = 0
+        self.force_refresh = False
+        self.minute_lock = datetime.datetime.now().minute
+        self.minute_count = 0
         self.dead_alarm = self.loop.set_alarm_in(.2, self.refresh)
-        self.loop.start()
+       
         self.loop.run()
+    
 
     def refresh(self, loop=None, data=None):
         self.loop_count = self.loop_count + 1
         self.loop.remove_alarm(self.dead_alarm)
-        self.button_grid = urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=2,align='center')
-        self.clock_txt = urwid.BigText(time.strftime('%H:%M:%S'), urwid.font.HalfBlock5x4Font())
-        self.clock_box = urwid.Padding(self.clock_txt, 'left', width='clip')
-        self.top_button_box = urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),self.button_grid,urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588")
-        self.view = urwid.Filler(urwid.Pile([self.clock_box,self.top_button_box,urwid.Divider(" ",top=0,bottom=1),self.nav_grid]),'middle')
-        self.loop.widget = self.view
-        if (self.loop_count % 10) == 0:
+        temp_minute = datetime.datetime.now().minute
+        if (temp_minute > self.minute_lock) or self.force_refresh:
+            self.minute_lock = temp_minute
+            self.loop.widget = urwid.Filler(urwid.Pile([urwid.Padding(urwid.BigText(time.strftime('%H:%M'), urwid.font.HalfBlock5x4Font()), 'left', width='clip'),urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=2,align='center'),urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588"),urwid.Divider(" ",top=0,bottom=1),urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')]),'middle')
+            self.minute_count += 1
+            if self.minute_count > 60:
+                raise urwid.ExitMainLoop()
             logging.info('still refreshing: ' + str(self.process.memory_info().rss))
+            #gc.collect()
+            self.loop_count=0
             gc.collect()
             #MAYBE use with resurrect: raise urwid.ExitMainLoop()
         self.dead_alarm = self.loop.set_alarm_in(1, self.refresh)
