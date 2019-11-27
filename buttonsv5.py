@@ -272,7 +272,7 @@ class Au:
             
             self.loop.widget = urwid.Filler(
                 urwid.Pile([
-                    urwid.Padding(urwid.BigText(time.strftime('%H:%M'), urwid.font.HalfBlock5x4Font()), 'left', width='clip'),
+                    urwid.Padding(urwid.BigText("{0}{1}{2}".format(datetime.datetime.now().hour,":",datetime.datetime.now().minute), urwid.font.HalfBlock5x4Font()), 'left', width='clip'),
                     urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=2,align='center'),urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588"),
                     urwid.Divider(" ",top=0,bottom=1),
                     urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')]),'middle')
@@ -359,9 +359,14 @@ class Au:
 
         self.loop.remove_alarm(self.dead_alarm)
         temp_minute = datetime.datetime.now().minute
-        if (temp_minute > self.minute_lock):
+        if (temp_minute != self.minute_lock):
             self.minute_lock = temp_minute
-            self.loop.widget = urwid.Filler(urwid.Pile([urwid.Padding(urwid.BigText(time.strftime('%H:%M'), urwid.font.HalfBlock5x4Font()), 'left', width='clip'),urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=2,align='center'),urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588"),urwid.Divider(" ",top=0,bottom=1),urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')]),'middle')
+            self.loop.widget = urwid.Filler(
+                urwid.Pile([
+                    urwid.Padding(urwid.BigText("{0}{1}{2}".format(datetime.datetime.now().hour,":",datetime.datetime.now().minute), urwid.font.HalfBlock5x4Font()), 'left', width='clip'),
+                    urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=2,align='center'),urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588"),
+                    urwid.Divider(" ",top=0,bottom=1),
+                    urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')]),'middle')
             self.minute_count += 1
             if self.minute_count > 60:
                 raise urwid.ExitMainLoop()
