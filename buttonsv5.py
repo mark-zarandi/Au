@@ -168,10 +168,16 @@ class BoxButton(urwid.WidgetWrap):
                 4:u"\u2590",
                 5:u"\u2595",
                 6:u"\u259B",
+                7:u"\u2594",#upper 1/8
+                8:u"\u259D",#quad right
+                9:u"\u2598",
                 11:u"\u2589",
                 10:u"\u258F",
                 15:u"\u2582",
-                12:u"\u258C"
+                12:u"\u258C",
+                13:u"\u259E", #diag right
+                14:u"\u259A", #diag left
+                20:u"\u2599" #quad upleft
                 }
                 new_line = ("{0}{1}").format(new_line,switcher.get(y))
             
@@ -341,8 +347,7 @@ class Au:
             x_test,screen=screen,
             unhandled_input=self.keypress)
         self.process = psutil.Process(os.getpid())
-        self.loop_count = 0
-        self.force_refresh = False
+
         self.minute_lock = datetime.datetime.now().minute
         self.minute_count = 0
         self.dead_alarm = self.loop.set_alarm_in(.2, self.refresh)
@@ -351,18 +356,17 @@ class Au:
     
 
     def refresh(self, loop=None, data=None):
-        self.loop_count = self.loop_count + 1
+
         self.loop.remove_alarm(self.dead_alarm)
         temp_minute = datetime.datetime.now().minute
-        if (temp_minute > self.minute_lock) or self.force_refresh:
+        if (temp_minute > self.minute_lock):
             self.minute_lock = temp_minute
             self.loop.widget = urwid.Filler(urwid.Pile([urwid.Padding(urwid.BigText(time.strftime('%H:%M'), urwid.font.HalfBlock5x4Font()), 'left', width='clip'),urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=2,align='center'),urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588"),urwid.Divider(" ",top=0,bottom=1),urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')]),'middle')
             self.minute_count += 1
             if self.minute_count > 60:
                 raise urwid.ExitMainLoop()
-            logging.info('still refreshing: ' + str(self.process.memory_info().rss))
+            logging.info("{0}{1}{2}{3}".format('still refreshing: ',str(self.process.memory_info().rss)," min:",str(self.minute_count)))
             #gc.collect()
-            self.loop_count=0
             gc.collect()
             #MAYBE use with resurrect: raise urwid.ExitMainLoop()
         self.dead_alarm = self.loop.set_alarm_in(1, self.refresh)
