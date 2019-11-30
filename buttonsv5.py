@@ -242,6 +242,7 @@ class Au:
                 t.start()
 
                 set_buttons()
+                self.force_refresh = True
 
             def get_recent(link, user_data):
                 logging.info('getting recent')
@@ -257,18 +258,21 @@ class Au:
                 
                     sonos.play_uri(data['location'])
                     sonos.play()
+                    
                 #parallel threading
                 t = threading.Thread(name="sonos_play_thread",target=play_it_rec)
                 t.start()
                 set_buttons()
+                self.force_refresh = True
                 
             set_buttons()
             split_array = []
             #add eval to compute strings.
-            split_array.append(BoxButton('a',on_press=eval(user_data_x['method'][0]),user_data=user_data_x['pod_id']))
-            split_array.append(BoxButton('b',on_press=eval(user_data_x['method'][1]),user_data=user_data_x['pod_id']))
+            split_array.append(BoxButton('random',on_press=eval(user_data_x['method'][0]),user_data=user_data_x['pod_id']))
+            split_array.append(urwid.Divider(" ",top=0,bottom=1))
+            split_array.append(BoxButton('recent',on_press=eval(user_data_x['method'][1]),user_data=user_data_x['pod_id']))
             
-            self.buttons_list[int(right(link.label,1))] = urwid.Columns(split_array)
+            self.buttons_list[int(right(link.label,1))] = urwid.Pile(split_array)
             
             self.loop.widget = urwid.Filler(
                 urwid.Pile([
@@ -351,7 +355,7 @@ class Au:
         self.minute_lock = datetime.datetime.now().minute
         self.minute_count = 0
         self.dead_alarm = self.loop.set_alarm_in(.2, self.refresh)
-       
+        self.force_refresh = False
         self.loop.run()
     
 
@@ -359,7 +363,8 @@ class Au:
 
         self.loop.remove_alarm(self.dead_alarm)
         temp_minute = datetime.datetime.now().minute
-        if (temp_minute != self.minute_lock):
+        if (temp_minute != self.minute_lock) or self.force_refresh:
+            self.force_refresh = False
             self.minute_lock = temp_minute
             self.loop.widget = urwid.Filler(
                 urwid.Pile([
