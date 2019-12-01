@@ -11,7 +11,7 @@ import sys
 import hjson
 import json
 import numpy
-from ansi_alphabet import the_alphabet, ansi_sprites
+from resources import the_alphabet, ansi_sprites
 import requests
 from soco import SoCo
 import threading
@@ -142,7 +142,8 @@ class BoxButton(urwid.WidgetWrap):
 
         new_line = ''
         top_border = urwid.AttrMap(urwid.Text(top_border,align='center'),'bg')
-
+        bottom_border = urwid.Text(bottom_border,align='center')
+        left_border = urwid.AttrMap(urwid.Text(u'\u2588'+u'\n'+u'\u2588'+u'\n'+u'\u2588'+u'\n'+u'\u2588'+u'\n'+u'\u2588'),'outside')
         for x in word_array:
             new_line = ""
 
@@ -180,10 +181,11 @@ class BoxButton(urwid.WidgetWrap):
                 20:u"\u2599" #quad upleft
                 }
                 new_line = ("{0}{1}").format(new_line,switcher.get(y))
-            
+            #for blink, put attrmap here.
             ansi_word.append(urwid.Text(new_line,align="center"))
-        bottom_border = urwid.Text(bottom_border,align='center')
-        left_border = urwid.AttrMap(urwid.Text(u'\u2588'+u'\n'+u'\u2588'+u'\n'+u'\u2588'+u'\n'+u'\u2588'+u'\n'+u'\u2588'),'outside')
+
+        
+        
         middle_part = urwid.Padding(urwid.Pile((top_border,urwid.Columns(((1,left_border),urwid.AttrMap(urwid.Pile(ansi_word),'bg'),(1,left_border))),bottom_border)),align='center',width=pad_space)
 
         self.widget = middle_part
@@ -219,7 +221,9 @@ class Au:
         def split(link,user_data_x):
             logging.info('splitting')
 
-            
+            def blink(link,user_data = None):
+                return None
+
             def get_random(link, user_data=None):
                 
                 logging.info('getting random.')
@@ -251,12 +255,9 @@ class Au:
                     url = 'http://0.0.0.0:5005/preset/all_rooms/'
                     r = requests.get(url)
                     play_room = (str(pod_dict['Rooms']['Master']))
-                
-                    data = requests.get('http://0.0.0.0:5000/recent/' + str(user_data)).json()
-                    
                     sonos = SoCo(play_room)
-                
                     sonos.play_uri(data['location'])
+                    data = requests.get('http://0.0.0.0:5000/recent/' + str(user_data)).json()                    
                     sonos.play()
                     
                 #parallel threading
@@ -268,9 +269,9 @@ class Au:
             set_buttons()
             split_array = []
             #add eval to compute strings.
-            split_array.append(BoxButton('random',on_press=eval(user_data_x['method'][0]),user_data=user_data_x['pod_id']))
+            split_array.append(BoxButton('recent',on_press=eval(user_data_x['method'][0]),user_data=user_data_x['pod_id']))
             split_array.append(urwid.Divider(" ",top=0,bottom=1))
-            split_array.append(BoxButton('recent',on_press=eval(user_data_x['method'][1]),user_data=user_data_x['pod_id']))
+            split_array.append(BoxButton('random',on_press=eval(user_data_x['method'][1]),user_data=user_data_x['pod_id']))
             
             self.buttons_list[int(right(link.label,1))] = urwid.Pile(split_array)
             
@@ -289,9 +290,9 @@ class Au:
             #self.nav_grid = urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')
             self.dead_alarm = self.loop.set_alarm_in(.01,self.refresh)
             #commented out for testing at hotel
-            #play_room = (str(pod_dict['Rooms']['Master']))
-            #sonos = SoCo(play_room)
-            #sonos.group.coordinator.play()
+            play_room = (str(pod_dict['Rooms']['Master']))
+            sonos = SoCo(play_room)
+            sonos.group.coordinator.play()
 
         def pause_sonos(junk):
             logging.info('pause pressed')
@@ -299,9 +300,19 @@ class Au:
             #self.nav_grid = urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')
             self.dead_alarm = self.loop.set_alarm_in(.01,self.refresh)
             #commented out for hotel testing
-            #play_room = (str(pod_dict['Rooms']['Master']))
-            #sonos = SoCo(play_room)
-            #sonos.group.coordinator.pause()
+            play_room = (str(pod_dict['Rooms']['Master']))
+            sonos = SoCo(play_room)
+            sonos.group.coordinator.pause()
+
+        def back_track(junk):
+            #DEV NOTE: find a way to identify current track as podcast and switch to +30/-30 seconds.
+            url = 'http://0.0.0.0:5005/master/previous'
+            r = requests.get(url)
+
+        def forward_track(junk):
+            url = 'http://0.0.0.0:5005/master/next'
+            r = requests.get(url)
+
 
         def set_buttons():
             logging.info('setting buttons')
@@ -316,9 +327,9 @@ class Au:
                 #print('writing buttons')    
         set_buttons()
         self.nav_array = []
-        self.nav_array.append(BoxButton('rr-30', 1, is_sprite=True,on_press=pause_sonos,user_data=None))
+        self.nav_array.append(BoxButton('rr-30', 1, is_sprite=True,on_press=back_track,user_data=None))
         self.nav_array.append(BoxButton('play', 2, is_sprite=True,on_press=play_sonos,user_data=None))
-        self.nav_array.append(BoxButton('ff-30', 3, is_sprite=True,on_press=pause_sonos,user_data=None))
+        self.nav_array.append(BoxButton('ff-30', 3, is_sprite=True,on_press=forward_track,user_data=None))
 
         return urwid.Filler(
                 urwid.Pile([
@@ -340,7 +351,7 @@ class Au:
     ('streak', '', '', '', 'g50', '#60a'),
     ('inside', '', '', '', 'g38', '#808'),
     ('outside', '', '', '', 'g27', '#a06'),
-    ('bg', '', '', '', '#d06', 'g7')]
+    ('bg', '', '', '', '#d06', 'g15')]
         logging.basicConfig(level = level, format = format, handlers = handlers)
         screen = urwid.raw_display.Screen()
         screen.register_palette(ansi_palette)
@@ -355,7 +366,7 @@ class Au:
         self.minute_lock = datetime.datetime.now().minute
         self.minute_count = 0
         self.dead_alarm = self.loop.set_alarm_in(.2, self.refresh)
-        self.force_refresh = False
+        self.force_refresh = True
         self.loop.run()
     
 
@@ -368,7 +379,7 @@ class Au:
             self.minute_lock = temp_minute
             self.loop.widget = urwid.Filler(
                 urwid.Pile([
-                    urwid.Padding(urwid.BigText("{0}{1}{2}".format(datetime.datetime.now().hour,":",datetime.datetime.now().minute), urwid.font.HalfBlock5x4Font()), 'left', width='clip'),
+                    urwid.Columns([urwid.Padding(urwid.BigText("{0}{1}{2}".format(datetime.datetime.now().hour,":",datetime.datetime.now().minute), urwid.font.HalfBlock5x4Font()), 'left', width='clip'),urwid.Padding(BoxButton('burger', 2, is_sprite=True,on_press=None,user_data=None),'right',width=('relative',19))]),
                     urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=2,align='center'),urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588"),
                     urwid.Divider(" ",top=0,bottom=1),
                     urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')]),'middle')

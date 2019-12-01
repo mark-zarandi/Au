@@ -1,32 +1,119 @@
-2019-11-28 22:21:17,533 INFO     making buttons.
-2019-11-28 22:21:17,534 INFO     setting buttons
-2019-11-28 22:21:17,547 WARNING  starting up.
-2019-11-28 22:21:22,967 INFO     splitting
-2019-11-28 22:21:22,967 INFO     setting buttons
-2019-11-29 12:23:31,557 INFO     making buttons.
-2019-11-29 12:23:31,558 INFO     setting buttons
-2019-11-29 12:23:31,572 WARNING  starting up.
-2019-11-29 12:23:35,474 INFO     splitting
-2019-11-29 12:23:35,474 INFO     setting buttons
-2019-11-29 12:23:47,333 INFO     splitting
-2019-11-29 12:23:47,333 INFO     setting buttons
-2019-11-29 12:24:00,866 INFO     still refreshing: 40218624 min:1
-2019-11-29 12:24:45,177 INFO     making buttons.
-2019-11-29 12:24:45,177 INFO     setting buttons
-2019-11-29 12:24:45,188 WARNING  starting up.
-2019-11-29 12:24:46,839 INFO     splitting
-2019-11-29 12:24:46,839 INFO     setting buttons
-2019-11-29 12:25:00,011 INFO     splitting
-2019-11-29 12:25:00,011 INFO     setting buttons
-2019-11-29 12:25:00,229 INFO     still refreshing: 40181760 min:1
-2019-11-29 12:25:01,910 INFO     splitting
-2019-11-29 12:25:01,910 INFO     setting buttons
-2019-11-29 12:25:06,693 INFO     making buttons.
-2019-11-29 12:25:06,693 INFO     setting buttons
-2019-11-29 12:25:06,705 WARNING  starting up.
-2019-11-29 12:25:08,193 INFO     splitting
-2019-11-29 12:25:08,193 INFO     setting buttons
-2019-11-29 12:25:13,051 INFO     splitting
-2019-11-29 12:25:13,051 INFO     setting buttons
-2019-11-29 12:25:23,384 INFO     splitting
-2019-11-29 12:25:23,384 INFO     setting buttons
+2019-11-30 14:45:49,165 INFO     making buttons.
+2019-11-30 14:45:49,165 INFO     setting buttons
+2019-11-30 14:45:49,177 WARNING  starting up.
+2019-11-30 14:46:00,425 INFO     still refreshing: 39116800 min:1
+2019-11-30 14:46:19,557 INFO     splitting
+2019-11-30 14:46:19,557 INFO     setting buttons
+2019-11-30 14:47:00,631 INFO     still refreshing: 40333312 min:2
+2019-11-30 14:48:00,818 INFO     still refreshing: 40337408 min:3
+2019-11-30 14:49:00,995 INFO     still refreshing: 40341504 min:4
+2019-11-30 14:50:00,210 INFO     still refreshing: 40341504 min:5
+2019-11-30 14:51:00,383 INFO     still refreshing: 40341504 min:6
+2019-11-30 14:51:45,603 INFO     making buttons.
+2019-11-30 14:51:45,603 INFO     setting buttons
+2019-11-30 14:52:35,416 INFO     making buttons.
+2019-11-30 14:52:35,416 INFO     setting buttons
+2019-11-30 14:52:35,427 WARNING  starting up.
+2019-11-30 14:52:43,747 INFO     making buttons.
+2019-11-30 14:52:43,747 INFO     setting buttons
+2019-11-30 14:52:43,758 WARNING  starting up.
+2019-11-30 14:53:48,355 INFO     making buttons.
+2019-11-30 14:53:48,355 INFO     setting buttons
+2019-11-30 14:53:48,367 WARNING  starting up.
+2019-11-30 17:23:33,984 INFO     making buttons.
+2019-11-30 17:23:33,985 INFO     setting buttons
+2019-11-30 17:23:33,998 WARNING  starting up.
+2019-11-30 17:24:00,267 INFO     still refreshing: 39038976 min:1
+2019-11-30 17:24:41,134 INFO     making buttons.
+2019-11-30 17:24:41,134 INFO     setting buttons
+2019-11-30 17:24:41,146 WARNING  starting up.
+2019-11-30 17:25:00,412 INFO     still refreshing: 39133184 min:1
+2019-11-30 17:25:14,004 INFO     making buttons.
+2019-11-30 17:25:14,004 INFO     setting buttons
+2019-11-30 17:25:14,016 WARNING  starting up.
+2019-11-30 17:25:31,981 INFO     making buttons.
+2019-11-30 17:25:31,981 INFO     setting buttons
+2019-11-30 17:25:31,994 WARNING  starting up.
+2019-11-30 17:25:49,355 INFO     making buttons.
+2019-11-30 17:25:49,355 INFO     setting buttons
+2019-11-30 17:25:49,367 WARNING  starting up.
+2019-11-30 17:25:49,576 INFO     still refreshing: 39194624 min:1
+2019-11-30 17:26:00,616 INFO     still refreshing: 39497728 min:2
+2019-11-30 17:26:17,277 INFO     making buttons.
+2019-11-30 17:26:17,277 INFO     setting buttons
+2019-11-30 17:26:17,288 WARNING  starting up.
+2019-11-30 17:26:17,495 INFO     still refreshing: 39084032 min:1
+2019-11-30 17:27:00,640 INFO     still refreshing: 39424000 min:2
+2019-11-30 17:27:05,936 INFO     making buttons.
+2019-11-30 17:27:05,937 INFO     setting buttons
+2019-11-30 17:27:05,948 WARNING  starting up.
+2019-11-30 17:27:06,158 INFO     still refreshing: 38985728 min:1
+2019-11-30 17:27:17,161 INFO     making buttons.
+2019-11-30 17:27:17,161 INFO     setting buttons
+2019-11-30 17:27:17,173 WARNING  starting up.
+2019-11-30 17:27:17,382 INFO     still refreshing: 39141376 min:1
+2019-11-30 17:28:00,530 INFO     still refreshing: 39473152 min:2
+2019-11-30 17:29:00,751 INFO     still refreshing: 39612416 min:3
+2019-11-30 17:29:14,964 INFO     making buttons.
+2019-11-30 17:29:14,964 INFO     setting buttons
+2019-11-30 17:29:14,976 WARNING  starting up.
+2019-11-30 17:29:15,183 INFO     still refreshing: 39129088 min:1
+2019-11-30 17:30:00,330 INFO     still refreshing: 39501824 min:2
+2019-11-30 17:30:13,844 INFO     making buttons.
+2019-11-30 17:30:13,844 INFO     setting buttons
+2019-11-30 17:30:13,856 WARNING  starting up.
+2019-11-30 17:30:14,061 INFO     still refreshing: 39038976 min:1
+2019-11-30 17:34:33,417 INFO     making buttons.
+2019-11-30 17:34:33,417 INFO     setting buttons
+2019-11-30 17:34:33,429 WARNING  starting up.
+2019-11-30 17:34:33,633 INFO     still refreshing: 39129088 min:1
+2019-11-30 17:34:40,006 INFO     making buttons.
+2019-11-30 17:34:40,006 INFO     setting buttons
+2019-11-30 17:34:40,018 WARNING  starting up.
+2019-11-30 17:34:40,222 INFO     still refreshing: 39002112 min:1
+2019-11-30 17:34:47,675 INFO     making buttons.
+2019-11-30 17:34:47,675 INFO     setting buttons
+2019-11-30 17:34:47,689 WARNING  starting up.
+2019-11-30 17:34:47,896 INFO     still refreshing: 39075840 min:1
+2019-11-30 17:35:00,965 INFO     still refreshing: 39395328 min:2
+2019-11-30 17:36:00,162 INFO     still refreshing: 39534592 min:3
+2019-11-30 17:37:00,482 INFO     making buttons.
+2019-11-30 17:37:00,482 INFO     setting buttons
+2019-11-30 17:37:00,494 WARNING  starting up.
+2019-11-30 17:37:00,703 INFO     still refreshing: 39112704 min:1
+2019-11-30 17:37:17,647 INFO     making buttons.
+2019-11-30 17:37:17,647 INFO     setting buttons
+2019-11-30 17:37:17,659 WARNING  starting up.
+2019-11-30 17:37:17,866 INFO     still refreshing: 39149568 min:1
+2019-11-30 17:37:30,045 INFO     making buttons.
+2019-11-30 17:37:30,045 INFO     setting buttons
+2019-11-30 17:37:30,057 WARNING  starting up.
+2019-11-30 17:37:30,265 INFO     still refreshing: 39141376 min:1
+2019-11-30 17:38:00,371 INFO     still refreshing: 39456768 min:2
+2019-11-30 17:40:56,882 INFO     making buttons.
+2019-11-30 17:40:56,882 INFO     setting buttons
+2019-11-30 17:40:56,894 WARNING  starting up.
+2019-11-30 17:40:57,103 INFO     still refreshing: 39059456 min:1
+2019-11-30 17:41:00,124 INFO     still refreshing: 39370752 min:2
+2019-11-30 17:41:21,986 INFO     making buttons.
+2019-11-30 17:41:21,986 INFO     setting buttons
+2019-11-30 17:41:21,998 WARNING  starting up.
+2019-11-30 17:41:22,204 INFO     still refreshing: 39047168 min:1
+2019-11-30 23:57:08,275 INFO     making buttons.
+2019-11-30 23:57:08,275 INFO     setting buttons
+2019-11-30 23:57:08,287 WARNING  starting up.
+2019-11-30 23:57:08,494 INFO     still refreshing: 38952960 min:1
+2019-12-01 00:15:45,889 INFO     making buttons.
+2019-12-01 00:15:45,889 INFO     setting buttons
+2019-12-01 00:15:45,902 WARNING  starting up.
+2019-12-01 00:15:46,111 INFO     still refreshing: 39055360 min:1
+2019-12-01 00:16:00,169 INFO     still refreshing: 39354368 min:2
+2019-12-01 00:21:37,921 INFO     making buttons.
+2019-12-01 00:21:37,921 INFO     setting buttons
+2019-12-01 00:21:37,933 WARNING  starting up.
+2019-12-01 00:21:38,143 INFO     still refreshing: 38932480 min:1
+2019-12-01 00:22:00,215 INFO     still refreshing: 39292928 min:2
+2019-12-01 00:22:38,812 INFO     making buttons.
+2019-12-01 00:22:38,812 INFO     setting buttons
+2019-12-01 00:22:38,824 WARNING  starting up.
+2019-12-01 00:22:39,034 INFO     still refreshing: 39079936 min:1
