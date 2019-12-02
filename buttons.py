@@ -256,8 +256,9 @@ class Au:
                     r = requests.get(url)
                     play_room = (str(pod_dict['Rooms']['Master']))
                     sonos = SoCo(play_room)
+                                        data = requests.get('http://0.0.0.0:5000/recent/' + str(user_data)).json() 
                     sonos.play_uri(data['location'])
-                    data = requests.get('http://0.0.0.0:5000/recent/' + str(user_data)).json()                    
+                   
                     sonos.play()
                     
                 #parallel threading

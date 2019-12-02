@@ -34,13 +34,13 @@ Pods:{
 		}
 	Sawbones:
 		{
-			label: Saw bones
+			label: trap nation
 		  	method: 
 		  	[
 		  	get_recent
 		  	get_random
 		  	]
-			pod_id:1
+			pod_id:7
 		}
 	The_Daily:
 		{
