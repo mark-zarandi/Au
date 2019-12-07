@@ -287,6 +287,7 @@ class Au:
             
         def play_sonos(junk):
             logging.info('play button pressed')
+            self.force_refresh = True
             self.nav_array[int(right(junk.label,1))-1] = BoxButton('pause', 2, is_sprite=True,on_press=pause_sonos,user_data=None)
             #self.nav_grid = urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')
             self.dead_alarm = self.loop.set_alarm_in(.01,self.refresh)
@@ -295,8 +296,10 @@ class Au:
             sonos = SoCo(play_room)
             sonos.group.coordinator.play()
 
+
         def pause_sonos(junk):
             logging.info('pause pressed')
+            self.force_refresh = True
             self.nav_array[int(right(junk.label,1))-1] = BoxButton('play', 2, is_sprite=True,on_press=play_sonos,user_data=None)
             #self.nav_grid = urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')
             self.dead_alarm = self.loop.set_alarm_in(.01,self.refresh)
