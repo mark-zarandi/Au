@@ -330,10 +330,16 @@ class Au:
                 index_dict = index_dict + 1
                 #print('writing buttons')    
         set_buttons()
+
         self.nav_array = []
         self.nav_array.append(BoxButton('rr-30', 1, is_sprite=True,on_press=back_track,user_data=None))
         self.nav_array.append(BoxButton('play', 2, is_sprite=True,on_press=play_sonos,user_data=None))
         self.nav_array.append(BoxButton('ff-30', 3, is_sprite=True,on_press=forward_track,user_data=None))
+
+        self.menu_array = []
+        self.menu_array.append(BoxButton('rr-30', 1, is_sprite=True,on_press=back_track,user_data=None))
+        self.menu_array.append(BoxButton('play', 2, is_sprite=True,on_press=play_sonos,user_data=None))
+        self.menu_array.append(BoxButton('ff-30', 3, is_sprite=True,on_press=forward_track,user_data=None))
 
         return urwid.Filler(
                 urwid.Pile([
@@ -366,7 +372,7 @@ class Au:
             x_test,screen=screen,
             unhandled_input=self.keypress)
         self.process = psutil.Process(os.getpid())
-
+        self.menu_show = False
         self.minute_lock = datetime.datetime.now().minute
         self.minute_count = 0
         self.dead_alarm = self.loop.set_alarm_in(.2, self.refresh)
@@ -381,12 +387,22 @@ class Au:
         if (temp_minute != self.minute_lock) or self.force_refresh:
             self.force_refresh = False
             self.minute_lock = temp_minute
-            self.loop.widget = urwid.Filler(
+            base = urwid.Filler(
                 urwid.Pile([
                     urwid.Columns([urwid.Padding(urwid.BigText("{0}{1}{2}".format(datetime.datetime.now().hour,":",datetime.datetime.now().minute), urwid.font.HalfBlock5x4Font()), 'left', width='clip'),urwid.Padding(BoxButton('burger', 2, is_sprite=True,on_press=None,user_data=None),'right',width=('relative',19))]),
                     urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=2,align='center'),urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588"),
                     urwid.Divider(" ",top=0,bottom=1),
-                    urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')]),'middle')
+                    urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')]),'middle')          #,align='center',width=23,valign='middle',height=4)
+            if self.menu_show:
+                self.loop.widget = urwid.Overlay(
+                urwid.AttrMap(
+                urwid.Filler(urwid.Padding(
+                urwid.LineBox(
+                urwid.Pile(self.menu_array),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588"),
+                align="center",width='pack'),'middle',height='pack',top=0,bottom=0),'default'),
+                base,align='center',width=25,valign='middle',height=23)
+            else:
+                self.loop.widget = base
             self.minute_count += 1
             if self.minute_count > 60:
                 raise urwid.ExitMainLoop()

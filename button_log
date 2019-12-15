@@ -10655,3 +10655,409 @@
 2019-12-06 14:03:06,738 INFO     setting buttons
 2019-12-06 14:03:08,764 INFO     splitting
 2019-12-06 14:03:08,764 INFO     setting buttons
+2019-12-06 21:49:44,134 INFO     making buttons.
+2019-12-06 21:49:44,134 INFO     setting buttons
+2019-12-06 21:49:44,147 WARNING  starting up.
+2019-12-06 21:50:54,127 INFO     making buttons.
+2019-12-06 21:50:54,127 INFO     setting buttons
+2019-12-06 21:50:54,138 WARNING  starting up.
+2019-12-06 21:50:54,346 INFO     still refreshing: 38981632 min:1
+2019-12-06 21:51:00,382 INFO     still refreshing: 39317504 min:2
+2019-12-06 21:52:00,584 INFO     still refreshing: 39473152 min:3
+2019-12-06 21:52:16,066 INFO     making buttons.
+2019-12-06 21:52:16,066 INFO     setting buttons
+2019-12-06 21:52:16,078 WARNING  starting up.
+2019-12-06 21:53:41,974 INFO     making buttons.
+2019-12-06 21:53:41,974 INFO     setting buttons
+2019-12-06 21:53:41,986 WARNING  starting up.
+2019-12-06 21:53:42,194 INFO     still refreshing: 39022592 min:1
+2019-12-06 21:54:07,041 INFO     making buttons.
+2019-12-06 21:54:07,041 INFO     setting buttons
+2019-12-06 21:54:07,052 WARNING  starting up.
+2019-12-06 21:54:07,262 INFO     still refreshing: 39047168 min:1
+2019-12-06 21:55:00,430 INFO     still refreshing: 39514112 min:2
+2019-12-06 21:56:00,602 INFO     still refreshing: 39702528 min:3
+2019-12-06 21:56:40,332 INFO     making buttons.
+2019-12-06 21:56:40,332 INFO     setting buttons
+2019-12-06 21:56:40,344 WARNING  starting up.
+2019-12-06 21:56:40,552 INFO     still refreshing: 39034880 min:1
+2019-12-06 21:57:00,693 INFO     making buttons.
+2019-12-06 21:57:00,693 INFO     setting buttons
+2019-12-06 21:57:00,704 WARNING  starting up.
+2019-12-06 21:57:00,912 INFO     still refreshing: 39059456 min:1
+2019-12-06 21:57:30,434 INFO     making buttons.
+2019-12-06 21:57:30,434 INFO     setting buttons
+2019-12-06 21:57:30,446 WARNING  starting up.
+2019-12-06 21:57:30,658 INFO     still refreshing: 39112704 min:1
+2019-12-06 21:57:45,309 INFO     making buttons.
+2019-12-06 21:57:45,309 INFO     setting buttons
+2019-12-06 21:57:45,320 WARNING  starting up.
+2019-12-06 21:57:45,530 INFO     still refreshing: 39112704 min:1
+2019-12-06 21:57:55,871 INFO     making buttons.
+2019-12-06 21:57:55,871 INFO     setting buttons
+2019-12-06 21:57:55,883 WARNING  starting up.
+2019-12-06 21:57:56,090 INFO     still refreshing: 39198720 min:1
+2019-12-06 21:58:08,355 INFO     making buttons.
+2019-12-06 21:58:08,355 INFO     setting buttons
+2019-12-06 21:58:08,367 WARNING  starting up.
+2019-12-06 21:58:08,576 INFO     still refreshing: 39075840 min:1
+2019-12-06 21:58:41,759 INFO     making buttons.
+2019-12-06 21:58:41,759 INFO     setting buttons
+2019-12-06 21:58:41,771 WARNING  starting up.
+2019-12-06 21:58:41,983 INFO     still refreshing: 39051264 min:1
+2019-12-06 21:59:00,050 INFO     still refreshing: 39469056 min:2
+2019-12-06 21:59:38,160 INFO     making buttons.
+2019-12-06 21:59:38,160 INFO     setting buttons
+2019-12-06 21:59:38,171 WARNING  starting up.
+2019-12-06 21:59:38,378 INFO     still refreshing: 39051264 min:1
+2019-12-06 22:00:02,020 INFO     making buttons.
+2019-12-06 22:00:02,020 INFO     setting buttons
+2019-12-06 22:00:02,034 WARNING  starting up.
+2019-12-06 22:00:02,243 INFO     still refreshing: 39075840 min:1
+2019-12-06 22:01:00,416 INFO     still refreshing: 39510016 min:2
+2019-12-06 22:02:00,580 INFO     still refreshing: 39710720 min:3
+2019-12-06 22:03:00,756 INFO     still refreshing: 39833600 min:4
+2019-12-06 22:04:00,939 INFO     still refreshing: 39841792 min:5
+2019-12-06 22:05:00,091 INFO     still refreshing: 39874560 min:6
+2019-12-06 22:06:00,253 INFO     still refreshing: 39882752 min:7
+2019-12-06 22:07:00,438 INFO     still refreshing: 39899136 min:8
+2019-12-06 22:08:00,605 INFO     still refreshing: 39903232 min:9
+2019-12-06 22:09:00,769 INFO     still refreshing: 39903232 min:10
+2019-12-06 22:10:00,925 INFO     still refreshing: 39907328 min:11
+2019-12-06 22:11:00,085 INFO     still refreshing: 39944192 min:12
+2019-12-06 22:12:00,228 INFO     still refreshing: 39972864 min:13
+2019-12-06 22:13:00,368 INFO     still refreshing: 39972864 min:14
+2019-12-06 22:14:00,504 INFO     still refreshing: 39972864 min:15
+2019-12-06 22:15:00,668 INFO     still refreshing: 39989248 min:16
+2019-12-06 22:16:01,010 INFO     still refreshing: 39997440 min:17
+2019-12-06 22:17:00,355 INFO     still refreshing: 40005632 min:18
+2019-12-06 22:18:00,744 INFO     still refreshing: 40013824 min:19
+2019-12-06 22:19:00,090 INFO     still refreshing: 40017920 min:20
+2019-12-06 22:20:00,412 INFO     still refreshing: 40026112 min:21
+2019-12-06 22:21:00,839 INFO     still refreshing: 40042496 min:22
+2019-12-06 22:22:00,314 INFO     still refreshing: 40046592 min:23
+2019-12-06 22:23:00,722 INFO     still refreshing: 40046592 min:24
+2019-12-06 22:24:00,185 INFO     still refreshing: 40050688 min:25
+2019-12-06 22:25:00,596 INFO     still refreshing: 40058880 min:26
+2019-12-06 22:26:00,022 INFO     still refreshing: 40058880 min:27
+2019-12-06 22:27:00,479 INFO     still refreshing: 40075264 min:28
+2019-12-06 22:28:00,932 INFO     still refreshing: 40075264 min:29
+2019-12-06 22:29:00,354 INFO     still refreshing: 40079360 min:30
+2019-12-06 22:30:00,783 INFO     still refreshing: 40083456 min:31
+2019-12-06 22:31:00,259 INFO     still refreshing: 40091648 min:32
+2019-12-06 22:32:00,652 INFO     still refreshing: 40116224 min:33
+2019-12-06 22:33:00,074 INFO     still refreshing: 40116224 min:34
+2019-12-06 22:34:00,489 INFO     still refreshing: 40116224 min:35
+2019-12-06 22:35:00,903 INFO     still refreshing: 40120320 min:36
+2019-12-06 22:36:00,344 INFO     still refreshing: 40132608 min:37
+2019-12-06 22:37:00,827 INFO     still refreshing: 40140800 min:38
+2019-12-06 22:38:00,286 INFO     still refreshing: 40140800 min:39
+2019-12-06 22:39:00,540 INFO     still refreshing: 40144896 min:40
+2019-12-06 22:40:00,738 INFO     still refreshing: 40148992 min:41
+2019-12-06 22:41:00,943 INFO     still refreshing: 40161280 min:42
+2019-12-06 22:42:00,140 INFO     still refreshing: 40165376 min:43
+2019-12-06 22:43:00,344 INFO     still refreshing: 40185856 min:44
+2019-12-06 22:44:00,551 INFO     still refreshing: 40206336 min:45
+2019-12-06 22:45:00,770 INFO     still refreshing: 40210432 min:46
+2019-12-06 22:46:00,978 INFO     still refreshing: 40247296 min:47
+2019-12-06 22:47:00,192 INFO     still refreshing: 40247296 min:48
+2019-12-06 22:48:00,412 INFO     still refreshing: 40259584 min:49
+2019-12-06 22:49:00,617 INFO     still refreshing: 40263680 min:50
+2019-12-06 22:50:00,820 INFO     still refreshing: 40263680 min:51
+2019-12-06 22:51:00,014 INFO     still refreshing: 40271872 min:52
+2019-12-06 22:52:00,266 INFO     still refreshing: 40275968 min:53
+2019-12-06 22:53:00,742 INFO     still refreshing: 40292352 min:54
+2019-12-06 22:54:00,194 INFO     still refreshing: 40296448 min:55
+2019-12-06 22:55:00,630 INFO     still refreshing: 40304640 min:56
+2019-12-06 22:56:00,076 INFO     still refreshing: 40304640 min:57
+2019-12-06 22:57:00,561 INFO     still refreshing: 40321024 min:58
+2019-12-06 22:58:00,023 INFO     still refreshing: 40341504 min:59
+2019-12-06 22:59:00,490 INFO     still refreshing: 40357888 min:60
+2019-12-07 01:52:05,359 INFO     making buttons.
+2019-12-07 01:52:05,359 INFO     setting buttons
+2019-12-07 01:52:05,373 WARNING  starting up.
+2019-12-07 01:52:05,581 INFO     still refreshing: 39075840 min:1
+2019-12-07 01:52:10,253 INFO     splitting
+2019-12-07 01:52:10,253 INFO     setting buttons
+2019-12-07 01:53:00,748 INFO     still refreshing: 40169472 min:2
+2019-12-07 01:54:00,935 INFO     still refreshing: 40177664 min:3
+2019-12-07 01:55:00,108 INFO     still refreshing: 40177664 min:4
+2019-12-07 01:56:00,298 INFO     still refreshing: 40194048 min:5
+2019-12-07 01:57:00,477 INFO     still refreshing: 40198144 min:6
+2019-12-07 01:58:00,657 INFO     still refreshing: 40210432 min:7
+2019-12-07 01:59:00,831 INFO     still refreshing: 40251392 min:8
+2019-12-07 02:00:01,002 INFO     still refreshing: 40255488 min:9
+2019-12-07 02:01:00,182 INFO     still refreshing: 40255488 min:10
+2019-12-07 02:02:00,370 INFO     still refreshing: 40255488 min:11
+2019-12-07 02:03:00,565 INFO     still refreshing: 40263680 min:12
+2019-12-07 02:04:00,749 INFO     still refreshing: 40292352 min:13
+2019-12-07 02:05:00,945 INFO     still refreshing: 40292352 min:14
+2019-12-07 02:06:00,096 INFO     still refreshing: 40292352 min:15
+2019-12-07 02:07:00,263 INFO     still refreshing: 40329216 min:16
+2019-12-07 02:08:00,417 INFO     still refreshing: 40329216 min:17
+2019-12-07 02:09:00,588 INFO     still refreshing: 40329216 min:18
+2019-12-07 02:10:00,775 INFO     still refreshing: 40329216 min:19
+2019-12-07 02:11:00,958 INFO     still refreshing: 40329216 min:20
+2019-12-07 02:12:00,160 INFO     still refreshing: 40329216 min:21
+2019-12-07 02:13:00,336 INFO     still refreshing: 40329216 min:22
+2019-12-07 02:14:00,518 INFO     still refreshing: 40329216 min:23
+2019-12-07 02:15:00,698 INFO     still refreshing: 40329216 min:24
+2019-12-07 02:16:00,867 INFO     still refreshing: 40329216 min:25
+2019-12-07 02:17:00,026 INFO     still refreshing: 40333312 min:26
+2019-12-07 02:18:00,217 INFO     still refreshing: 40333312 min:27
+2019-12-07 02:19:00,464 INFO     still refreshing: 40333312 min:28
+2019-12-07 13:45:32,708 INFO     still refreshing: 4587520 min:29
+2019-12-07 13:46:00,556 INFO     still refreshing: 26652672 min:30
+2019-12-07 13:47:00,766 INFO     still refreshing: 26714112 min:31
+2019-12-07 13:48:00,936 INFO     still refreshing: 26726400 min:32
+2019-12-07 13:49:00,067 INFO     still refreshing: 26734592 min:33
+2019-12-07 13:50:00,240 INFO     still refreshing: 26759168 min:34
+2019-12-07 13:51:00,397 INFO     still refreshing: 26779648 min:35
+2019-12-07 13:52:00,540 INFO     still refreshing: 26800128 min:36
+2019-12-07 13:53:00,693 INFO     still refreshing: 26808320 min:37
+2019-12-07 13:54:00,823 INFO     still refreshing: 26808320 min:38
+2019-12-07 13:55:00,017 INFO     still refreshing: 26832896 min:39
+2019-12-07 13:56:00,206 INFO     still refreshing: 26886144 min:40
+2019-12-07 13:57:00,384 INFO     still refreshing: 26894336 min:41
+2019-12-07 13:58:00,579 INFO     still refreshing: 26910720 min:42
+2019-12-07 13:59:00,738 INFO     still refreshing: 26914816 min:43
+2019-12-07 14:00:00,897 INFO     still refreshing: 26931200 min:44
+2019-12-07 14:01:00,085 INFO     still refreshing: 26943488 min:45
+2019-12-07 14:02:00,277 INFO     still refreshing: 26947584 min:46
+2019-12-07 14:03:00,611 INFO     still refreshing: 26959872 min:47
+2019-12-07 14:04:00,940 INFO     still refreshing: 26984448 min:48
+2019-12-07 14:05:00,248 INFO     still refreshing: 26984448 min:49
+2019-12-07 14:06:00,553 INFO     still refreshing: 26992640 min:50
+2019-12-07 14:07:00,860 INFO     still refreshing: 27004928 min:51
+2019-12-07 14:08:00,202 INFO     still refreshing: 27017216 min:52
+2019-12-07 14:09:00,381 INFO     still refreshing: 27017216 min:53
+2019-12-07 14:10:00,550 INFO     still refreshing: 27025408 min:54
+2019-12-07 14:11:00,724 INFO     still refreshing: 27037696 min:55
+2019-12-07 14:12:00,911 INFO     still refreshing: 27062272 min:56
+2019-12-07 14:13:00,084 INFO     still refreshing: 27070464 min:57
+2019-12-07 14:14:00,294 INFO     still refreshing: 27070464 min:58
+2019-12-07 14:15:00,492 INFO     still refreshing: 27070464 min:59
+2019-12-07 14:16:00,678 INFO     still refreshing: 27078656 min:60
+2019-12-07 14:26:59,389 INFO     making buttons.
+2019-12-07 14:26:59,389 INFO     setting buttons
+2019-12-07 14:26:59,402 WARNING  starting up.
+2019-12-07 14:26:59,607 INFO     still refreshing: 38998016 min:1
+2019-12-07 14:27:00,623 INFO     still refreshing: 39071744 min:2
+2019-12-07 14:27:33,805 INFO     splitting
+2019-12-07 14:27:33,806 INFO     setting buttons
+2019-12-07 14:29:10,130 INFO     making buttons.
+2019-12-07 14:29:10,131 INFO     setting buttons
+2019-12-07 14:29:10,147 WARNING  starting up.
+2019-12-07 14:29:10,356 INFO     still refreshing: 39051264 min:1
+2019-12-07 14:30:53,920 INFO     making buttons.
+2019-12-07 14:30:53,920 INFO     setting buttons
+2019-12-07 14:30:53,934 WARNING  starting up.
+2019-12-07 14:30:54,141 INFO     still refreshing: 39067648 min:1
+2019-12-07 14:33:17,854 INFO     making buttons.
+2019-12-07 14:33:17,855 INFO     setting buttons
+2019-12-07 14:33:17,872 WARNING  starting up.
+2019-12-07 14:33:18,078 INFO     still refreshing: 39092224 min:1
+2019-12-07 14:34:19,274 INFO     making buttons.
+2019-12-07 14:34:19,274 INFO     setting buttons
+2019-12-07 14:34:19,288 WARNING  starting up.
+2019-12-07 14:34:19,495 INFO     still refreshing: 39141376 min:1
+2019-12-07 14:35:01,385 INFO     making buttons.
+2019-12-07 14:35:01,385 INFO     setting buttons
+2019-12-07 14:35:01,400 WARNING  starting up.
+2019-12-07 14:35:40,314 INFO     making buttons.
+2019-12-07 14:35:40,314 INFO     setting buttons
+2019-12-07 14:35:40,327 WARNING  starting up.
+2019-12-07 14:36:43,136 INFO     making buttons.
+2019-12-07 14:36:43,137 INFO     setting buttons
+2019-12-07 14:36:43,150 WARNING  starting up.
+2019-12-07 14:37:38,701 INFO     making buttons.
+2019-12-07 14:37:38,702 INFO     setting buttons
+2019-12-07 14:37:38,715 WARNING  starting up.
+2019-12-07 14:37:38,924 INFO     still refreshing: 39124992 min:1
+2019-12-07 14:38:20,490 INFO     making buttons.
+2019-12-07 14:38:20,492 INFO     setting buttons
+2019-12-07 14:38:20,505 WARNING  starting up.
+2019-12-07 14:38:31,658 INFO     making buttons.
+2019-12-07 14:38:31,658 INFO     setting buttons
+2019-12-07 14:38:31,671 WARNING  starting up.
+2019-12-07 14:38:31,878 INFO     still refreshing: 39116800 min:1
+2019-12-07 14:41:35,878 INFO     making buttons.
+2019-12-07 14:41:35,878 INFO     setting buttons
+2019-12-07 14:41:35,891 WARNING  starting up.
+2019-12-07 14:41:36,098 INFO     still refreshing: 39120896 min:1
+2019-12-07 14:42:00,184 INFO     still refreshing: 39735296 min:2
+2019-12-07 14:42:12,957 INFO     making buttons.
+2019-12-07 14:42:12,957 INFO     setting buttons
+2019-12-07 14:42:12,970 WARNING  starting up.
+2019-12-07 14:42:13,176 INFO     still refreshing: 39026688 min:1
+2019-12-07 14:42:29,273 INFO     making buttons.
+2019-12-07 14:42:29,273 INFO     setting buttons
+2019-12-07 14:42:29,286 WARNING  starting up.
+2019-12-07 14:42:29,495 INFO     still refreshing: 39063552 min:1
+2019-12-07 14:43:00,584 INFO     still refreshing: 39694336 min:2
+2019-12-07 14:43:53,720 INFO     making buttons.
+2019-12-07 14:43:53,720 INFO     setting buttons
+2019-12-07 14:43:53,732 WARNING  starting up.
+2019-12-07 14:43:53,938 INFO     still refreshing: 39084032 min:1
+2019-12-07 14:44:05,319 INFO     making buttons.
+2019-12-07 14:44:05,319 INFO     setting buttons
+2019-12-07 14:44:05,333 WARNING  starting up.
+2019-12-07 14:44:05,540 INFO     still refreshing: 39227392 min:1
+2019-12-07 14:44:37,702 INFO     making buttons.
+2019-12-07 14:44:37,702 INFO     setting buttons
+2019-12-07 14:44:37,714 WARNING  starting up.
+2019-12-07 14:44:37,924 INFO     still refreshing: 39124992 min:1
+2019-12-07 14:46:30,809 INFO     making buttons.
+2019-12-07 14:46:30,809 INFO     setting buttons
+2019-12-07 14:46:30,822 WARNING  starting up.
+2019-12-07 14:46:31,029 INFO     still refreshing: 39051264 min:1
+2019-12-07 14:48:30,244 INFO     making buttons.
+2019-12-07 14:48:30,244 INFO     setting buttons
+2019-12-07 14:48:30,257 WARNING  starting up.
+2019-12-07 14:48:30,464 INFO     still refreshing: 39010304 min:1
+2019-12-07 14:48:41,754 INFO     making buttons.
+2019-12-07 14:48:41,754 INFO     setting buttons
+2019-12-07 14:48:41,767 WARNING  starting up.
+2019-12-07 14:48:41,972 INFO     still refreshing: 39055360 min:1
+2019-12-07 14:49:00,019 INFO     still refreshing: 39739392 min:2
+2019-12-07 14:49:43,860 INFO     making buttons.
+2019-12-07 14:49:43,860 INFO     setting buttons
+2019-12-07 14:49:43,873 WARNING  starting up.
+2019-12-07 14:49:44,079 INFO     still refreshing: 39055360 min:1
+2019-12-07 14:50:00,119 INFO     play button pressed
+2019-12-07 14:50:00,120 DEBUG    Created SoCo instance for ip: 192.168.1.101
+2019-12-07 14:50:00,138 DEBUG    Starting new HTTP connection (1): 192.168.1.101:1400
+2019-12-07 14:50:00,157 DEBUG    http://192.168.1.101:1400 "GET /xml/ZoneGroupTopology1.xml HTTP/1.1" 200 8663
+2019-12-07 14:50:00,168 INFO     Sending GetZoneGroupState [] to 192.168.1.101
+2019-12-07 14:50:00,177 DEBUG    Sending {'Content-Type': 'text/xml; charset="utf-8"', 'SOAPACTION': 'urn:schemas-upnp-org:service:ZoneGroupTopology:1#GetZoneGroupState'}, <?xml version="1.0" ?>
+<s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <u:GetZoneGroupState xmlns:u="urn:schemas-upnp-org:service:ZoneGroupTopology:1"/>
+  </s:Body>
+</s:Envelope>
+
+2019-12-07 14:50:00,180 DEBUG    Starting new HTTP connection (1): 192.168.1.101:1400
+2019-12-07 14:50:00,192 DEBUG    http://192.168.1.101:1400 "POST /ZoneGroupTopology/Control HTTP/1.1" 200 5093
+2019-12-07 14:50:00,196 DEBUG    Received {'CONTENT-LENGTH': '5093', 'CONTENT-TYPE': 'text/xml; charset="utf-8"', 'EXT': '', 'Server': 'Linux UPnP/1.0 Sonos/53.3-71050 (ZP120)', 'Connection': 'close'}, <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><s:Body><u:GetZoneGroupStateResponse xmlns:u="urn:schemas-upnp-org:service:ZoneGroupTopology:1"><ZoneGroupState>&lt;ZoneGroupState&gt;&lt;ZoneGroups&gt;&lt;ZoneGroup Coordinator=&quot;RINCON_000E58D897B801400&quot; ID=&quot;RINCON_000E58D897B801400:4141410725&quot;&gt;&lt;ZoneGroupMember UUID=&quot;RINCON_000E58D897B801400&quot; Location=&quot;http://192.168.1.101:1400/xml/device_description.xml&quot; ZoneName=&quot;Master&quot; Icon=&quot;x-rincon-roomicon:masterbedroom&quot; Configuration=&quot;1&quot; SoftwareVersion=&quot;53.3-71050&quot; SWGen=&quot;1&quot; MinCompatibleVersion=&quot;52.0-00000&quot; LegacyCompatibleVersion=&quot;36.0-00000&quot; BootSeq=&quot;55&quot; TVConfigurationError=&quot;0&quot; HdmiCecAvailable=&quot;0&quot; WirelessMode=&quot;0&quot; WirelessLeafOnly=&quot;0&quot; HasConfiguredSSID=&quot;0&quot; ChannelFreq=&quot;2437&quot; BehindWifiExtender=&quot;0&quot; WifiEnabled=&quot;1&quot; Orientation=&quot;0&quot; RoomCalibrationState=&quot;4&quot; SecureRegState=&quot;3&quot; VoiceConfigState=&quot;0&quot; MicEnabled=&quot;0&quot; AirPlayEnabled=&quot;0&quot; IdleState=&quot;0&quot; MoreInfo=&quot;&quot;/&gt;&lt;ZoneGroupMember UUID=&quot;RINCON_000E58B9F99701400&quot; Location=&quot;http://192.168.1.116:1400/xml/device_description.xml&quot; ZoneName=&quot;Living&quot; Icon=&quot;x-rincon-roomicon:living&quot; Configuration=&quot;1&quot; SoftwareVersion=&quot;53.3-71050&quot; SWGen=&quot;1&quot; MinCompatibleVersion=&quot;52.0-00000&quot; LegacyCompatibleVersion=&quot;36.0-00000&quot; BootSeq=&quot;50&quot; TVConfigurationError=&quot;0&quot; HdmiCecAvailable=&quot;0&quot; WirelessMode=&quot;0&quot; WirelessLeafOnly=&quot;0&quot; HasConfiguredSSID=&quot;0&quot; ChannelFreq=&quot;2437&quot; BehindWifiExtender=&quot;0&quot; WifiEnabled=&quot;1&quot; Orientation=&quot;0&quot; RoomCalibrationState=&quot;4&quot; SecureRegState=&quot;3&quot; VoiceConfigState=&quot;0&quot; MicEnabled=&quot;0&quot; AirPlayEnabled=&quot;0&quot; IdleState=&quot;0&quot; MoreInfo=&quot;&quot;/&gt;&lt;ZoneGroupMember UUID=&quot;RINCON_B8E9378FC78401400&quot; Location=&quot;http://192.168.1.136:1400/xml/device_description.xml&quot; ZoneName=&quot;Lib&quot; Icon=&quot;x-rincon-roomicon:kitchen&quot; Configuration=&quot;1&quot; SoftwareVersion=&quot;53.3-71050&quot; SWGen=&quot;1&quot; MinCompatibleVersion=&quot;52.0-00000&quot; LegacyCompatibleVersion=&quot;36.0-00000&quot; BootSeq=&quot;71&quot; TVConfigurationError=&quot;0&quot; HdmiCecAvailable=&quot;0&quot; WirelessMode=&quot;0&quot; WirelessLeafOnly=&quot;0&quot; HasConfiguredSSID=&quot;0&quot; ChannelFreq=&quot;2437&quot; BehindWifiExtender=&quot;0&quot; WifiEnabled=&quot;1&quot; Orientation=&quot;0&quot; RoomCalibrationState=&quot;4&quot; SecureRegState=&quot;3&quot; VoiceConfigState=&quot;0&quot; MicEnabled=&quot;0&quot; AirPlayEnabled=&quot;0&quot; IdleState=&quot;0&quot; MoreInfo=&quot;&quot;/&gt;&lt;ZoneGroupMember UUID=&quot;RINCON_5CAAFD5C8CC801400&quot; Location=&quot;http://192.168.1.145:1400/xml/device_description.xml&quot; ZoneName=&quot;Kitch&quot; Icon=&quot;x-rincon-roomicon:kitchen&quot; Configuration=&quot;1&quot; SoftwareVersion=&quot;53.3-71050&quot; SWGen=&quot;1&quot; MinCompatibleVersion=&quot;52.0-00000&quot; LegacyCompatibleVersion=&quot;36.0-00000&quot; BootSeq=&quot;65&quot; TVConfigurationError=&quot;0&quot; HdmiCecAvailable=&quot;0&quot; WirelessMode=&quot;0&quot; WirelessLeafOnly=&quot;0&quot; HasConfiguredSSID=&quot;0&quot; ChannelFreq=&quot;2437&quot; BehindWifiExtender=&quot;0&quot; WifiEnabled=&quot;1&quot; Orientation=&quot;0&quot; RoomCalibrationState=&quot;4&quot; SecureRegState=&quot;3&quot; VoiceConfigState=&quot;0&quot; MicEnabled=&quot;0&quot; AirPlayEnabled=&quot;0&quot; IdleState=&quot;0&quot; MoreInfo=&quot;&quot;/&gt;&lt;/ZoneGroup&gt;&lt;ZoneGroup Coordinator=&quot;RINCON_000E581D06A001400&quot; ID=&quot;RINCON_000E581D06A001400:3334266519&quot;&gt;&lt;ZoneGroupMember UUID=&quot;RINCON_000E581D06A001400&quot; Location=&quot;http://192.168.1.133:1400/xml/device_description.xml&quot; ZoneName=&quot;BRIDGE&quot; Icon=&quot;x-rincon-roomicon:viper&quot; Configuration=&quot;1&quot; Invisible=&quot;1&quot; IsZoneBridge=&quot;1&quot; SoftwareVersion=&quot;53.3-71050&quot; SWGen=&quot;1&quot; MinCompatibleVersion=&quot;52.0-00000&quot; LegacyCompatibleVersion=&quot;36.0-00000&quot; BootSeq=&quot;63&quot; TVConfigurationError=&quot;0&quot; HdmiCecAvailable=&quot;0&quot; WirelessMode=&quot;0&quot; WirelessLeafOnly=&quot;0&quot; HasConfiguredSSID=&quot;0&quot; ChannelFreq=&quot;2437&quot; BehindWifiExtender=&quot;0&quot; WifiEnabled=&quot;1&quot; Orientation=&quot;-1&quot; RoomCalibrationState=&quot;0&quot; SecureRegState=&quot;3&quot; VoiceConfigState=&quot;0&quot; MicEnabled=&quot;0&quot; AirPlayEnabled=&quot;0&quot; IdleState=&quot;1&quot; MoreInfo=&quot;&quot;/&gt;&lt;/ZoneGroup&gt;&lt;/ZoneGroups&gt;&lt;/ZoneGroupState&gt;</ZoneGroupState></u:GetZoneGroupStateResponse></s:Body></s:Envelope>
+2019-12-07 14:50:00,197 INFO     Received status 200 from 192.168.1.101
+2019-12-07 14:50:00,197 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2019-12-07 14:50:00,198 DEBUG    Created SoCo instance for ip: 192.168.1.136
+2019-12-07 14:50:00,198 DEBUG    Created SoCo instance for ip: 192.168.1.145
+2019-12-07 14:50:00,198 DEBUG    Created SoCo instance for ip: 192.168.1.133
+2019-12-07 14:50:00,199 DEBUG    Cache hit
+2019-12-07 14:50:00,199 DEBUG    Dispatching method Play
+2019-12-07 14:50:00,199 INFO     Sending Play [('InstanceID', 0), ('Speed', 1)] to 192.168.1.101
+2019-12-07 14:50:00,199 DEBUG    Sending {'Content-Type': 'text/xml; charset="utf-8"', 'SOAPACTION': 'urn:schemas-upnp-org:service:AVTransport:1#Play'}, <?xml version="1.0" ?>
+<s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <u:Play xmlns:u="urn:schemas-upnp-org:service:AVTransport:1">
+      <InstanceID>0</InstanceID>
+      <Speed>1</Speed>
+    </u:Play>
+  </s:Body>
+</s:Envelope>
+
+2019-12-07 14:50:00,202 DEBUG    Starting new HTTP connection (1): 192.168.1.101:1400
+2019-12-07 14:50:00,226 DEBUG    http://192.168.1.101:1400 "POST /MediaRenderer/AVTransport/Control HTTP/1.1" 200 240
+2019-12-07 14:50:00,226 DEBUG    Received {'CONTENT-LENGTH': '240', 'CONTENT-TYPE': 'text/xml; charset="utf-8"', 'EXT': '', 'Server': 'Linux UPnP/1.0 Sonos/53.3-71050 (ZP120)', 'Connection': 'close'}, <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><s:Body><u:PlayResponse xmlns:u="urn:schemas-upnp-org:service:AVTransport:1"></u:PlayResponse></s:Body></s:Envelope>
+2019-12-07 14:50:00,227 INFO     Received status 200 from 192.168.1.101
+2019-12-07 14:50:00,230 INFO     still refreshing: 41205760 min:2
+2019-12-07 14:50:58,701 INFO     making buttons.
+2019-12-07 14:50:58,701 INFO     setting buttons
+2019-12-07 14:50:58,714 WARNING  starting up.
+2019-12-07 14:50:58,921 INFO     still refreshing: 39129088 min:1
+2019-12-07 14:51:00,939 INFO     still refreshing: 39776256 min:2
+2019-12-07 14:51:08,820 INFO     making buttons.
+2019-12-07 14:51:08,821 INFO     setting buttons
+2019-12-07 14:51:08,833 WARNING  starting up.
+2019-12-07 14:51:09,041 INFO     still refreshing: 39133184 min:1
+2019-12-07 14:52:00,197 INFO     still refreshing: 39837696 min:2
+2019-12-07 14:52:34,859 INFO     making buttons.
+2019-12-07 14:52:34,859 INFO     setting buttons
+2019-12-07 14:52:34,872 WARNING  starting up.
+2019-12-07 14:52:35,078 INFO     still refreshing: 39260160 min:1
+2019-12-07 14:53:00,144 INFO     still refreshing: 39886848 min:2
+2019-12-07 14:53:19,489 INFO     making buttons.
+2019-12-07 14:53:19,489 INFO     setting buttons
+2019-12-07 14:53:19,502 WARNING  starting up.
+2019-12-07 14:53:19,710 INFO     still refreshing: 39141376 min:1
+2019-12-07 14:54:00,808 INFO     still refreshing: 39796736 min:2
+2019-12-07 14:55:00,960 INFO     still refreshing: 40067072 min:3
+2019-12-07 14:55:07,234 INFO     making buttons.
+2019-12-07 14:55:07,234 INFO     setting buttons
+2019-12-07 14:55:07,246 WARNING  starting up.
+2019-12-07 14:55:07,453 INFO     still refreshing: 39141376 min:1
+2019-12-07 14:55:37,079 INFO     making buttons.
+2019-12-07 14:55:37,079 INFO     setting buttons
+2019-12-07 14:55:37,091 WARNING  starting up.
+2019-12-07 14:55:37,301 INFO     still refreshing: 38998016 min:1
+2019-12-07 14:55:54,180 INFO     making buttons.
+2019-12-07 14:55:54,180 INFO     setting buttons
+2019-12-07 14:55:54,193 WARNING  starting up.
+2019-12-07 14:55:54,399 INFO     still refreshing: 39124992 min:1
+2019-12-07 14:56:00,430 INFO     still refreshing: 39780352 min:2
+2019-12-07 14:57:00,579 INFO     still refreshing: 40071168 min:3
+2019-12-07 14:58:00,739 INFO     still refreshing: 40083456 min:4
+2019-12-07 14:59:00,954 INFO     still refreshing: 40108032 min:5
+2019-12-07 14:59:26,564 INFO     making buttons.
+2019-12-07 14:59:26,564 INFO     setting buttons
+2019-12-07 14:59:26,577 WARNING  starting up.
+2019-12-07 14:59:26,783 INFO     still refreshing: 39022592 min:1
+2019-12-07 14:59:42,787 INFO     making buttons.
+2019-12-07 14:59:42,787 INFO     setting buttons
+2019-12-07 14:59:42,799 WARNING  starting up.
+2019-12-07 14:59:43,007 INFO     still refreshing: 39075840 min:1
+2019-12-07 15:01:03,637 INFO     making buttons.
+2019-12-07 15:01:03,637 INFO     setting buttons
+2019-12-07 15:01:03,649 WARNING  starting up.
+2019-12-07 15:01:03,860 INFO     still refreshing: 39133184 min:1
+2019-12-07 15:01:20,119 INFO     making buttons.
+2019-12-07 15:01:20,119 INFO     setting buttons
+2019-12-07 15:01:20,132 WARNING  starting up.
+2019-12-07 15:01:20,341 INFO     still refreshing: 39030784 min:1
+2019-12-07 15:02:11,371 INFO     making buttons.
+2019-12-07 15:02:11,372 INFO     setting buttons
+2019-12-07 15:02:11,384 WARNING  starting up.
+2019-12-07 15:02:11,590 INFO     still refreshing: 39157760 min:1
+2019-12-07 15:02:31,053 INFO     making buttons.
+2019-12-07 15:02:31,053 INFO     setting buttons
+2019-12-07 15:02:31,066 WARNING  starting up.
+2019-12-07 15:02:31,275 INFO     still refreshing: 39124992 min:1
+2019-12-07 15:03:00,366 INFO     still refreshing: 39964672 min:2
+2019-12-07 15:04:00,594 INFO     still refreshing: 40263680 min:3
+2019-12-07 15:05:00,799 INFO     still refreshing: 40284160 min:4
+2019-12-07 15:06:01,002 INFO     still refreshing: 40292352 min:5
+2019-12-07 15:07:00,210 INFO     still refreshing: 40292352 min:6
+2019-12-07 15:08:00,408 INFO     still refreshing: 40300544 min:7
+2019-12-07 15:09:00,629 INFO     still refreshing: 40300544 min:8
+2019-12-07 15:10:00,842 INFO     still refreshing: 40304640 min:9
+2019-12-07 15:10:18,750 INFO     making buttons.
+2019-12-07 15:10:18,751 INFO     setting buttons
+2019-12-07 15:10:18,764 WARNING  starting up.
+2019-12-07 15:10:18,973 INFO     still refreshing: 39034880 min:1
+2019-12-07 15:10:41,007 INFO     making buttons.
+2019-12-07 15:10:41,007 INFO     setting buttons
+2019-12-07 15:10:41,019 WARNING  starting up.
+2019-12-07 15:10:41,226 INFO     still refreshing: 39059456 min:1
+2019-12-07 15:10:53,899 INFO     making buttons.
+2019-12-07 15:10:53,899 INFO     setting buttons
+2019-12-07 15:10:53,911 WARNING  starting up.
+2019-12-07 15:10:54,118 INFO     still refreshing: 39055360 min:1
+2019-12-07 15:11:00,156 INFO     still refreshing: 39710720 min:2
+2019-12-07 15:11:22,706 INFO     making buttons.
+2019-12-07 15:11:22,706 INFO     setting buttons
+2019-12-07 15:11:22,718 WARNING  starting up.
+2019-12-07 15:11:22,926 INFO     still refreshing: 39055360 min:1
+2019-12-07 15:11:37,070 INFO     making buttons.
+2019-12-07 15:11:37,070 INFO     setting buttons
+2019-12-07 15:11:37,082 WARNING  starting up.
+2019-12-07 15:11:37,291 INFO     still refreshing: 39100416 min:1
+2019-12-07 15:12:00,379 INFO     still refreshing: 39759872 min:2
+2019-12-07 15:13:55,994 INFO     making buttons.
+2019-12-07 15:13:55,994 INFO     setting buttons
+2019-12-07 15:13:56,006 WARNING  starting up.
+2019-12-07 15:13:56,216 INFO     still refreshing: 39157760 min:1
+2019-12-07 15:14:00,243 INFO     still refreshing: 39596032 min:2
+2019-12-07 15:15:00,453 INFO     still refreshing: 39673856 min:3
+2019-12-07 15:16:00,678 INFO     still refreshing: 39690240 min:4
+2019-12-07 15:17:00,903 INFO     still refreshing: 39718912 min:5
