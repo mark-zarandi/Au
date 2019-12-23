@@ -15,6 +15,9 @@ from resources import the_alphabet, ansi_sprites
 import requests
 from soco import SoCo
 import threading
+import socketio
+import asyncio
+import multiprocessing
 #from banner import BannerHandler
 
 from soco import groups
@@ -29,6 +32,7 @@ pod_dict = open("buttons.hjson","r").read()
 pod_dict = hjson.loads(pod_dict)
 themes_dict = open("themes.hjson","r").read()
 themes_dict = hjson.loads(themes_dict)
+
 
 def line_split(input_string):
     string = (input_string.lower().split())
@@ -206,7 +210,29 @@ class BoxButton(urwid.WidgetWrap):
         return self._hidden_btn.mouse_event(*args, **kw)
 
 class Au:
-    
+   
+
+
+
+    def start_up(self):
+        sio = socketio.Client()
+        @sio.event
+        def connect():
+            logging.warning("connection established")
+
+
+        @sio.on('message')
+        def on_message(data):
+            self.force_refresh = True
+            self.force_close = True
+            sio.disconnect()
+            sys.exit()
+            raise SystemExit
+            #raise urwid.ExitMainLoop()
+
+
+        sio.connect('ws://localhost:5000')
+        #sio.wait()
 
     def keypress(self, key):
         if key in ('q', 'Q'):
@@ -363,6 +389,12 @@ class Au:
     ('outside', '', '', '', 'g27', '#a06'),
     ('bg', '', '', '', '#d06', 'g15')]
         logging.basicConfig(level = level, format = format, handlers = handlers)
+
+      
+
+        self.tg = threading.Thread(name="sonos_play_thread",target=self.start_up)
+        self.tg.start()
+
         screen = urwid.raw_display.Screen()
         screen.register_palette(ansi_palette)
         screen.set_terminal_properties(256)
@@ -377,6 +409,7 @@ class Au:
         self.minute_count = 0
         self.dead_alarm = self.loop.set_alarm_in(.2, self.refresh)
         self.force_refresh = True
+        self.force_close = False
         self.loop.run()
     
 
@@ -384,7 +417,7 @@ class Au:
 
         self.loop.remove_alarm(self.dead_alarm)
         temp_minute = datetime.datetime.now().minute
-        if (temp_minute != self.minute_lock) or self.force_refresh:
+        if (temp_minute != self.minute_lock) or self.force_refresh or self.force_close:
             self.force_refresh = False
             self.minute_lock = temp_minute
             base = urwid.Filler(
@@ -404,7 +437,8 @@ class Au:
             else:
                 self.loop.widget = base
             self.minute_count += 1
-            if self.minute_count > 60:
+            if self.minute_count > 60 or self.force_close:
+                
                 raise urwid.ExitMainLoop()
             logging.info("{0}{1}{2}{3}".format('still refreshing: ',str(self.process.memory_info().rss)," min:",str(self.minute_count)))
             #gc.collect()
