@@ -214,7 +214,7 @@ class Au:
 
 
 
-    def start_up(self):
+    def start_up(self,loop=None, data=None):
         sio = socketio.Client()
         @sio.event
         def connect():
@@ -223,16 +223,16 @@ class Au:
 
         @sio.on('message')
         def on_message(data):
+            sio.disconnect()
             self.force_refresh = True
             self.force_close = True
-            sio.disconnect()
+            self.loop.set_alarm_in(.2, self.refresh)
             sys.exit()
-            raise SystemExit
-            #raise urwid.ExitMainLoop()
+            raise urwid.ExitMainLoop()
 
 
         sio.connect('ws://localhost:5000')
-        #sio.wait()
+        sio.wait()
 
     def keypress(self, key):
         if key in ('q', 'Q'):
@@ -392,7 +392,7 @@ class Au:
 
       
 
-        self.tg = threading.Thread(name="sonos_play_thread",target=self.start_up)
+        self.tg = threading.Thread(name="sonos_play_thread",target=self.start_up,daemon=True)
         self.tg.start()
 
         screen = urwid.raw_display.Screen()
@@ -440,6 +440,7 @@ class Au:
             if self.minute_count > 60 or self.force_close:
                 
                 raise urwid.ExitMainLoop()
+                #sys.exit()
             logging.info("{0}{1}{2}{3}".format('still refreshing: ',str(self.process.memory_info().rss)," min:",str(self.minute_count)))
             #gc.collect()
             gc.collect()
