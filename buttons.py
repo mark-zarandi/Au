@@ -241,9 +241,6 @@ class Au:
     def setup_view(self):
         logging.info('making buttons.')
 
-        
-    
-
         def split(link,user_data_x):
             logging.info('splitting')
 
@@ -392,8 +389,8 @@ class Au:
 
       
 
-        self.tg = threading.Thread(name="sonos_play_thread",target=self.start_up,daemon=True)
-        self.tg.start()
+        tg = threading.Thread(name="sonos_socket_thread",target=self.start_up,daemon=True)
+        tg.start()
 
         screen = urwid.raw_display.Screen()
         screen.register_palette(ansi_palette)

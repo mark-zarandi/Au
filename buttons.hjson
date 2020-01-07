@@ -1,7 +1,7 @@
 {Pods:{
-  My_Brother_My_Brother_And_Me:
+  The_Daily:
   {
-    label: My Brother
+    label: Savage Love
     method:
     [
       get_recent
