@@ -227,7 +227,7 @@ class Au:
             self.force_refresh = True
             self.force_close = True
             self.loop.set_alarm_in(.2, self.refresh)
-            sys.exit()
+
             raise urwid.ExitMainLoop()
 
 
