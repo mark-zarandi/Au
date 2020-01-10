@@ -409,6 +409,18 @@ class Au:
         self.force_close = False
         self.loop.run()
     
+    def get_out(self):
+        print("im out")
+        time.sleep(10)
+        self.force_refresh = True
+        self.force_close = True
+        raise urwid.ExitMainLoop()
+    
+    #socketio coroutine test, will this run?
+    def show_menu(self):
+        self.force_refresh = True
+        self.menu_show = True
+        self.dead_alarm = self.loop.set_alarm_in(.2, self.refresh)
 
     def refresh(self, loop=None, data=None):
 
@@ -437,7 +449,7 @@ class Au:
             if self.minute_count > 60 or self.force_close:
                 
                 raise urwid.ExitMainLoop()
-                #sys.exit()
+                sys.exit()
             logging.info("{0}{1}{2}{3}".format('still refreshing: ',str(self.process.memory_info().rss)," min:",str(self.minute_count)))
             #gc.collect()
             gc.collect()
