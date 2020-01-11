@@ -1,0 +1,8 @@
+numpy
+psutil
+urwid
+hjson
+socketio
+soco
+python-socketio[client]
+

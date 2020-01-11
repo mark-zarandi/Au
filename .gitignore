@@ -2,3 +2,5 @@
 /lib
 *.pyc
 button_log.*
+button_log*
+/virt-au/
