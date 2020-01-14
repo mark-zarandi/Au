@@ -141,8 +141,10 @@ class BoxButton(urwid.WidgetWrap):
 
         if is_sprite == False:
             word_array = label_construct(line_split(label))
+            bottom_date = urwid.Text("01/01/2019 12:00",align='center')
         else:
             word_array = ansi_sprites[label]
+            bottom_date = None
 
         new_line = ''
         top_border = urwid.AttrMap(urwid.Text(top_border,align='center'),'bg')
@@ -189,8 +191,10 @@ class BoxButton(urwid.WidgetWrap):
             ansi_word.append(urwid.Text(new_line,align="center"))
 
         
-        
-        middle_part = urwid.Padding(urwid.Pile((top_border,urwid.Columns(((1,left_border),urwid.AttrMap(urwid.Pile(ansi_word),'bg'),(1,left_border))),bottom_border)),align='center',width=pad_space)
+        if is_sprite == False:
+            middle_part = urwid.Padding(urwid.Pile((top_border,urwid.Columns(((1,left_border),urwid.AttrMap(urwid.Pile(ansi_word),'bg'),(1,left_border))),bottom_border,bottom_date)),align='center',width=pad_space)
+        else:
+            middle_part = urwid.Padding(urwid.Pile((top_border,urwid.Columns(((1,left_border),urwid.AttrMap(urwid.Pile(ansi_word),'bg'),(1,left_border))),bottom_border)),align='center',width=pad_space)
 
         self.widget = middle_part
         self._hidden_btn = urwid.Button('hidden %s' % label + str(place_int), on_press, user_data)
@@ -214,25 +218,25 @@ class Au:
 
 
 
-    def start_up(self,loop=None, data=None):
-        sio = socketio.Client()
-        @sio.event
-        def connect():
-            logging.warning("connection established")
+#    def start_up(self,loop=None, data=None):
+#        sio = socketio.Client()
+#        @sio.event
+#        def connect():
+#            logging.warning("connection established")
+#
+#
+#        @sio.on('message')
+#        def on_message(data):
+#            sio.disconnect()
+#            self.force_refresh = True
+#            self.force_close = True
+#            self.loop.set_alarm_in(.2, self.refresh)
+
+        #     raise urwid.ExitMainLoop()
 
 
-        @sio.on('message')
-        def on_message(data):
-            sio.disconnect()
-            self.force_refresh = True
-            self.force_close = True
-            self.loop.set_alarm_in(.2, self.refresh)
-
-            raise urwid.ExitMainLoop()
-
-
-        sio.connect('ws://localhost:5000')
-        sio.wait()
+        # sio.connect('ws://localhost:5000')
+        # sio.wait()
 
     def keypress(self, key):
         if key in ('q', 'Q'):
@@ -389,8 +393,8 @@ class Au:
 
       
 
-        tg = threading.Thread(name="sonos_socket_thread",target=self.start_up,daemon=True)
-        tg.start()
+        #tg = threading.Thread(name="sonos_socket_thread",target=self.start_up,daemon=True)
+        #tg.start()
 
         screen = urwid.raw_display.Screen()
         screen.register_palette(ansi_palette)
@@ -410,11 +414,10 @@ class Au:
         self.loop.run()
     
     def get_out(self):
-        print("im out")
-        time.sleep(10)
         self.force_refresh = True
         self.force_close = True
-        raise urwid.ExitMainLoop()
+        self.dead_alarm = self.loop.set_alarm_in(.2, self.refresh)
+
     
     #socketio coroutine test, will this run?
     def show_menu(self):

@@ -1,8 +1,90 @@
-2020-01-11 12:34:49,603 INFO     making buttons.
-2020-01-11 12:34:49,604 INFO     setting buttons
-2020-01-11 12:34:49,616 WARNING  starting up.
-2020-01-11 12:34:49,825 INFO     still refreshing: 40390656 min:1
-2020-01-11 12:35:14,627 INFO     making buttons.
-2020-01-11 12:35:14,628 INFO     setting buttons
-2020-01-11 12:35:14,639 WARNING  starting up.
-2020-01-11 12:35:14,845 INFO     still refreshing: 40321024 min:1
+2020-01-12 21:51:03,413 INFO     Attempting polling connection to http://localhost:5000/socket.io/?transport=polling&EIO=3
+2020-01-12 21:51:03,413 INFO     making buttons.
+2020-01-12 21:51:03,414 INFO     setting buttons
+2020-01-12 21:51:03,421 DEBUG    Starting new HTTP connection (1): localhost:5000
+2020-01-12 21:51:03,432 WARNING  starting up.
+2020-01-12 21:51:03,438 INFO     HTTP GET request to http://localhost:5000/socket.io/?transport=polling&EIO=3&t=1578883863.414312 failed with error HTTPConnectionPool(host='localhost', port=5000): Max retries exceeded with url: /socket.io/?transport=polling&EIO=3&t=1578883863.414312 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x113210198>: Failed to establish a new connection: [Errno 61] Connection refused')).
+2020-01-12 21:51:03,638 INFO     still refreshing: 49369088 min:1
+2020-01-12 21:52:45,871 INFO     making buttons.
+2020-01-12 21:52:45,871 INFO     setting buttons
+2020-01-12 21:52:45,880 WARNING  starting up.
+2020-01-12 21:52:46,086 INFO     still refreshing: 48451584 min:1
+2020-01-12 21:53:06,698 INFO     making buttons.
+2020-01-12 21:53:06,698 INFO     setting buttons
+2020-01-12 21:53:06,706 WARNING  starting up.
+2020-01-12 21:53:06,917 INFO     still refreshing: 48439296 min:1
+2020-01-12 21:54:00,110 INFO     still refreshing: 49053696 min:2
+2020-01-12 21:54:04,024 INFO     making buttons.
+2020-01-12 21:54:04,024 INFO     setting buttons
+2020-01-12 21:54:04,033 WARNING  starting up.
+2020-01-12 21:54:04,243 INFO     still refreshing: 48390144 min:1
+2020-01-12 21:55:30,186 INFO     making buttons.
+2020-01-12 21:55:30,186 INFO     setting buttons
+2020-01-12 21:55:30,194 WARNING  starting up.
+2020-01-12 21:55:30,402 INFO     still refreshing: 48246784 min:1
+2020-01-12 21:56:14,642 INFO     making buttons.
+2020-01-12 21:56:14,642 INFO     setting buttons
+2020-01-12 21:56:14,650 WARNING  starting up.
+2020-01-12 21:56:14,857 INFO     still refreshing: 48377856 min:1
+2020-01-12 21:56:41,830 INFO     making buttons.
+2020-01-12 21:56:41,831 INFO     setting buttons
+2020-01-12 21:56:41,840 WARNING  starting up.
+2020-01-12 21:56:42,048 INFO     still refreshing: 48263168 min:1
+2020-01-12 21:57:00,127 INFO     still refreshing: 48549888 min:2
+2020-01-12 21:57:02,752 INFO     making buttons.
+2020-01-12 21:57:02,752 INFO     setting buttons
+2020-01-12 21:57:02,761 WARNING  starting up.
+2020-01-12 21:57:02,968 INFO     still refreshing: 48357376 min:1
+2020-01-12 21:58:54,835 INFO     making buttons.
+2020-01-12 21:58:54,835 INFO     setting buttons
+2020-01-12 21:58:54,843 WARNING  starting up.
+2020-01-12 21:58:55,053 INFO     still refreshing: 48332800 min:1
+2020-01-12 21:59:00,084 INFO     still refreshing: 48668672 min:2
+2020-01-12 21:59:09,630 INFO     making buttons.
+2020-01-12 21:59:09,630 INFO     setting buttons
+2020-01-12 21:59:09,639 WARNING  starting up.
+2020-01-12 21:59:09,846 INFO     still refreshing: 48340992 min:1
+2020-01-12 21:59:37,583 INFO     making buttons.
+2020-01-12 21:59:37,583 INFO     setting buttons
+2020-01-12 21:59:37,592 WARNING  starting up.
+2020-01-12 21:59:37,800 INFO     still refreshing: 48349184 min:1
+2020-01-12 22:00:00,893 INFO     still refreshing: 48685056 min:2
+2020-01-12 22:00:11,904 INFO     making buttons.
+2020-01-12 22:00:11,904 INFO     setting buttons
+2020-01-12 22:00:11,913 WARNING  starting up.
+2020-01-12 22:00:12,123 INFO     still refreshing: 48353280 min:1
+2020-01-12 22:01:00,303 INFO     still refreshing: 48635904 min:2
+2020-01-12 22:01:45,099 INFO     making buttons.
+2020-01-12 22:01:45,099 INFO     setting buttons
+2020-01-12 22:01:45,107 WARNING  starting up.
+2020-01-12 22:01:45,317 INFO     still refreshing: 48476160 min:1
+2020-01-12 22:01:56,774 INFO     making buttons.
+2020-01-12 22:01:56,774 INFO     setting buttons
+2020-01-12 22:01:56,783 WARNING  starting up.
+2020-01-12 22:01:56,994 INFO     still refreshing: 48308224 min:1
+2020-01-12 22:02:00,025 INFO     still refreshing: 48619520 min:2
+2020-01-12 22:04:59,384 INFO     making buttons.
+2020-01-12 22:04:59,384 INFO     setting buttons
+2020-01-12 22:04:59,392 WARNING  starting up.
+2020-01-12 22:04:59,600 INFO     still refreshing: 48287744 min:1
+2020-01-12 22:05:00,623 INFO     still refreshing: 48623616 min:2
+2020-01-12 22:09:41,770 INFO     making buttons.
+2020-01-12 22:09:41,770 INFO     setting buttons
+2020-01-12 22:09:41,778 WARNING  starting up.
+2020-01-12 22:09:41,983 INFO     still refreshing: 49111040 min:1
+2020-01-12 22:10:00,066 INFO     still refreshing: 49451008 min:2
+2020-01-12 22:11:00,245 INFO     still refreshing: 49582080 min:3
+2020-01-12 22:18:29,132 INFO     making buttons.
+2020-01-12 22:18:29,132 INFO     setting buttons
+2020-01-12 22:18:29,140 WARNING  starting up.
+2020-01-12 22:18:29,350 INFO     still refreshing: 48365568 min:1
+2020-01-12 22:18:47,005 INFO     making buttons.
+2020-01-12 22:18:47,006 INFO     setting buttons
+2020-01-12 22:18:47,014 WARNING  starting up.
+2020-01-12 22:18:47,219 INFO     still refreshing: 48435200 min:1
+2020-01-12 22:19:00,280 INFO     still refreshing: 48795648 min:2
+2020-01-12 22:19:53,113 INFO     making buttons.
+2020-01-12 22:19:53,114 INFO     setting buttons
+2020-01-12 22:19:53,122 WARNING  starting up.
+2020-01-12 22:19:53,329 INFO     still refreshing: 48361472 min:1
+2020-01-12 22:20:00,363 INFO     still refreshing: 48730112 min:2
