@@ -16,10 +16,6 @@ import requests
 from soco import SoCo
 import threading
 import socketio
-import asyncio
-import multiprocessing
-#from banner import BannerHandler
-
 from soco import groups
 import gc
 #level = logging.CRITICAL
@@ -417,6 +413,7 @@ class Au:
         self.force_refresh = True
         self.force_close = True
         self.dead_alarm = self.loop.set_alarm_in(.2, self.refresh)
+        raise urwid.ExitMainLoop()
 
     
     #socketio coroutine test, will this run?
@@ -432,10 +429,17 @@ class Au:
         if (temp_minute != self.minute_lock) or self.force_refresh or self.force_close:
             self.force_refresh = False
             self.minute_lock = temp_minute
+
+            #for side to side navbar, consider passing buttnons_list to a function and have it return based on composition.
             base = urwid.Filler(
                 urwid.Pile([
                     urwid.Columns([urwid.Padding(urwid.BigText("{0}{1}{2}".format(datetime.datetime.now().hour,":",datetime.datetime.now().minute), urwid.font.HalfBlock5x4Font()), 'left', width='clip'),urwid.Padding(BoxButton('burger', 2, is_sprite=True,on_press=None,user_data=None),'right',width=('relative',19))]),
-                    urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=2,align='center'),urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588"),
+                    urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),
+                    urwid.Columns([
+                    (20,BoxButton('play', 2, is_sprite=True,on_press=None,user_data=None)),
+                    urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=2,align='center'),
+                    (19,BoxButton('play', 2, is_sprite=True,on_press=None,user_data=None))]),
+                    urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588"),
                     urwid.Divider(" ",top=0,bottom=1),
                     urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')]),'middle')          #,align='center',width=23,valign='middle',height=4)
             if self.menu_show:
@@ -449,11 +453,11 @@ class Au:
             else:
                 self.loop.widget = base
             self.minute_count += 1
-            if self.minute_count > 60 or self.force_close:
-                
+            if self.force_close:
+
                 raise urwid.ExitMainLoop()
                 sys.exit()
-            logging.info("{0}{1}{2}{3}".format('still refreshing: ',str(self.process.memory_info().rss)," min:",str(self.minute_count)))
+            logging.info("{0}{1}".format('still refreshing: ',str(self.process.memory_info().rss)))
             #gc.collect()
             gc.collect()
             #MAYBE use with resurrect: raise urwid.ExitMainLoop()

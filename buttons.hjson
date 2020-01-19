@@ -1,23 +1,23 @@
 {Pods:{
-  My_Brother_My_Brother_And_Me:
-  {
-    label: My Brother
-    method:
-    [
-      get_recent
-      get_random
-    ]
-    pod_id: 3
-  }
   Sawbones_A_Marital_Tour_of_Misguided_Medicine:
   {
-    label: Saw Bones
+    label: Sawbone A
     method:
     [
       get_recent
       get_random
     ]
-    pod_id: 2
+    pod_id: 9
+  }
+  Savage_Lovecast:
+  {
+    label: Savage Lovecas
+    method:
+    [
+      get_recent
+      get_random
+    ]
+    pod_id: 8
   }
   The_Daily:
   {
@@ -27,6 +27,16 @@
       get_recent
       get_random
     ]
-    pod_id: 1
+    pod_id: 7
+  }
+  My_Brother_My_Brother_And_Me:
+  {
+    label: My Brother
+    method:
+    [
+      get_recent
+      get_random
+    ]
+    pod_id: 6
   }
 }}
