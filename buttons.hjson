@@ -1,13 +1,23 @@
 {Pods:{
-  Sawbones_A_Marital_Tour_of_Misguided_Medicine:
+  NPR_News_Now:
   {
-    label: Sawbone A
+    label: NPR News
     method:
     [
       get_recent
       get_random
     ]
-    pod_id: 9
+    pod_id: 19
+  }
+  The_Patdown_with_Ms._Pat:
+  {
+    label: The Patdown
+    method:
+    [
+      get_recent
+      get_random
+    ]
+    pod_id: 18
   }
   Savage_Lovecast:
   {
@@ -17,17 +27,27 @@
       get_recent
       get_random
     ]
-    pod_id: 8
+    pod_id: 17
   }
-  The_Daily:
+  Sawbones_A_Marital_Tour_of_Misguided_Medicine:
   {
-    label: The Daily
+    label: Sawbone A
     method:
     [
       get_recent
       get_random
     ]
-    pod_id: 7
+    pod_id: 15
+  }
+  Uhh_Yeah_Dude:
+  {
+    label: Uhh Yeah
+    method:
+    [
+      get_recent
+      get_random
+    ]
+    pod_id: 14
   }
   My_Brother_My_Brother_And_Me:
   {
@@ -37,6 +57,6 @@
       get_recent
       get_random
     ]
-    pod_id: 6
+    pod_id: 13
   }
 }}

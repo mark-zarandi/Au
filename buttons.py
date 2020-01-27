@@ -28,7 +28,7 @@ pod_dict = open("buttons.hjson","r").read()
 pod_dict = hjson.loads(pod_dict)
 themes_dict = open("themes.hjson","r").read()
 themes_dict = hjson.loads(themes_dict)
-
+dates_dict = None
 
 def line_split(input_string):
     string = (input_string.lower().split())
@@ -45,7 +45,7 @@ def right(s, amount):
 
 class BoxButton(urwid.WidgetWrap):
    
-    def __init__(self, label, place_int=-1, is_sprite=False, on_press=None, user_data=None):
+    def __init__(self, label, place_int=-1, show_date=True, is_sprite=False, on_press=None, user_data=None, no_border = False):
         _top_char = u'\u2580'
         _top_corner = u'\u2584'
         _bottom_char = u'\u2584'
@@ -188,10 +188,15 @@ class BoxButton(urwid.WidgetWrap):
 
         
         if is_sprite == False:
-            middle_part = urwid.Padding(urwid.Pile((top_border,urwid.Columns(((1,left_border),urwid.AttrMap(urwid.Pile(ansi_word),'bg'),(1,left_border))),bottom_border,bottom_date)),align='center',width=pad_space)
+            if show_date:
+                middle_part = urwid.Padding(urwid.Pile((top_border,urwid.Columns(((1,left_border),urwid.AttrMap(urwid.Pile(ansi_word),'bg'),(1,left_border))),bottom_border,bottom_date)),align='center',width=pad_space)
+            else:
+                middle_part = urwid.Padding(urwid.Pile((top_border,urwid.Columns(((1,left_border),urwid.AttrMap(urwid.Pile(ansi_word),'bg'),(1,left_border))),bottom_border)),align='center',width=pad_space)
         else:
-            middle_part = urwid.Padding(urwid.Pile((top_border,urwid.Columns(((1,left_border),urwid.AttrMap(urwid.Pile(ansi_word),'bg'),(1,left_border))),bottom_border)),align='center',width=pad_space)
-
+            if not no_border:
+                middle_part = urwid.Padding(urwid.Pile((top_border,urwid.Columns(((1,left_border),urwid.AttrMap(urwid.Pile(ansi_word),'bg'),(1,left_border))),bottom_border)),align='center',width=pad_space)
+            else:
+                middle_part = urwid.Padding(urwid.AttrMap(urwid.Pile(ansi_word),'bg'),align='center',width=pad_space)
         self.widget = middle_part
         self._hidden_btn = urwid.Button('hidden %s' % label + str(place_int), on_press, user_data)
 
@@ -293,19 +298,27 @@ class Au:
             set_buttons()
             split_array = []
             #add eval to compute strings.
-            split_array.append(BoxButton('recent',on_press=eval(user_data_x['method'][0]),user_data=user_data_x['pod_id']))
-            split_array.append(urwid.Divider(" ",top=0,bottom=1))
-            split_array.append(BoxButton('random',on_press=eval(user_data_x['method'][1]),user_data=user_data_x['pod_id']))
+            split_array.append(BoxButton('recent',on_press=eval(user_data_x['method'][0]),show_date=False,user_data=user_data_x['pod_id']))
+            split_array.append(urwid.Divider(" ",top=0,bottom=0))
+            split_array.append(BoxButton('random',on_press=eval(user_data_x['method'][1]),show_date=False,user_data=user_data_x['pod_id']))
             
             self.buttons_list[int(right(link.label,1))] = urwid.Pile(split_array)
-            
-            self.loop.widget = urwid.Filler(
+            temp_minute = datetime.datetime.now().minute
+            if temp_minute < 10:
+                temp_minute = "0" + str(temp_minute)
+            else:
+                temp_minute
+            base = urwid.Filler(
                 urwid.Pile([
-                    urwid.Padding(urwid.BigText("{0}{1}{2}".format(datetime.datetime.now().hour,":",datetime.datetime.now().minute), urwid.font.HalfBlock5x4Font()), 'left', width='clip'),
-                    urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=2,align='center'),urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588"),
-                    urwid.Divider(" ",top=0,bottom=1),
-                    urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')]),'middle')
-            self.dead_alarm = self.loop.set_alarm_in(.2, self.refresh)
+                    urwid.Columns([urwid.Padding(urwid.BigText("{0}{1}{2}".format(datetime.datetime.now().hour,":",temp_minute), urwid.font.HalfBlock5x4Font()), 'left', width='clip'),urwid.Padding(BoxButton('burger', 2, is_sprite=True,on_press=None,no_border=True,user_data=None),'right',width=('relative',19))]),
+                    urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=0),
+                   
+                    urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=2,align='center'),
+                    urwid.Divider(" ",top=0,bottom=0)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588"),
+                    urwid.Divider(" ",top=0,bottom=0),
+                    urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')]),'top')
+            self.loop.widget = base
+            self.dead_alarm = self.loop.set_alarm_in(1, self.refresh)
             #self.dead_alarm = self.loop.set_alarm_in(.01,self.refresh)
             
         def play_sonos(junk):
@@ -331,38 +344,55 @@ class Au:
             sonos = SoCo(play_room)
             sonos.group.coordinator.pause()
 
-        def back_track(junk):
-            #DEV NOTE: find a way to identify current track as podcast and switch to +30/-30 seconds.
-            url = 'http://0.0.0.0:5005/master/previous'
-            r = requests.get(url)
+        def back_page(junk):
+            if self.page_num > 1:
+                self.page_num = self.page_num - 1
+                set_buttons()
+                self.force_refresh=True
+            else:
+                logging.info('page num error')
 
-        def forward_track(junk):
-            url = 'http://0.0.0.0:5005/master/next'
-            r = requests.get(url)
+        def forward_page(junk):
+            self.page_num = self.page_num + 1
+            set_buttons()
+            self.force_refresh=True
 
 
         def set_buttons():
             logging.info('setting buttons')
             self.buttons_list = []
             index_dict = 0 
-            for key,value in pod_dict['Pods'].items():
+            page_split = list(pod_dict["Pods"].items())
+            cards_size = len(page_split)
+            if (self.page_num * 6) < cards_size:
+                finish = self.page_num * 6
+                if self.page_num > 1:
+                    start = (finish + 1)-6
+                else:
+                    start = 0
+            else:
+                finish = cards_size
+                start = ((self.page_num * 6)) - 6
+            for key,value in page_split[start:finish]:
                 #remember, arguments can't be passed to callback through ON_PRESS, must use USER_DATE
                 #print(len(value['method']))
-                new_button = BoxButton(value['label'], index_dict, on_press=split,user_data=value)
+
+                #removed dates for the time being
+                new_button = BoxButton(value['label'], index_dict, on_press=split,show_date=False,user_data=value)
                 self.buttons_list.append(new_button)
                 index_dict = index_dict + 1
                 #print('writing buttons')    
         set_buttons()
 
         self.nav_array = []
-        self.nav_array.append(BoxButton('rr-30', 1, is_sprite=True,on_press=back_track,user_data=None))
+        self.nav_array.append(BoxButton('rr-30', 1, is_sprite=True,on_press=back_page,user_data=None))
         self.nav_array.append(BoxButton('play', 2, is_sprite=True,on_press=play_sonos,user_data=None))
-        self.nav_array.append(BoxButton('ff-30', 3, is_sprite=True,on_press=forward_track,user_data=None))
+        self.nav_array.append(BoxButton('ff-30', 3, is_sprite=True,on_press=forward_page,user_data=None))
 
         self.menu_array = []
-        self.menu_array.append(BoxButton('rr-30', 1, is_sprite=True,on_press=back_track,user_data=None))
+        self.menu_array.append(BoxButton('rr-30', 1, is_sprite=True,on_press=back_page,user_data=None))
         self.menu_array.append(BoxButton('play', 2, is_sprite=True,on_press=play_sonos,user_data=None))
-        self.menu_array.append(BoxButton('ff-30', 3, is_sprite=True,on_press=forward_track,user_data=None))
+        self.menu_array.append(BoxButton('ff-30', 3, is_sprite=True,on_press=forward_page,user_data=None))
 
         return urwid.Filler(
                 urwid.Pile([
@@ -395,6 +425,7 @@ class Au:
         screen = urwid.raw_display.Screen()
         screen.register_palette(ansi_palette)
         screen.set_terminal_properties(256)
+        self.page_num = 1
         x_test = self.setup_view()
         logging.warning("starting up.")
         self.loop = urwid.MainLoop(
@@ -403,18 +434,19 @@ class Au:
         self.process = psutil.Process(os.getpid())
         self.menu_show = False
         self.minute_lock = datetime.datetime.now().minute
-        self.minute_count = 0
         self.dead_alarm = self.loop.set_alarm_in(.2, self.refresh)
         self.force_refresh = True
         self.force_close = False
+
         self.loop.run()
     
     def get_out(self):
         self.force_refresh = True
         self.force_close = True
         self.dead_alarm = self.loop.set_alarm_in(.2, self.refresh)
-        raise urwid.ExitMainLoop()
 
+    def change_global_dates(self, new_date):
+        return None
     
     #socketio coroutine test, will this run?
     def show_menu(self):
@@ -429,19 +461,18 @@ class Au:
         if (temp_minute != self.minute_lock) or self.force_refresh or self.force_close:
             self.force_refresh = False
             self.minute_lock = temp_minute
-
+            if temp_minute < 10:
+                temp_minute = "0" + str(temp_minute)
             #for side to side navbar, consider passing buttnons_list to a function and have it return based on composition.
             base = urwid.Filler(
                 urwid.Pile([
-                    urwid.Columns([urwid.Padding(urwid.BigText("{0}{1}{2}".format(datetime.datetime.now().hour,":",datetime.datetime.now().minute), urwid.font.HalfBlock5x4Font()), 'left', width='clip'),urwid.Padding(BoxButton('burger', 2, is_sprite=True,on_press=None,user_data=None),'right',width=('relative',19))]),
-                    urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=2),
-                    urwid.Columns([
-                    (20,BoxButton('play', 2, is_sprite=True,on_press=None,user_data=None)),
+                    urwid.Columns([urwid.Padding(urwid.BigText("{0}{1}{2}".format(datetime.datetime.now().hour,":",temp_minute), urwid.font.HalfBlock5x4Font()), 'left', width='clip'),urwid.Padding(BoxButton('burger', 2, is_sprite=True,on_press=None,no_border=True,user_data=None),'right',width=('relative',19))]),
+                    urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=0),
+                   
                     urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=2,align='center'),
-                    (19,BoxButton('play', 2, is_sprite=True,on_press=None,user_data=None))]),
                     urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588"),
-                    urwid.Divider(" ",top=0,bottom=1),
-                    urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')]),'middle')          #,align='center',width=23,valign='middle',height=4)
+                    urwid.Divider(" ",top=0,bottom=0),
+                    urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')]),'top')          #,align='center',width=23,valign='middle',height=4)
             if self.menu_show:
                 self.loop.widget = urwid.Overlay(
                 urwid.AttrMap(
@@ -452,7 +483,6 @@ class Au:
                 base,align='center',width=25,valign='middle',height=23)
             else:
                 self.loop.widget = base
-            self.minute_count += 1
             if self.force_close:
 
                 raise urwid.ExitMainLoop()
