@@ -470,7 +470,7 @@ class Au:
                     urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=0),
                    
                     urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=2,align='center'),
-                    urwid.Divider(" ",top=0,bottom=2)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588"),
+                    urwid.Divider(" ",top=0,bottom=2 )]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588"),
                     urwid.Divider(" ",top=0,bottom=0),
                     urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')]),'top')          #,align='center',width=23,valign='middle',height=4)
             if self.menu_show:
