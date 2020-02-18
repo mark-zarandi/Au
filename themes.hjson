@@ -3,10 +3,18 @@ Themes:
 {
 Base:
 {
-	clock_color__c: '#'
-	outer_box__c: '#'
-	buttons__c: '#'
-	split__c: '#'
+	clock_c: '162'
+	outer_box_c: '24'
+	buttons_c:
+		{
+			text_c:'247'
+			left_c:'12'
+			right_c:'12'
+			top_c:'12'
+			bottom_c:'12'
+
+		}
+
 }
 }
 }

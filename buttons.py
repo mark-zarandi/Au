@@ -45,7 +45,7 @@ def right(s, amount):
 
 class BoxButton(urwid.WidgetWrap):
    
-    def __init__(self, label, place_int=-1, show_date=True, is_sprite=False, on_press=None, user_data=None, no_border = False):
+    def __init__(self, label, place_int=-1, show_date=True, is_sprite=False, on_press=None, user_data=None, no_border = False, themes=None):
         _top_char = u'\u2580'
         _top_corner = u'\u2584'
         _bottom_char = u'\u2584'
@@ -141,11 +141,11 @@ class BoxButton(urwid.WidgetWrap):
         else:
             word_array = ansi_sprites[label]
             bottom_date = None
-
+        #border attributes here.
         new_line = ''
-        top_border = urwid.AttrMap(urwid.Text(top_border,align='center'),'bg')
+        top_border = urwid.AttrMap(urwid.Text(top_border,align='center'),'top_c')
         bottom_border = urwid.Text(bottom_border,align='center')
-        left_border = urwid.AttrMap(urwid.Text(u'\u2588'+u'\n'+u'\u2588'+u'\n'+u'\u2588'+u'\n'+u'\u2588'+u'\n'+u'\u2588'),'outside')
+        left_border = urwid.AttrMap(urwid.Text(u'\u2588'+u'\n'+u'\u2588'+u'\n'+u'\u2588'+u'\n'+u'\u2588'+u'\n'+u'\u2588'),'left_c')
         for x in word_array:
             new_line = ""
 
@@ -186,17 +186,17 @@ class BoxButton(urwid.WidgetWrap):
             #for blink, put attrmap here.
             ansi_word.append(urwid.Text(new_line,align="center"))
 
-        
+        #text attributes here       
         if is_sprite == False:
             if show_date:
-                middle_part = urwid.Padding(urwid.Pile((top_border,urwid.Columns(((1,left_border),urwid.AttrMap(urwid.Pile(ansi_word),'bg'),(1,left_border))),bottom_border,bottom_date)),align='center',width=pad_space)
+                middle_part = urwid.Padding(urwid.Pile((top_border,urwid.Columns(((1,left_border),urwid.AttrMap(urwid.Pile(ansi_word),'text_c'),(1,left_border))),bottom_border,bottom_date)),align='center',width=pad_space)
             else:
-                middle_part = urwid.Padding(urwid.Pile((top_border,urwid.Columns(((1,left_border),urwid.AttrMap(urwid.Pile(ansi_word),'bg'),(1,left_border))),bottom_border)),align='center',width=pad_space)
+                middle_part = urwid.Padding(urwid.Pile((top_border,urwid.Columns(((1,left_border),urwid.AttrMap(urwid.Pile(ansi_word),'text_c'),(1,left_border))),bottom_border)),align='center',width=pad_space)
         else:
             if not no_border:
-                middle_part = urwid.Padding(urwid.Pile((top_border,urwid.Columns(((1,left_border),urwid.AttrMap(urwid.Pile(ansi_word),'bg'),(1,left_border))),bottom_border)),align='center',width=pad_space)
+                middle_part = urwid.Padding(urwid.Pile((top_border,urwid.Columns(((1,left_border),urwid.AttrMap(urwid.Pile(ansi_word),'text_c'),(1,left_border))),bottom_border)),align='center',width=pad_space)
             else:
-                middle_part = urwid.Padding(urwid.AttrMap(urwid.Pile(ansi_word),'bg'),align='center',width=pad_space)
+                middle_part = urwid.Padding(urwid.AttrMap(urwid.Pile(ansi_word),'text_c'),align='center',width=pad_space)
         self.widget = middle_part
         self._hidden_btn = urwid.Button('hidden %s' % label + str(place_int), on_press, user_data)
 
@@ -312,7 +312,7 @@ class Au:
                 urwid.Pile([
                     urwid.Columns([urwid.Padding(urwid.BigText("{0}{1}{2}".format(datetime.datetime.now().hour,":",temp_minute), urwid.font.HalfBlock5x4Font()), 'left', width='clip'),urwid.Padding(BoxButton('burger', 2, is_sprite=True,on_press=None,no_border=True,user_data=None),'right',width=('relative',19))]),
                     urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=0),
-                   
+        
                     urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=2,align='center'),
                     urwid.Divider(" ",top=0,bottom=0)]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588"),
                     urwid.Divider(" ",top=0,bottom=0),
@@ -402,28 +402,31 @@ class Au:
                     urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')]),'middle')
 
 
-    
+    def theme_set(self):
+
+        self.ansi_palette=[("clock_c","","","",f"",""),
+        ("clock_c","","","",f"h{themes_dict['Themes']['Base']['clock_c']}",""),
+        ("outer_box_c","","","",f"h{themes_dict['Themes']['Base']['outer_box_c']}",""),
+        ("top_c","","","",f"h{themes_dict['Themes']['Base']['buttons_c']['top_c']}",""),
+        ("bottom_c","","","",f"h{themes_dict['Themes']['Base']['buttons_c']['bottom_c']}",""),
+        ("left_c","","","",f"h{themes_dict['Themes']['Base']['buttons_c']['left_c']}",""),
+        ("right_c","","","",f"h{themes_dict['Themes']['Base']['buttons_c']['right_c']}",""),
+        ("text_c","","","",f"h{themes_dict['Themes']['Base']['buttons_c']['text_c']}","")]
 
 
     def main(self):
-        #jish_run = jishiReader('./node-sonos/package.json')
         level    = logging.NOTSET
         format   = '%(asctime)-8s %(levelname)-8s %(message)s'
         handlers = [logging.handlers.TimedRotatingFileHandler('button_log',when="D",interval=1,backupCount=5,encoding=None,delay=False,utc=False,atTime=None)]
-        ansi_palette = [('banner', '', '', '', '#ffa', '#60d'),
-    ('streak', '', '', '', 'g50', '#60a'),
-    ('inside', '', '', '', 'g38', '#808'),
-    ('outside', '', '', '', 'g27', '#a06'),
-    ('bg', '', '', '', '#d06', 'g15')]
+        #ansi_palette = [('banner', '', '', '', '#ffa', '#60d'),
+    #('streak', '', '', '', 'g50', '#60a'),
+    #('inside', '', '', '', 'g38', '#808'),
+    #('outside', '', '', '', 'h26', '#a06'),
+    #('bg', '', '', '', 'h46', 'g0')]
         logging.basicConfig(level = level, format = format, handlers = handlers)
-
-      
-
-        #tg = threading.Thread(name="sonos_socket_thread",target=self.start_up,daemon=True)
-        #tg.start()
-
+        self.theme_set()
         screen = urwid.raw_display.Screen()
-        screen.register_palette(ansi_palette)
+        screen.register_palette(self.ansi_palette)
         screen.set_terminal_properties(256)
         self.page_num = 1
         x_test = self.setup_view()
@@ -449,7 +452,7 @@ class Au:
         return None
     
     #socketio coroutine test, will this run?
-    def show_menu(self):
+    def show_menu(self,junk):
         self.force_refresh = True
         self.menu_show = True
         self.dead_alarm = self.loop.set_alarm_in(.2, self.refresh)
@@ -466,11 +469,12 @@ class Au:
             #for side to side navbar, consider passing buttnons_list to a function and have it return based on composition.
             base = urwid.Filler(
                 urwid.Pile([
-                    urwid.Columns([urwid.Padding(urwid.BigText("{0}{1}{2}".format(datetime.datetime.now().hour,":",temp_minute), urwid.font.HalfBlock5x4Font()), 'left', width='clip'),urwid.Padding(BoxButton('burger', 2, is_sprite=True,on_press=None,no_border=True,user_data=None),'right',width=('relative',19))]),
+                    urwid.Columns([urwid.Padding(urwid.AttrMap(urwid.BigText("{0}{1}{2}".format(datetime.datetime.now().hour,":",temp_minute), urwid.font.HalfBlock5x4Font()),'clock_c'), 'left', width='clip'),urwid.Padding(BoxButton('burger', 2, is_sprite=True,on_press=self.show_menu,no_border=True,user_data=None),'right',width=('relative',19))]),
+                    urwid.AttrMap(
                     urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=0),
-                   
                     urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=2,align='center'),
-                    urwid.Divider(" ",top=0,bottom=2 )]),trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588"),
+                    urwid.Divider(" ",top=0,bottom=2)]),
+                    trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588"),'outer_box_c'),
                     urwid.Divider(" ",top=0,bottom=0),
                     urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')]),'top')          #,align='center',width=23,valign='middle',height=4)
             if self.menu_show:
