@@ -282,6 +282,7 @@ class Au:
                     logging.info('recent thread')
                     url = 'http://0.0.0.0:5005/preset/all_rooms/'
                     r = requests.get(url)
+                    print(pod_dict['Rooms']['Master'])
                     play_room = (str(pod_dict['Rooms']['Master']))
                     sonos = SoCo(play_room)
                     data = requests.get('http://0.0.0.0:5000/recent/' + str(user_data)).json() 
@@ -349,6 +350,7 @@ class Au:
                 self.page_num = self.page_num - 1
                 set_buttons()
                 self.force_refresh=True
+                self.dead_alarm = self.loop.set_alarm_in(.01,self.refresh)
             else:
                 logging.info('page num error')
 
@@ -356,6 +358,7 @@ class Au:
             self.page_num = self.page_num + 1
             set_buttons()
             self.force_refresh=True
+            self.dead_alarm = self.loop.set_alarm_in(.01,self.refresh)
 
 
         def set_buttons():
