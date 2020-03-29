@@ -258,7 +258,7 @@ class Au:
                 
                 def play_it_ran():
                     logging.info('random threading')
-                    play_room = (str(pod_dict['Rooms']['Master']))
+                    play_room = (str(pod_dict['Rooms']['Living']))
                     url = 'http://0.0.0.0:5005/preset/all_rooms/'
                     r = requests.get(url)
                     data = requests.get('http://0.0.0.0:5000/random/' + str(user_data) +"/").json()
@@ -282,12 +282,10 @@ class Au:
                     logging.info('recent thread')
                     url = 'http://0.0.0.0:5005/preset/all_rooms/'
                     r = requests.get(url)
-                    print(pod_dict['Rooms']['Master'])
-                    play_room = (str(pod_dict['Rooms']['Master']))
+                    play_room = (str(pod_dict['Rooms']['Living']))
                     sonos = SoCo(play_room)
                     data = requests.get('http://0.0.0.0:5000/recent/' + str(user_data)).json() 
                     sonos.play_uri(data['location'])
-                   
                     sonos.play()
                     
                 #parallel threading

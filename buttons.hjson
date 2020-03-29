@@ -1,4 +1,74 @@
 {Pods:{
+  The_Chuck_ToddCast_Meet_the_Press:
+  {
+    label: Chuck Todd
+    method:
+    [
+      get_recent
+      get_random
+    ]
+    pod_id: 12
+  }
+  Savage_Lovecast:
+  {
+    label: Savage Love
+    method:
+    [
+      get_recent
+      get_random
+    ]
+    pod_id: 11
+  }
+  Pod_Save_America:
+  {
+    label: Pod Save
+    method:
+    [
+      get_recent
+      get_random
+    ]
+    pod_id: 10
+  }
+  Global_News_Podcast:
+  {
+    label: BBC News
+    method:
+    [
+      get_recent
+      get_random
+    ]
+    pod_id: 9
+  }
+  NBC_Meet_the_Press:
+  {
+    label: Meet Press
+    method:
+    [
+      get_recent
+      get_random
+    ]
+    pod_id: 8
+  }
+  Marketplace:
+  {
+    label: Market Place
+    method:
+    [
+      get_recent
+      get_random
+    ]
+    pod_id: 7
+  }
+  The_World:
+  {
+    label: The World
+    method:
+    [
+      get_recent
+      get_random
+    ]
+    pod_id: 6
+  }
   NPR_News_Now:
   {
     label: NPR News
@@ -7,17 +77,7 @@
       get_recent
       get_random
     ]
-    pod_id: 19
-  }
-  The_Patdown_with_Ms._Pat:
-  {
-    label: The Patdown
-    method:
-    [
-      get_recent
-      get_random
-    ]
-    pod_id: 18
+    pod_id: 5
   }
   Uhh_Yeah_Dude:
   {
@@ -27,18 +87,21 @@
       get_recent
       get_random
     ]
-    pod_id: 14
+    pod_id: 4
   }
-  My_Brother_My_Brother_And_Me:
+  The_Daily:
   {
-    label: My Brother
+    label: The Daily
     method:
     [
       get_recent
       get_random
     ]
-    pod_id: 13
+    pod_id: 1
   }
 }Rooms:{
   Lib: 192.168.1.136
+  Kitch: 192.168.1.145
+  Master: 192.168.1.101
+  Living: 192.168.1.116
 }}
