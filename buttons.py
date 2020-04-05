@@ -18,6 +18,7 @@ import threading
 import socketio
 from soco import groups
 import gc
+from soco.exceptions import SoCoUPnPException
 #level = logging.CRITICAL
 #format   = '%(asctime)-8s %(levelname)-8s %(message)s'
 #handlers = [logging.handlers.TimedRotatingFileHandler('/usr/local/bin/logs/screen_log',when="D",interval=1,backupCount=5,encoding=None,delay=False,utc=False,atTime=None), logging.StreamHandler()]
@@ -240,6 +241,7 @@ class Au:
         # sio.wait()
 
     def keypress(self, key):
+        self.is_playing("")
         if key in ('q', 'Q'):
             raise urwid.ExitMainLoop()
 
@@ -322,14 +324,26 @@ class Au:
             
         def play_sonos(junk):
             logging.info('play button pressed')
+
             self.force_refresh = True
             self.nav_array[int(right(junk.label,1))-1] = BoxButton('pause', 2, is_sprite=True,on_press=pause_sonos,user_data=None)
             #self.nav_grid = urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')
             self.dead_alarm = self.loop.set_alarm_in(.01,self.refresh)
             #commented out for testing at hotel
-            play_room = (str(pod_dict['Rooms']['Master']))
-            sonos = SoCo(play_room)
-            sonos.group.coordinator.play()
+            play_room = (str(pod_dict['Rooms']['Living']))
+            try:
+                sonos = SoCo(play_room)
+                look_at_queue = sonos.get_queue()
+                print('lets play')
+                if len(look_at_queue)>0:
+                    sonos.group.coordinator.play()
+                else:
+                    print("the queue is empty")
+            except:
+                #this doesn't work for some reason. try just looking for stop states.
+                logger.warning("Exception caught. Not expecting trace", exc_info=False, stack_info=False)
+                print("the queue is empty")
+
 
 
         def pause_sonos(junk):
@@ -339,7 +353,7 @@ class Au:
             #self.nav_grid = urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')
             self.dead_alarm = self.loop.set_alarm_in(.01,self.refresh)
             #commented out for hotel testing
-            play_room = (str(pod_dict['Rooms']['Master']))
+            play_room = (str(pod_dict['Rooms']['Living']))
             sonos = SoCo(play_room)
             sonos.group.coordinator.pause()
 
@@ -387,7 +401,7 @@ class Au:
 
         self.nav_array = []
         self.nav_array.append(BoxButton('rr-30', 1, is_sprite=True,on_press=back_page,user_data=None))
-        self.nav_array.append(BoxButton('play', 2, is_sprite=True,on_press=play_sonos,user_data=None))
+        self.nav_array.append(BoxButton('pause', 2, is_sprite=True,on_press=pause_sonos,user_data=None))
         self.nav_array.append(BoxButton('ff-30', 3, is_sprite=True,on_press=forward_page,user_data=None))
 
         self.menu_array = []
@@ -413,6 +427,51 @@ class Au:
         ("left_c","","","",f"h{themes_dict['Themes']['Base']['buttons_c']['left_c']}",""),
         ("right_c","","","",f"h{themes_dict['Themes']['Base']['buttons_c']['right_c']}",""),
         ("text_c","","","",f"h{themes_dict['Themes']['Base']['buttons_c']['text_c']}","")]
+
+    def is_playing(self, state):
+        def pause_sonos(junk):
+            logging.info('pause pressed')
+            self.force_refresh = True
+            self.nav_array[1] = BoxButton('play', 2, is_sprite=True,on_press=pause_sonos,user_data=None)
+            #self.nav_grid = urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')
+            self.dead_alarm = self.loop.set_alarm_in(.01,self.refresh)
+            #commented out for hotel testing
+            play_room = (str(pod_dict['Rooms']['Living']))
+            sonos = SoCo(play_room)
+            sonos.group.coordinator.pause()
+            self.force_refresh = True
+            self.dead_alarm = self.loop.set_alarm_in(.2, self.refresh)
+        
+        def play_sonos(junk):
+            logging.info('pause button pressed, start playing')
+            self.force_refresh = True
+            self.nav_array[1] = BoxButton('pause', 2, is_sprite=True,on_press=play_sonos,user_data=None)
+            #self.nav_grid = urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')
+            self.dead_alarm = self.loop.set_alarm_in(.01,self.refresh)
+            #commented out for testing at hotel
+            play_room = (str(pod_dict['Rooms']['Living']))
+            self.force_refresh = True
+            self.dead_alarm = self.loop.set_alarm_in(.2, self.refresh)
+            try:
+                sonos = SoCo(play_room)
+                look_at_queue = sonos.get_queue()
+                print('lets play')
+                if len(look_at_queue)>0:
+                    sonos.group.coordinator.play()
+                else:
+                    print("the queue is empty")
+            except soco.exceptions.SoCoUPnPException as e:
+                logger.warning("Exception caught. Not expecting trace", exc_info=False, stack_info=False)
+                print("the queue is empty")
+
+
+        if state == "PLAYING":
+            self.nav_array[1] = BoxButton('pause', 2, is_sprite=True,on_press=pause_sonos,user_data=None)
+        else:
+            self.nav_array[1] = BoxButton('play', 2, is_sprite=True,on_press=play_sonos,user_data=None)
+        # #pause music here,.
+        self.force_refresh = True
+        self.dead_alarm = self.loop.set_alarm_in(.2, self.refresh)
 
 
     def main(self):

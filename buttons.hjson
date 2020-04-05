@@ -1,14 +1,4 @@
 {Pods:{
-  The_Chuck_ToddCast_Meet_the_Press:
-  {
-    label: Chuck Todd
-    method:
-    [
-      get_recent
-      get_random
-    ]
-    pod_id: 12
-  }
   Savage_Lovecast:
   {
     label: Savage Love
@@ -102,6 +92,7 @@
 }Rooms:{
   Lib: 192.168.1.136
   Kitch: 192.168.1.145
-  Master: 192.168.1.101
   Living: 192.168.1.116
+  Master: 192.168.1.101
+
 }}
