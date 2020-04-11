@@ -455,7 +455,7 @@ class Au:
             try:
                 sonos = SoCo(play_room)
                 look_at_queue = sonos.get_queue()
-                print('lets play')
+
                 if len(look_at_queue)>0:
                     sonos.group.coordinator.play()
                 else:
