@@ -33,6 +33,7 @@ dates_dict = None
 
 def line_split(input_string):
     string = (input_string.lower().split())
+    print(string)
     if len(string) == 1 and len(string[0]) <= 7:
         return (str(string[0]))
     if len(string[0]+string[1]) > 7 and len(string[0])<=7:
@@ -241,9 +242,61 @@ class Au:
         # sio.wait()
 
     def keypress(self, key):
-        self.is_playing("")
+        if self.menu_state == 'choosing':
+            self.menu_state = "pods"
+            self.page_num = 1
+            self.menu_show = False
+            self.force_refresh = True
+            self.refresh()
+        if (key[0] == "mouse release") and self.menu_show:
+            self.menu_state = 'choosing'
+            #print(self.menu_show)
+
         if key in ('q', 'Q'):
             raise urwid.ExitMainLoop()
+
+        
+
+
+    def set_buttons(self, callbacker):
+        logging.info('setting buttons')
+        self.buttons_list = []
+        index_dict = 0
+        if self.menu_state == "spots":
+            sonos = SoCo(pod_dict['Rooms']['Living'])
+            sonos_playlists = sonos.get_sonos_playlists()
+            page_split = list(sonos_playlists)
+        else:
+            page_split = list(pod_dict["Pods"].items())
+        cards_size = len(page_split)
+        if (self.page_num * 6) < cards_size:
+            finish = self.page_num * 6
+            if self.page_num > 1:
+                start = (finish + 1)-6
+            else:
+                start = 0
+        else:
+            finish = cards_size
+            start = ((self.page_num * 6)) - 6
+            
+        if self.menu_state == "spots":
+            for x in page_split[start:finish]:
+                #print((x.to_dict())['resources'][0]['uri'])
+                fix_length = (x.to_dict())['title']
+                new_button = BoxButton(fix_length, index_dict, on_press=callbacker,show_date=False,user_data=(x.to_dict())['resources'][0]['uri'])
+                self.buttons_list.append(new_button)
+                index_dict = index_dict + 1
+        else:    
+            for key,value in page_split[start:finish]:
+                #remember, arguments can't be passed to callback through ON_PRESS, must use USER_DATE
+                #print(len(value['method']))
+
+                #removed dates for the time being
+                new_button = BoxButton(value['label'], index_dict, on_press=callbacker,show_date=False,user_data=value)
+                self.buttons_list.append(new_button)
+                index_dict = index_dict + 1
+                #print('writing buttons')   
+
 
     def setup_view(self):
         logging.info('making buttons.')
@@ -275,7 +328,7 @@ class Au:
                 t = threading.Thread(name="sonos_play_thread",target=play_it_ran)
                 t.start()
 
-                set_buttons()
+                self.set_buttons(split)
                 self.force_refresh = True
 
             def get_recent(link, user_data):
@@ -293,10 +346,13 @@ class Au:
                 #parallel threading
                 t = threading.Thread(name="sonos_play_thread",target=play_it_rec)
                 t.start()
-                set_buttons()
+                self.set_buttons(split)
                 self.force_refresh = True
-                
-            set_buttons()
+            if self.menu_state == "pods":    
+                self.set_buttons(split)
+            else:
+                self.set_buttons(lets_spot)
+
             split_array = []
             #add eval to compute strings.
             split_array.append(BoxButton('recent',on_press=eval(user_data_x['method'][0]),show_date=False,user_data=user_data_x['pod_id']))
@@ -311,7 +367,7 @@ class Au:
                 temp_minute
             base = urwid.Filler(
                 urwid.Pile([
-                    urwid.Columns([urwid.Padding(urwid.BigText("{0}{1}{2}".format(datetime.datetime.now().hour,":",temp_minute), urwid.font.HalfBlock5x4Font()), 'left', width='clip'),urwid.Padding(BoxButton('burger', 2, is_sprite=True,on_press=None,no_border=True,user_data=None),'right',width=('relative',19))]),
+                    urwid.Columns([urwid.Padding(urwid.BigText("{0}{1}{2}".format(datetime.datetime.now().hour,":",temp_minute), urwid.font.HalfBlock5x4Font()), 'left', width='clip'),urwid.Padding(BoxButton('burger', 999, is_sprite=True,on_press=self.show_menu,no_border=True,user_data=None),'right',width=('relative',19))]),
                     urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=0),
         
                     urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=2,align='center'),
@@ -337,8 +393,8 @@ class Au:
                 print('lets play')
                 if len(look_at_queue)>0:
                     sonos.group.coordinator.play()
-                else:
-                    print("the queue is empty")
+                #else:
+                #    print("the queue is empty")
             except:
                 #this doesn't work for some reason. try just looking for stop states.
                 logger.warning("Exception caught. Not expecting trace", exc_info=False, stack_info=False)
@@ -360,7 +416,7 @@ class Au:
         def back_page(junk):
             if self.page_num > 1:
                 self.page_num = self.page_num - 1
-                set_buttons()
+                self.set_buttons(split)
                 self.force_refresh=True
                 self.dead_alarm = self.loop.set_alarm_in(.01,self.refresh)
             else:
@@ -368,36 +424,43 @@ class Au:
 
         def forward_page(junk):
             self.page_num = self.page_num + 1
-            set_buttons()
+            self.set_buttons(split)
             self.force_refresh=True
             self.dead_alarm = self.loop.set_alarm_in(.01,self.refresh)
 
+        def lets_spot(junk):
+            self.menu_state = "spots"
+            self.set_buttons(play_spot)
+            self.force_refresh = True
+            self.menu_show = False
+            self.menu_array[0] = (BoxButton('T', 1, is_sprite=False,on_press=lets_pod,user_data=None))
+            self.dead_alarm = self.loop.set_alarm_in(1, self.refresh)
+            
+        def lets_pod(junk):
+            self.menu_state = "pods"
+            self.set_buttons(split)
+            self.force_refresh = True
+            self.menu_show = False
+            self.menu_array[0] = (BoxButton('music', 1, is_sprite=True,on_press=lets_spot,user_data=None))
+            self.dead_alarm = self.loop.set_alarm_in(1, self.refresh) 
+            
+            
+            
+        def play_spot(junk, location):
+            play_room = (str(pod_dict['Rooms']['Living']))
 
-        def set_buttons():
-            logging.info('setting buttons')
-            self.buttons_list = []
-            index_dict = 0 
-            page_split = list(pod_dict["Pods"].items())
-            cards_size = len(page_split)
-            if (self.page_num * 6) < cards_size:
-                finish = self.page_num * 6
-                if self.page_num > 1:
-                    start = (finish + 1)-6
-                else:
-                    start = 0
-            else:
-                finish = cards_size
-                start = ((self.page_num * 6)) - 6
-            for key,value in page_split[start:finish]:
-                #remember, arguments can't be passed to callback through ON_PRESS, must use USER_DATE
-                #print(len(value['method']))
+            sonos = SoCo(play_room)
+            uri = location
+            sonos.clear_queue()
+            sonos.add_uri_to_queue(uri=uri)
+            sonos.play_from_queue(index=0)
+            sonos.play_mode ="SHUFFLE_NOREPEAT"
 
-                #removed dates for the time being
-                new_button = BoxButton(value['label'], index_dict, on_press=split,show_date=False,user_data=value)
-                self.buttons_list.append(new_button)
-                index_dict = index_dict + 1
-                #print('writing buttons')    
-        set_buttons()
+ 
+        if self.menu_state == "pods":    
+            self.set_buttons(split)
+        else:
+            self.set_buttons(play_spot)
 
         self.nav_array = []
         self.nav_array.append(BoxButton('rr-30', 1, is_sprite=True,on_press=back_page,user_data=None))
@@ -405,7 +468,7 @@ class Au:
         self.nav_array.append(BoxButton('ff-30', 3, is_sprite=True,on_press=forward_page,user_data=None))
 
         self.menu_array = []
-        self.menu_array.append(BoxButton('rr-30', 1, is_sprite=True,on_press=back_page,user_data=None))
+        self.menu_array.append(BoxButton('music', 1, is_sprite=True,on_press=lets_spot,user_data=None))
         self.menu_array.append(BoxButton('play', 2, is_sprite=True,on_press=play_sonos,user_data=None))
         self.menu_array.append(BoxButton('ff-30', 3, is_sprite=True,on_press=forward_page,user_data=None))
 
@@ -489,6 +552,7 @@ class Au:
         screen.register_palette(self.ansi_palette)
         screen.set_terminal_properties(256)
         self.page_num = 1
+        self.menu_state = "spots"
         x_test = self.setup_view()
         logging.warning("starting up.")
         self.loop = urwid.MainLoop(
@@ -496,6 +560,7 @@ class Au:
             unhandled_input=self.keypress)
         self.process = psutil.Process(os.getpid())
         self.menu_show = False
+        
         self.minute_lock = datetime.datetime.now().minute
         self.dead_alarm = self.loop.set_alarm_in(.2, self.refresh)
         self.force_refresh = True
@@ -512,13 +577,18 @@ class Au:
         return None
     
     #socketio coroutine test, will this run?
-    def show_menu(self,junk):
+
+        #self.dead_alarm = self.loop.set_alarm_in(1, self.refresh)
+        #self.loop.remove_alarm(self.dead_alarm)
+    def show_menu(self, junk):
+
         self.force_refresh = True
         self.menu_show = True
-        self.dead_alarm = self.loop.set_alarm_in(.2, self.refresh)
+        self.refresh()
 
     def refresh(self, loop=None, data=None):
 
+            
         self.loop.remove_alarm(self.dead_alarm)
         temp_minute = datetime.datetime.now().minute
         if (temp_minute != self.minute_lock) or self.force_refresh or self.force_close:
@@ -529,7 +599,7 @@ class Au:
             #for side to side navbar, consider passing buttnons_list to a function and have it return based on composition.
             base = urwid.Filler(
                 urwid.Pile([
-                    urwid.Columns([urwid.Padding(urwid.AttrMap(urwid.BigText("{0}{1}{2}".format(datetime.datetime.now().hour,":",temp_minute), urwid.font.HalfBlock5x4Font()),'clock_c'), 'left', width='clip'),urwid.Padding(BoxButton('burger', 2, is_sprite=True,on_press=self.show_menu,no_border=True,user_data=None),'right',width=('relative',19))]),
+                    urwid.Columns([urwid.Padding(urwid.AttrMap(urwid.BigText("{0}{1}{2}".format(datetime.datetime.now().hour,":",temp_minute), urwid.font.HalfBlock5x4Font()),'clock_c'), 'left', width='clip'),urwid.Padding(BoxButton('burger', 999, is_sprite=True,on_press=self.show_menu,no_border=True,user_data=None),'right',width=('relative',19))]),
                     urwid.AttrMap(
                     urwid.LineBox(urwid.Pile([urwid.Divider(" ",top=0,bottom=0),
                     urwid.GridFlow(self.buttons_list,cell_width=50,h_sep=0,v_sep=2,align='center'),
@@ -537,6 +607,7 @@ class Au:
                     trcorner=u"\u2584",tlcorner=u"\u2584",tline=u"\u2584",bline=u"\u2580",blcorner=u"\u2580",brcorner=u"\u2580",lline=u"\u2588",rline=u"\u2588"),'outer_box_c'),
                     urwid.Divider(" ",top=0,bottom=0),
                     urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')]),'top')          #,align='center',width=23,valign='middle',height=4)
+            
             if self.menu_show:
                 self.loop.widget = urwid.Overlay(
                 urwid.AttrMap(
