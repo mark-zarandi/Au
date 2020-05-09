@@ -33,7 +33,6 @@ dates_dict = None
 
 def line_split(input_string):
     string = (input_string.lower().split())
-    print(string)
     if len(string) == 1 and len(string[0]) <= 7:
         return (str(string[0]))
     if len(string[0]+string[1]) > 7 and len(string[0])<=7:
@@ -272,7 +271,7 @@ class Au:
         if (self.page_num * 6) < cards_size:
             finish = self.page_num * 6
             if self.page_num > 1:
-                start = (finish + 1)-6
+                start = (finish)-6
             else:
                 start = 0
         else:
@@ -430,6 +429,7 @@ class Au:
 
         def lets_spot(junk):
             self.menu_state = "spots"
+            self.page_num = 1
             self.set_buttons(play_spot)
             self.force_refresh = True
             self.menu_show = False
@@ -438,6 +438,7 @@ class Au:
             
         def lets_pod(junk):
             self.menu_state = "pods"
+            self.page_num = 1
             self.set_buttons(split)
             self.force_refresh = True
             self.menu_show = False
@@ -552,7 +553,7 @@ class Au:
         screen.register_palette(self.ansi_palette)
         screen.set_terminal_properties(256)
         self.page_num = 1
-        self.menu_state = "spots"
+        self.menu_state = "pods"
         x_test = self.setup_view()
         logging.warning("starting up.")
         self.loop = urwid.MainLoop(

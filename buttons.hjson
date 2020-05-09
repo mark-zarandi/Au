@@ -1,4 +1,64 @@
 {Pods:{
+  My_Brother_My_Brother_And_Me:
+  {
+    label: My Brother
+    method:
+    [
+      get_recent
+      get_random
+    ]
+    pod_id: 19
+  }
+  Rabbit_Hole:
+  {
+    label: Rabbit Hole
+    method:
+    [
+      get_recent
+      get_random
+    ]
+    pod_id: 17
+  }
+  The_Ex-Worker:
+  {
+    label: Ex Worker
+    method:
+    [
+      get_recent
+      get_random
+    ]
+    pod_id: 16
+  }
+  Intercepted_with_Jeremy_Scahill:
+  {
+    label: "Intrcpt "
+    method:
+    [
+      get_recent
+      get_random
+    ]
+    pod_id: 15
+  }
+  Here’s_the_Deal:
+  {
+    label: "biden "
+    method:
+    [
+      get_recent
+      get_random
+    ]
+    pod_id: 13
+  }
+  The_Chuck_ToddCast_Meet_the_Press:
+  {
+    label: Chuck Todd
+    method:
+    [
+      get_recent
+      get_random
+    ]
+    pod_id: 12
+  }
   Savage_Lovecast:
   {
     label: Savage Love
@@ -49,16 +109,6 @@
     ]
     pod_id: 7
   }
-  The_World:
-  {
-    label: The World
-    method:
-    [
-      get_recent
-      get_random
-    ]
-    pod_id: 6
-  }
   NPR_News_Now:
   {
     label: NPR News
@@ -92,7 +142,6 @@
 }Rooms:{
   Lib: 192.168.1.136
   Kitch: 192.168.1.145
-  Living: 192.168.1.116
   Master: 192.168.1.101
-
+  Living: 192.168.1.116
 }}
