@@ -5,6 +5,7 @@ Base:
 {
 	clock_c: '162'
 	outer_box_c: '24'
+	burger_c:'162'
 	buttons_c:
 		{
 			text_c:'247'
@@ -13,6 +14,14 @@ Base:
 			top_c:'12'
 			bottom_c:'12'
 
+		}
+	nav:
+		{
+			text_c:'181'
+			left_c:'123'
+			right_c:'123'
+			top_c:'123'
+			bottom_c:'123'
 		}
 
 }
