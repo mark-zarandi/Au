@@ -20,6 +20,7 @@ from soco import groups
 from boxbutton import BoxButton
 from soco.exceptions import SoCoUPnPException
 import math
+import random
 #level = logging.CRITICAL
 #format   = '%(asctime)-8s %(levelname)-8s %(message)s'
 #handlers = [logging.handlers.TimedRotatingFileHandler('/usr/local/bin/logs/screen_log',when="D",interval=1,backupCount=5,encoding=None,delay=False,utc=False,atTime=None), logging.StreamHandler()]
@@ -33,23 +34,24 @@ themes_dict = hjson.loads(themes_dict)
 dates_dict = None
 
 def theme_set():
-
+    random_pick = (random.choice(list(themes_dict['Themes'])))
+    random_pick = "Grave"
     ansi_palette=[("clock_c","","","",f"",""),
-    ("clock_c","","","",f"h{themes_dict['Themes']['Base']['clock_c']}",""),
-    ("outer_box_c","","","",f"h{themes_dict['Themes']['Base']['outer_box_c']}",""),
-    ("burger","","","",f"h{themes_dict['Themes']['Base']['burger_c']}",""),
+    ("clock_c","","","",f"h{themes_dict['Themes'][random_pick]['clock_c']}",""),
+    ("outer_box_c","","","",f"h{themes_dict['Themes'][random_pick]['outer_box_c']}",""),
+    ("burger","","","",f"h{themes_dict['Themes'][random_pick]['burger_c']}",""),
     #buttons
-    ("button_top_c","","","",f"h{themes_dict['Themes']['Base']['buttons_c']['top_c']}",""),
-    ("button_bottom_c","","","",f"h{themes_dict['Themes']['Base']['buttons_c']['bottom_c']}",""),
-    ("button_left_c","","","",f"h{themes_dict['Themes']['Base']['buttons_c']['left_c']}",""),
-    ("button_right_c","","","",f"h{themes_dict['Themes']['Base']['buttons_c']['right_c']}",""),
-    ("button_text_c","","","",f"h{themes_dict['Themes']['Base']['buttons_c']['text_c']}",""),
+    ("button_top_c","","","",f"h{themes_dict['Themes'][random_pick]['buttons_c']['top_c']}",""),
+    ("button_bottom_c","","","",f"h{themes_dict['Themes'][random_pick]['buttons_c']['bottom_c']}",""),
+    ("button_left_c","","","",f"h{themes_dict['Themes'][random_pick]['buttons_c']['left_c']}",""),
+    ("button_right_c","","","",f"h{themes_dict['Themes'][random_pick]['buttons_c']['right_c']}",""),
+    ("button_text_c","","","",f"h{themes_dict['Themes'][random_pick]['buttons_c']['text_c']}",""),
     #nav
-    ("nav_top_c","","","",f"h{themes_dict['Themes']['Base']['nav']['top_c']}",""),
-    ("nav_bottom_c","","","",f"h{themes_dict['Themes']['Base']['nav']['bottom_c']}",""),
-    ("nav_left_c","","","",f"h{themes_dict['Themes']['Base']['nav']['left_c']}",""),
-    ("nav_right_c","","","",f"h{themes_dict['Themes']['Base']['nav']['right_c']}",""),
-    ("nav_text_c","","","",f"h{themes_dict['Themes']['Base']['nav']['text_c']}","")]
+    ("nav_top_c","","","",f"h{themes_dict['Themes'][random_pick]['nav']['top_c']}",""),
+    ("nav_bottom_c","","","",f"h{themes_dict['Themes'][random_pick]['nav']['bottom_c']}",""),
+    ("nav_left_c","","","",f"h{themes_dict['Themes'][random_pick]['nav']['left_c']}",""),
+    ("nav_right_c","","","",f"h{themes_dict['Themes'][random_pick]['nav']['right_c']}",""),
+    ("nav_text_c","","","",f"h{themes_dict['Themes'][random_pick]['nav']['text_c']}","")]
 
     return ansi_palette
 
@@ -69,11 +71,22 @@ def get_theme(stringer):
     return nav_dict[stringer]
 
 class Au:
-    
+    def flip_back(self):
+        logging.info('splitting')
+        flip_here = user_data_x['index_dict'] - 1
+        flip_iter = 0
+        for x in self.buttons_list[self.page_num][0]:
+            if 'Pile' in str(type(x)):
+                temp_holder = self.buttons_list[self.page_num][0][flip_iter]
+                self.buttons_list[self.page_num][0][flip_iter] = self.buttons_list[self.page_num][1][flip_iter]
+                self.buttons_list[self.page_num][1][flip_here] = temp_holder
+            flip_iter += 1
+        self.poor_man_refresh()
+
     #returns the SPLIT buttons
     def make_play_func(self,pod_id):
 
-        def get_random():
+        def get_random(self):
             
             logging.info('getting random.')
             
@@ -90,14 +103,14 @@ class Au:
                 sonos = SoCo(play_room)
             
                 sonos.play_uri(data['location'])
+                self.flip_back()
             #parallel threading
             t = threading.Thread(name="sonos_play_thread",target=play_it_ran)
             t.start()
 
-            self.set_buttons(split)
-            self.force_refresh = True
+            self.flip_back()
 
-        def get_recent():
+        def get_recent(self):
             logging.info('getting recent')
             def play_it_rec():
                 logging.info('recent thread')
@@ -108,12 +121,12 @@ class Au:
                 data = requests.get('http://0.0.0.0:5000/recent/' + str(pod_id)).json() 
                 sonos.play_uri(data['location'])
                 sonos.play()
+                self.flip_back()
                     
                 #parallel threading
             t = threading.Thread(name="sonos_play_thread",target=play_it_rec)
             t.start()
-            self.set_buttons(split)
-            self.force_refresh = True
+
 
         #func_dict = {"recent":get_recent,"random":get_random}
         split_theme = get_theme("button")
@@ -205,12 +218,12 @@ class Au:
                 for key,value in page_split:
                     if math.ceil(index_dict/6)==(temp_page+1):
                         value["index_dict"] = index_dict - (temp_page * 6)
-                        print(key)
+
                         new_button_front = BoxButton(value['label'], index_dict, on_press=callbacker,show_date=False,theme=button_theme,user_data=value)
                         front_button_array.append(new_button_front)
                         new_button_back = self.make_play_func(value['pod_id'])
                         back_button_array.append(new_button_back)
-                        print(index_dict)
+
                     index_dict = index_dict + 1
 
                 temp_page += 1
