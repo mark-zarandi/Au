@@ -86,6 +86,18 @@ class Au:
     #returns the SPLIT buttons
     def make_play_func(self,pod_id):
 
+        def flip_back():
+            logging.info('splitting')
+            flip_here = user_data_x['index_dict'] - 1
+            flip_iter = 0
+            for x in self.buttons_list[self.page_num][0]:
+                if 'Pile' in str(type(x)):
+                    temp_holder = self.buttons_list[self.page_num][0][flip_iter]
+                    self.buttons_list[self.page_num][0][flip_iter] = self.buttons_list[self.page_num][1][flip_iter]
+                    self.buttons_list[self.page_num][1][flip_here] = temp_holder
+                flip_iter += 1
+            self.poor_man_refresh()
+
         def get_random(self):
             
             logging.info('getting random.')
@@ -103,15 +115,15 @@ class Au:
                 sonos = SoCo(play_room)
             
                 sonos.play_uri(data['location'])
-                self.flip_back()
+                flip_back()
             #parallel threading
             t = threading.Thread(name="sonos_play_thread",target=play_it_ran)
             t.start()
 
-            self.flip_back()
 
         def get_recent(self):
             logging.info('getting recent')
+
             def play_it_rec():
                 logging.info('recent thread')
                 url = 'http://0.0.0.0:5005/preset/all_rooms/'
@@ -121,7 +133,7 @@ class Au:
                 data = requests.get('http://0.0.0.0:5000/recent/' + str(pod_id)).json() 
                 sonos.play_uri(data['location'])
                 sonos.play()
-                self.flip_back()
+                flip_back()
                     
                 #parallel threading
             t = threading.Thread(name="sonos_play_thread",target=play_it_rec)
