@@ -33,6 +33,9 @@ themes_dict = open("themes.hjson","r").read()
 themes_dict = hjson.loads(themes_dict)
 dates_dict = None
 
+def right(s, amount):
+    return s[-amount:]
+
 def theme_set():
     random_pick = (random.choice(list(themes_dict['Themes'])))
     random_pick = "Grave"
