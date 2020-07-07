@@ -84,11 +84,11 @@ class Au:
         self.poor_man_refresh()
 
     #returns the SPLIT buttons
-    def make_play_func(self,pod_id):
+    def make_play_func(self,pod_id,index_id):
 
-        def flip_back():
+        def flip_back(x):
             logging.info('splitting')
-            flip_here = user_data_x['index_dict'] - 1
+            flip_here = x - 1
             flip_iter = 0
             for x in self.buttons_list[self.page_num][0]:
                 if 'Pile' in str(type(x)):
@@ -115,7 +115,7 @@ class Au:
                 sonos = SoCo(play_room)
             
                 sonos.play_uri(data['location'])
-                flip_back()
+                flip_back(index_id)
             #parallel threading
             t = threading.Thread(name="sonos_play_thread",target=play_it_ran)
             t.start()
@@ -133,7 +133,7 @@ class Au:
                 data = requests.get('http://0.0.0.0:5000/recent/' + str(pod_id)).json() 
                 sonos.play_uri(data['location'])
                 sonos.play()
-                flip_back()
+                flip_back(index_id)
                     
                 #parallel threading
             t = threading.Thread(name="sonos_play_thread",target=play_it_rec)
@@ -233,7 +233,7 @@ class Au:
 
                         new_button_front = BoxButton(value['label'], index_dict, on_press=callbacker,show_date=False,theme=button_theme,user_data=value)
                         front_button_array.append(new_button_front)
-                        new_button_back = self.make_play_func(value['pod_id'])
+                        new_button_back = self.make_play_func(value['pod_id'],value['index_dict'])
                         back_button_array.append(new_button_back)
 
                     index_dict = index_dict + 1
