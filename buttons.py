@@ -103,19 +103,16 @@ class Au:
             logging.info('getting random.')
             
             def play_it_ran():
+                flip_back(index_id)
                 logging.info('random threading')
                 play_room = (str(pod_dict['Rooms']['Living']))
                 url = 'http://0.0.0.0:5005/preset/all_rooms/'
                 r = requests.get(url)
                 data = requests.get('http://0.0.0.0:5000/random/' + str(pod_id) +"/").json()
-                
                 time.sleep(1)
-
-
                 sonos = SoCo(play_room)
-            
                 sonos.play_uri(data['location'])
-                flip_back(index_id)
+
             #parallel threading
             t = threading.Thread(name="sonos_play_thread",target=play_it_ran)
             t.start()
@@ -125,6 +122,7 @@ class Au:
             logging.info('getting recent')
 
             def play_it_rec():
+                flip_back(index_id)
                 logging.info('recent thread')
                 url = 'http://0.0.0.0:5005/preset/all_rooms/'
                 r = requests.get(url)
@@ -133,7 +131,7 @@ class Au:
                 data = requests.get('http://0.0.0.0:5000/recent/' + str(pod_id)).json() 
                 sonos.play_uri(data['location'])
                 sonos.play()
-                flip_back(index_id)
+
                     
                 #parallel threading
             t = threading.Thread(name="sonos_play_thread",target=play_it_rec)
@@ -250,7 +248,7 @@ class Au:
 
     def setup_view(self):
         logging.info('making buttons.')
-
+        nav_theme = get_theme("nav") 
         def split(link,user_data_x):
             logging.info('splitting')
             flip_here = user_data_x['index_dict'] - 1
@@ -271,7 +269,7 @@ class Au:
             logging.info('play button pressed')
 
             self.force_refresh = True
-            self.nav_array[int(right(junk.label,1))-1] = BoxButton('pause', 2, is_sprite=True,on_press=pause_sonos,user_data=None)
+            self.nav_array[int(right(junk.label,1))-1] = BoxButton('pause', 2, is_sprite=True,theme=nav_theme,on_press=pause_sonos,user_data=None)
             #self.nav_grid = urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')
             self.dead_alarm = self.loop.set_alarm_in(.01,self.refresh)
             #commented out for testing at hotel
@@ -294,7 +292,7 @@ class Au:
         def pause_sonos(junk):
             logging.info('pause pressed')
             self.force_refresh = True
-            self.nav_array[int(right(junk.label,1))-1] = BoxButton('play', 2, is_sprite=True,on_press=play_sonos,user_data=None)
+            self.nav_array[int(right(junk.label,1))-1] = BoxButton('play', 2, is_sprite=True,theme=nav_theme,on_press=play_sonos,user_data=None)
             #self.nav_grid = urwid.GridFlow(self.nav_array,cell_width=50,h_sep=0,v_sep=0,align='center')
             self.dead_alarm = self.loop.set_alarm_in(.01,self.refresh)
             #commented out for hotel testing
@@ -344,7 +342,7 @@ class Au:
             sonos.play_from_queue(index=0)
             sonos.play_mode ="SHUFFLE_NOREPEAT"
 
-        nav_theme = get_theme("nav") 
+
         if self.menu_state == "pods":    
             self.set_buttons(split)
         else:
