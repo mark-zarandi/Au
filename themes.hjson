@@ -50,5 +50,31 @@ Grave:
 		}
 
 }
+,
+Very_Blue:
+{
+        clock_c: '14'
+        outer_box_c: '19'
+        burger_c:'21'
+        buttons_c:
+                {
+                        text_c:'15'
+                        left_c:'8'
+                        right_c:'8'
+                        top_c:'7'
+                        bottom_c:'7'
+
+                }
+        nav:
+                {
+                        text_c:'45'
+                        left_c:'45'
+                        right_c:'45'
+                        top_c:'45'
+                        bottom_c:'45'
+                }
+
+}
+
 }
 }

@@ -38,7 +38,7 @@ def right(s, amount):
 
 def theme_set():
     random_pick = (random.choice(list(themes_dict['Themes'])))
-    random_pick = "Grave"
+    random_pick = "Very_Blue"
     ansi_palette=[("clock_c","","","",f"",""),
     ("clock_c","","","",f"h{themes_dict['Themes'][random_pick]['clock_c']}",""),
     ("outer_box_c","","","",f"h{themes_dict['Themes'][random_pick]['outer_box_c']}",""),
