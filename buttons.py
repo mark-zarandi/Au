@@ -97,7 +97,7 @@ class Au:
                 if 'Pile' in str(type(x)):
                     temp_holder = self.buttons_list[self.page_num][0][flip_iter]
                     self.buttons_list[self.page_num][0][flip_iter] = self.buttons_list[self.page_num][1][flip_iter]
-                    self.buttons_list[self.page_num][1][flip_here] = temp_holder
+                    self.buttons_list[self.page_num][1][flip_iter] = temp_holder
                 flip_iter += 1
             self.poor_man_refresh()
 
@@ -260,7 +260,7 @@ class Au:
                 if 'Pile' in str(type(x)):
                     temp_holder = self.buttons_list[self.page_num][0][flip_iter]
                     self.buttons_list[self.page_num][0][flip_iter] = self.buttons_list[self.page_num][1][flip_iter]
-                    self.buttons_list[self.page_num][1][flip_here] = temp_holder
+                    self.buttons_list[self.page_num][1][flip_iter] = temp_holder
                 flip_iter += 1
             temp_holder = self.buttons_list[self.page_num][0][flip_here]
             self.buttons_list[self.page_num][0][flip_here] = self.buttons_list[self.page_num][1][flip_here]
