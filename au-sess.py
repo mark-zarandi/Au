@@ -78,7 +78,7 @@ def start_up():
         sys.exit()
 
     if let_go:
-        sio.connect('ws://0.0.0.0:5000')
+        sio.connect('ws://0.0.0.0:5000', namespaces=['/thermostat'])
         sio.start_background_task(start_au.main())
 
     sio.wait()

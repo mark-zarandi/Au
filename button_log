@@ -19085,3 +19085,226 @@ Request Headers:
 2020-07-13 00:15:00,299 INFO     still refreshing: 48832512
 2020-07-13 00:15:13,297 INFO     Sending packet PING data None
 2020-07-13 00:15:13,302 INFO     Received packet PONG data None
+2020-07-13 21:04:21,175 INFO     making buttons.
+2020-07-13 21:04:21,175 INFO     setting buttons
+2020-07-13 21:04:21,175 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:04:35,917 INFO     making buttons.
+2020-07-13 21:04:35,917 INFO     setting buttons
+2020-07-13 21:04:35,917 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:04:45,380 INFO     making buttons.
+2020-07-13 21:04:45,380 INFO     setting buttons
+2020-07-13 21:04:45,380 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:05:14,943 INFO     making buttons.
+2020-07-13 21:05:14,943 INFO     setting buttons
+2020-07-13 21:05:14,943 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:05:44,466 INFO     making buttons.
+2020-07-13 21:05:44,466 INFO     setting buttons
+2020-07-13 21:05:44,466 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:06:38,814 INFO     making buttons.
+2020-07-13 21:06:38,814 INFO     setting buttons
+2020-07-13 21:06:38,814 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:11:03,701 INFO     making buttons.
+2020-07-13 21:11:03,701 INFO     setting buttons
+2020-07-13 21:11:03,702 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:11:20,008 INFO     making buttons.
+2020-07-13 21:11:20,008 INFO     setting buttons
+2020-07-13 21:11:20,008 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:11:55,394 INFO     making buttons.
+2020-07-13 21:11:55,394 INFO     setting buttons
+2020-07-13 21:11:55,394 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:12:10,806 INFO     making buttons.
+2020-07-13 21:12:10,806 INFO     setting buttons
+2020-07-13 21:12:10,806 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:14:29,687 INFO     making buttons.
+2020-07-13 21:14:29,687 INFO     setting buttons
+2020-07-13 21:14:29,687 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:15:01,281 INFO     making buttons.
+2020-07-13 21:15:01,281 INFO     setting buttons
+2020-07-13 21:15:01,281 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:15:01,297 WARNING  starting up.
+2020-07-13 21:15:01,502 INFO     still refreshing: 50458624
+2020-07-13 21:16:00,684 INFO     still refreshing: 51564544
+2020-07-13 21:24:16,003 INFO     making buttons.
+2020-07-13 21:24:16,003 INFO     setting buttons
+2020-07-13 21:24:16,004 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:24:16,019 WARNING  starting up.
+2020-07-13 21:24:16,229 INFO     still refreshing: 50425856
+2020-07-13 21:24:17,077 DEBUG    Starting new HTTP connection (1): 192.168.1.116:1400
+2020-07-13 21:24:46,166 INFO     making buttons.
+2020-07-13 21:24:46,166 INFO     setting buttons
+2020-07-13 21:24:46,166 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:24:46,182 WARNING  starting up.
+2020-07-13 21:24:46,388 INFO     still refreshing: 50446336
+2020-07-13 21:25:00,170 INFO     still refreshing: 50737152
+2020-07-13 21:26:00,361 INFO     still refreshing: 50974720
+2020-07-13 21:26:09,880 INFO     making buttons.
+2020-07-13 21:26:09,880 INFO     setting buttons
+2020-07-13 21:26:09,880 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:26:09,896 WARNING  starting up.
+2020-07-13 21:26:10,106 INFO     still refreshing: 50442240
+2020-07-13 21:27:56,111 INFO     making buttons.
+2020-07-13 21:27:56,112 INFO     setting buttons
+2020-07-13 21:27:56,112 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:27:56,127 WARNING  starting up.
+2020-07-13 21:27:56,333 INFO     still refreshing: 50409472
+2020-07-13 21:28:12,661 INFO     still refreshing: 50761728
+2020-07-13 21:33:44,982 INFO     making buttons.
+2020-07-13 21:33:44,983 INFO     setting buttons
+2020-07-13 21:33:44,983 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:33:45,000 WARNING  starting up.
+2020-07-13 21:33:45,207 INFO     still refreshing: 50593792
+2020-07-13 21:33:54,894 INFO     still refreshing: 50995200
+2020-07-13 21:34:00,907 INFO     still refreshing: 51384320
+2020-07-13 21:34:03,289 INFO     setting buttons
+2020-07-13 21:34:18,624 INFO     making buttons.
+2020-07-13 21:34:18,624 INFO     setting buttons
+2020-07-13 21:34:18,661 WARNING  starting up.
+2020-07-13 21:34:18,870 INFO     still refreshing: 50774016
+2020-07-13 21:34:20,953 INFO     still refreshing: 51048448
+2020-07-13 21:34:23,153 INFO     setting buttons
+2020-07-13 21:34:23,153 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:36:21,833 INFO     making buttons.
+2020-07-13 21:36:21,833 INFO     setting buttons
+2020-07-13 21:36:21,871 WARNING  starting up.
+2020-07-13 21:36:22,077 INFO     still refreshing: 50769920
+2020-07-13 21:36:23,320 INFO     still refreshing: 51052544
+2020-07-13 21:36:24,721 INFO     setting buttons
+2020-07-13 21:36:24,721 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:36:25,330 INFO     still refreshing: 51630080
+2020-07-13 21:36:27,249 INFO     still refreshing: 52064256
+2020-07-13 21:37:00,338 INFO     still refreshing: 52097024
+2020-07-13 21:37:10,436 INFO     making buttons.
+2020-07-13 21:37:10,437 INFO     setting buttons
+2020-07-13 21:37:10,472 WARNING  starting up.
+2020-07-13 21:37:10,679 INFO     still refreshing: 50749440
+2020-07-13 21:37:11,925 INFO     still refreshing: 51032064
+2020-07-13 21:37:13,785 INFO     setting buttons
+2020-07-13 21:37:13,785 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:37:13,934 INFO     still refreshing: 51642368
+2020-07-13 21:37:16,152 INFO     still refreshing: 52051968
+2020-07-13 21:37:18,189 INFO     setting buttons
+2020-07-13 21:37:19,167 INFO     still refreshing: 52207616
+2020-07-13 21:38:00,277 INFO     still refreshing: 52903936
+2020-07-13 21:38:08,542 INFO     making buttons.
+2020-07-13 21:38:08,542 INFO     setting buttons
+2020-07-13 21:38:08,577 WARNING  starting up.
+2020-07-13 21:38:08,783 INFO     still refreshing: 50790400
+2020-07-13 21:38:11,022 INFO     still refreshing: 51073024
+2020-07-13 21:38:12,160 INFO     setting buttons
+2020-07-13 21:38:12,160 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:38:13,031 INFO     still refreshing: 52060160
+2020-07-13 21:38:31,971 INFO     making buttons.
+2020-07-13 21:38:31,971 INFO     setting buttons
+2020-07-13 21:38:32,008 WARNING  starting up.
+2020-07-13 21:38:32,213 INFO     still refreshing: 50749440
+2020-07-13 21:38:33,259 INFO     still refreshing: 51019776
+2020-07-13 21:38:34,313 INFO     setting buttons
+2020-07-13 21:38:34,313 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:38:35,267 INFO     still refreshing: 52293632
+2020-07-13 21:38:35,821 INFO     still refreshing: 52297728
+2020-07-13 21:38:37,163 INFO     setting buttons
+2020-07-13 21:38:37,828 INFO     still refreshing: 53272576
+2020-07-13 21:38:38,521 INFO     still refreshing: 53276672
+2020-07-13 21:38:39,735 INFO     setting buttons
+2020-07-13 21:38:40,532 INFO     still refreshing: 53739520
+2020-07-13 21:38:40,899 INFO     still refreshing: 53739520
+2020-07-13 21:38:42,508 INFO     setting buttons
+2020-07-13 21:38:42,914 INFO     still refreshing: 54304768
+2020-07-13 21:39:02,707 INFO     making buttons.
+2020-07-13 21:39:02,707 INFO     setting buttons
+2020-07-13 21:39:02,743 WARNING  starting up.
+2020-07-13 21:39:02,948 INFO     still refreshing: 50761728
+2020-07-13 21:39:03,915 INFO     still refreshing: 51052544
+2020-07-13 21:39:05,415 INFO     setting buttons
+2020-07-13 21:39:05,416 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:39:05,929 INFO     still refreshing: 52330496
+2020-07-13 21:39:06,924 INFO     still refreshing: 52334592
+2020-07-13 21:40:00,119 INFO     still refreshing: 52383744
+2020-07-13 21:41:00,274 INFO     still refreshing: 52510720
+2020-07-13 21:41:08,915 INFO     still refreshing: 52596736
+2020-07-13 21:42:30,520 INFO     making buttons.
+2020-07-13 21:42:30,520 INFO     setting buttons
+2020-07-13 21:42:30,559 WARNING  starting up.
+2020-07-13 21:42:30,764 INFO     still refreshing: 50778112
+2020-07-13 21:43:21,350 INFO     making buttons.
+2020-07-13 21:43:21,350 INFO     setting buttons
+2020-07-13 21:43:21,387 WARNING  starting up.
+2020-07-13 21:43:21,595 INFO     still refreshing: 50872320
+2020-07-13 21:44:00,741 INFO     still refreshing: 52142080
+2020-07-13 21:44:54,701 INFO     still refreshing: 52142080
+2020-07-13 21:44:55,877 INFO     setting buttons
+2020-07-13 21:44:55,877 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:44:56,707 INFO     still refreshing: 52985856
+2020-07-13 21:44:57,516 INFO     still refreshing: 53026816
+2020-07-13 21:45:00,528 INFO     still refreshing: 53035008
+2020-07-13 21:45:20,896 INFO     still refreshing: 53067776
+2020-07-13 21:45:24,273 INFO     still refreshing: 53223424
+2020-07-13 21:45:25,198 INFO     still refreshing: 53223424
+2020-07-13 21:45:29,683 INFO     still refreshing: 53227520
+2020-07-13 21:45:31,460 INFO     still refreshing: 53338112
+2020-07-13 21:45:33,781 INFO     still refreshing: 53481472
+2020-07-13 21:45:35,445 INFO     setting buttons
+2020-07-13 21:45:35,794 INFO     still refreshing: 53481472
+2020-07-13 21:45:37,369 INFO     still refreshing: 53481472
+2020-07-13 21:45:39,893 INFO     still refreshing: 53481472
+2020-07-13 21:45:42,647 INFO     still refreshing: 53497856
+2020-07-13 21:45:43,813 INFO     setting buttons
+2020-07-13 21:45:44,653 INFO     still refreshing: 53706752
+2020-07-13 21:45:45,363 INFO     still refreshing: 53706752
+2020-07-13 21:45:46,856 INFO     still refreshing: 53706752
+2020-07-13 21:47:03,658 INFO     making buttons.
+2020-07-13 21:47:03,658 INFO     setting buttons
+2020-07-13 21:47:03,695 WARNING  starting up.
+2020-07-13 21:47:03,905 INFO     still refreshing: 50790400
+2020-07-13 21:47:05,852 INFO     still refreshing: 51068928
+2020-07-13 21:48:00,992 INFO     still refreshing: 51580928
+2020-07-13 21:49:00,142 INFO     still refreshing: 51785728
+2020-07-13 21:49:02,085 INFO     making buttons.
+2020-07-13 21:49:02,085 INFO     setting buttons
+2020-07-13 21:49:02,123 WARNING  starting up.
+2020-07-13 21:49:02,332 INFO     still refreshing: 50925568
+2020-07-13 21:49:03,699 INFO     still refreshing: 51208192
+2020-07-13 21:49:04,705 INFO     still refreshing: 52281344
+2020-07-13 21:49:05,093 INFO     still refreshing: 52285440
+2020-07-13 21:49:06,102 INFO     still refreshing: 52330496
+2020-07-13 21:49:25,116 INFO     making buttons.
+2020-07-13 21:49:25,116 INFO     setting buttons
+2020-07-13 21:49:25,155 WARNING  starting up.
+2020-07-13 21:49:25,358 INFO     still refreshing: 50774016
+2020-07-13 21:49:26,422 INFO     still refreshing: 51056640
+2020-07-13 21:49:27,397 INFO     setting buttons
+2020-07-13 21:49:27,398 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:49:27,428 INFO     still refreshing: 52314112
+2020-07-13 21:49:28,638 INFO     still refreshing: 52314112
+2020-07-13 21:49:29,648 INFO     still refreshing: 52518912
+2020-07-13 21:49:31,421 INFO     still refreshing: 52523008
+2020-07-13 21:49:32,424 INFO     still refreshing: 52547584
+2020-07-13 21:49:33,669 INFO     still refreshing: 52563968
+2020-07-13 21:49:35,677 INFO     still refreshing: 52662272
+2020-07-13 21:49:36,913 INFO     still refreshing: 52662272
+2020-07-13 21:49:39,918 INFO     still refreshing: 52707328
+2020-07-13 21:49:56,132 INFO     still refreshing: 52707328
+2020-07-13 21:49:58,467 INFO     setting buttons
+2020-07-13 21:49:59,149 INFO     still refreshing: 53739520
+2020-07-13 21:49:59,811 INFO     still refreshing: 53739520
+2020-07-13 21:50:00,817 INFO     still refreshing: 53743616
+2020-07-13 21:50:05,625 INFO     making buttons.
+2020-07-13 21:50:05,625 INFO     setting buttons
+2020-07-13 21:50:05,664 WARNING  starting up.
+2020-07-13 21:50:05,873 INFO     still refreshing: 50794496
+2020-07-13 21:50:08,505 INFO     still refreshing: 51081216
+2020-07-13 21:50:11,517 INFO     still refreshing: 51703808
+2020-07-13 21:50:12,475 INFO     still refreshing: 51707904
+2020-07-13 21:50:13,649 INFO     setting buttons
+2020-07-13 21:50:13,650 DEBUG    Created SoCo instance for ip: 192.168.1.116
+2020-07-13 21:50:14,484 INFO     still refreshing: 52617216
+2020-07-13 21:50:15,421 INFO     still refreshing: 52617216
+2020-07-13 21:50:16,323 INFO     setting buttons
+2020-07-13 21:50:16,427 INFO     still refreshing: 53424128
+2020-07-13 21:50:18,974 INFO     still refreshing: 53424128
+2020-07-13 21:50:20,237 INFO     setting buttons
+2020-07-13 21:50:20,984 INFO     still refreshing: 53968896
+2020-07-13 21:50:21,467 INFO     still refreshing: 53968896
+2020-07-13 21:50:22,473 INFO     still refreshing: 54005760
+2020-07-13 21:50:32,242 INFO     still refreshing: 54005760
+2020-07-13 21:50:40,276 INFO     still refreshing: 54009856

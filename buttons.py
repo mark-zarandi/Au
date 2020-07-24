@@ -21,6 +21,7 @@ from boxbutton import BoxButton
 from soco.exceptions import SoCoUPnPException
 import math
 import random
+import pickle
 #level = logging.CRITICAL
 #format   = '%(asctime)-8s %(levelname)-8s %(message)s'
 #handlers = [logging.handlers.TimedRotatingFileHandler('/usr/local/bin/logs/screen_log',when="D",interval=1,backupCount=5,encoding=None,delay=False,utc=False,atTime=None), logging.StreamHandler()]
@@ -152,10 +153,10 @@ class Au:
     def keypress(self, key):
         if self.menu_state == 'choosing':
             self.menu_state = "pods"
-            self.page_num = 1
+            self.page_num = 0
             self.menu_show = False
             self.force_refresh = True
-            self.refresh()
+            self.poor_man_refresh()
         if (key[0] == "mouse release") and self.menu_show:
             self.menu_state = 'choosing'
             #print(self.menu_show)
@@ -194,8 +195,10 @@ class Au:
         #whatever media, extract them to make an interable
         if self.menu_state == "spots":
             sonos = SoCo(pod_dict['Rooms']['Living'])
-            sonos_playlists = sonos.get_sonos_playlists()
-            page_split = list(sonos_playlists)
+            
+            page_split = pickle.load(open("sonos_pl.p","rb"))
+            #print(page_split)
+            #time.sleep(10)
         else:
             page_split = list(pod_dict["Pods"].items())
         
@@ -216,12 +219,29 @@ class Au:
 
         button_theme = get_theme('button')
         if self.menu_state == "spots":
-            for x in page_split[start:finish]:
+            for x in range(0,int(total_pages)):
+                index_dict = 1
+
+                split_page_array = []
+                back_button_array = []
+                front_button_array = []
+                for key in page_split:
+                    value = {}
+                    if math.ceil(index_dict/6)==(temp_page+1):
+                        value["label"] = key.title
+                        value['location'] = key.to_dict()['resources'][0]['uri']
+                        value["index_dict"] = index_dict - (temp_page * 6)
+                        new_button_front = BoxButton(value['label'], index_dict, on_press=callbacker,show_date=False,theme=button_theme,user_data=value)
+                        front_button_array.append(new_button_front)
+                    index_dict = index_dict + 1
+
+                temp_page += 1
+
+                split_page_array.append(front_button_array)
+                split_page_array.append(back_button_array)
+                self.buttons_list.append(split_page_array)
                 #print((x.to_dict())['resources'][0]['uri'])
-                fix_length = (x.to_dict())['title']
-                new_button = BoxButton(fix_length, index_dict, on_press=callbacker,theme=button_theme,show_date=False,user_data=(x.to_dict())['resources'][0]['uri'])
-                self.buttons_list.append(new_button)
-                index_dict = index_dict + 1
+                    
         else:
             for x in range(0,int(total_pages)):    
                 index_dict = 1
@@ -311,39 +331,44 @@ class Au:
                 logging.info('page num error')
 
         def forward_page(junk):
-            self.page_num = self.page_num + 1
+            if self.page_num + 1 < len(self.buttons_list):
+                self.page_num = self.page_num + 1
             #self.set_buttons(split)
-            self.poor_man_refresh()
+                self.poor_man_refresh()
+            else:
+                print('too far')
 
         def lets_spot(junk):
+            nav_theme = get_theme('nav')
             self.menu_state = "spots"
-            self.page_num = 1
+            self.page_num = 0
             self.set_buttons(play_spot)
             self.force_refresh = True
             self.menu_show = False
-            self.menu_array[0] = (BoxButton('T', 1, is_sprite=False,on_press=lets_pod,user_data=None))
-            self.dead_alarm = self.loop.set_alarm_in(1, self.refresh)
+            self.menu_array[0] = (BoxButton('POD', 1, show_date=False,is_sprite=False,on_press=lets_pod,theme=nav_theme,user_data=None))
+            self.poor_man_refresh()
             
         def lets_pod(junk):
+            nav_theme = get_theme('nav')
             self.menu_state = "pods"
-            self.page_num = 1
+            self.page_num = 0
             self.set_buttons(split)
             self.force_refresh = True
             self.menu_show = False
-            self.menu_array[0] = (BoxButton('music', 1, is_sprite=True,on_press=lets_spot,user_data=None))
-            self.dead_alarm = self.loop.set_alarm_in(1, self.refresh) 
-            
-            
+            self.menu_array[0] = (BoxButton('music', 1, is_sprite=True,theme=nav_theme,on_press=lets_spot,user_data=None))
+            self.poor_man_refresh()
             
         def play_spot(junk, location):
-            play_room = (str(pod_dict['Rooms']['Living']))
+            print(location)
+            time.sleep(5)
+            # play_room = (str(pod_dict['Rooms']['Living']))
 
-            sonos = SoCo(play_room)
-            uri = location
-            sonos.clear_queue()
-            sonos.add_uri_to_queue(uri=uri)
-            sonos.play_from_queue(index=0)
-            sonos.play_mode ="SHUFFLE_NOREPEAT"
+            # sonos = SoCo(play_room)
+            # uri = location['location']
+            # sonos.clear_queue()
+            # sonos.add_uri_to_queue(uri=uri)
+            # sonos.play_from_queue(index=0)
+            # sonos.play_mode ="SHUFFLE_NOREPEAT"
 
 
         if self.menu_state == "pods":    
