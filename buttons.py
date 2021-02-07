@@ -195,8 +195,8 @@ class Au:
         #whatever media, extract them to make an interable
         if self.menu_state == "spots":
             sonos = SoCo(pod_dict['Rooms']['Living'])
-            
-            page_split = pickle.load(open("sonos_pl.p","rb"))
+            sonos_playlists = sonos.get_sonos_playlists()
+            page_split = list(sonos_playlists)
             #print(page_split)
             #time.sleep(10)
         else:
@@ -300,14 +300,14 @@ class Au:
             try:
                 sonos = SoCo(play_room)
                 look_at_queue = sonos.get_queue()
-                print('lets play')
+                
                 if len(look_at_queue)>0:
                     sonos.group.coordinator.play()
                 #else:
                 #    print("the queue is empty")
             except:
                 #this doesn't work for some reason. try just looking for stop states.
-                logger.warning("Exception caught. Not expecting trace", exc_info=False, stack_info=False)
+                logging.warning("Exception caught. Not expecting trace", exc_info=False, stack_info=False)
                 print("the queue is empty")
 
 
@@ -359,16 +359,15 @@ class Au:
             self.poor_man_refresh()
             
         def play_spot(junk, location):
-            print(location)
             time.sleep(5)
-            # play_room = (str(pod_dict['Rooms']['Living']))
+            play_room = (str(pod_dict['Rooms']['Living']))
 
-            # sonos = SoCo(play_room)
-            # uri = location['location']
-            # sonos.clear_queue()
-            # sonos.add_uri_to_queue(uri=uri)
-            # sonos.play_from_queue(index=0)
-            # sonos.play_mode ="SHUFFLE_NOREPEAT"
+            sonos = SoCo(play_room)
+            uri = location['location']
+            sonos.clear_queue()
+            sonos.add_uri_to_queue(uri=uri)
+            sonos.play_from_queue(index=0)
+            sonos.play_mode ="SHUFFLE_NOREPEAT"
 
 
         if self.menu_state == "pods":    
@@ -422,7 +421,7 @@ class Au:
                 else:
                     print("the queue is empty")
             except soco.exceptions.SoCoUPnPException as e:
-                logger.warning("Exception caught. Not expecting trace", exc_info=False, stack_info=False)
+                logging.warning("Exception caught. Not expecting trace", exc_info=False, stack_info=False)
                 print("the queue is empty")
 
 
